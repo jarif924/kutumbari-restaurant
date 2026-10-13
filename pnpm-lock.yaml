@@ -36,6 +36,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.7(@types/react@18.3.31)
+      '@types/ws':
+        specifier: ^8.18.2
+        version: 8.18.2
       autoprefixer:
         specifier: ^10.4.20
         version: 10.6.1(postcss@8.5.30)
@@ -51,6 +54,9 @@ importers:
       vercel:
         specifier: ^63.1.2
         version: 63.1.2(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
+      ws:
+        specifier: ^8.22.0
+        version: 8.22.0
 
 packages:
 
@@ -810,6 +816,9 @@ packages:
 
   '@types/react@18.3.31':
     resolution: {integrity: sha512-vfEqpXTvwT91yhmwdfouStN2hSKwTvyRs8qpLfADyrq/kxDw0hZM7Wk9Ug1FELj8hIby+S/+kQCSRFF32nv2Qw==}
+
+  '@types/ws@8.18.2':
+    resolution: {integrity: sha512-67MQl+fpWKVTT1NYdnmo3U4sc/xPo/zQBncVnI74qmQa0z/b+1g6iYqNmGCPbxO+zz2aklb08a0oHfegiVd0/w==}
 
   '@vercel/backends@18.0.1':
     resolution: {integrity: sha512-GfJRE1DM14cc4oy3r1NAXatOGjwGaE/09q5JgxHVUvM5XpBmdmcKA4jsgC3nuVprXOJENbbJJ8jy1GPsQVB5nQ==}
@@ -2612,6 +2621,10 @@ snapshots:
     dependencies:
       '@types/prop-types': 15.7.15
       csstype: 3.2.3
+
+  '@types/ws@8.18.2':
+    dependencies:
+      '@types/node': 20.19.43
 
   '@vercel/backends@18.0.1(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.20.1)':
     dependencies:

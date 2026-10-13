@@ -39,10 +39,16 @@ import {
 } from "lucide-react";
 import {
   ALL_MENU_PAGES,
-  MENU_CATEGORIES,
+  MENU_CATEGORIES as PRINTED_MENU_CATEGORIES,
   MenuPage,
   MenuCategoryFilter,
 } from "../data/menuPages";
+import {
+  ALL_MENU_PRODUCTS,
+  MENU_CATEGORIES as CATALOG_CATEGORIES,
+  MenuItem as CatalogProduct,
+  PortionOption,
+} from "../data/productsData";
 
 
 // Types
@@ -261,8 +267,15 @@ export default function KutumBariLandingPage() {
   const [activeEventIndex, setActiveEventIndex] = useState(0);
   const [language, setLanguage] = useState<"bn" | "en">("bn");
 
-  // Menu Book State
-  const [activeMenuTab, setActiveMenuTab] = useState<"pages" | "dishes">("pages");
+  // Menu System State (144 Individual Products + 19-Page Menu Book)
+  const [activeMenuTab, setActiveMenuTab] = useState<"catalog" | "pages">("catalog");
+  const [selectedCatalogCategory, setSelectedCatalogCategory] = useState<string>("all");
+  const [catalogSearchQuery, setCatalogSearchQuery] = useState("");
+  const [catalogPriceFilter, setCatalogPriceFilter] = useState<"all" | "under200" | "under400" | "special">("all");
+  const [selectedPortions, setSelectedPortions] = useState<Record<string, number>>({});
+  const [visibleProductCount, setVisibleProductCount] = useState<number>(24);
+
+  // Menu Book (19-Page Scanned Booklet) State
   const [activePageCategory, setActivePageCategory] = useState<MenuCategoryFilter>("all");
   const [menuSearchQuery, setMenuSearchQuery] = useState("");
   const [selectedMenuPage, setSelectedMenuPage] = useState<MenuPage | null>(null);
@@ -368,6 +381,62 @@ export default function KutumBariLandingPage() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  // Portion Selection Handler
+  const handleSelectPortion = (productId: string, portionIndex: number) => {
+    setSelectedPortions((prev) => ({
+      ...prev,
+      [productId]: portionIndex,
+    }));
+  };
+
+  // Open modal with specific catalog product preselected
+  const handleOrderProduct = (product: CatalogProduct) => {
+    const selectedIdx = selectedPortions[product.id] ?? 0;
+    const portion = product.portions[selectedIdx] || product.portions[0];
+    const portionText =
+      portion && portion.name !== "Regular"
+        ? ` (${portion.name} - ৳${portion.price})`
+        : portion && portion.price > 0
+        ? ` (৳${portion.price})`
+        : "";
+    setFormData((prev) => ({
+      ...prev,
+      notes: `অর্ডার করতে আগ্রহী: ${product.nameBn}${portionText}`,
+    }));
+    setBookingModalOpen(true);
+  };
+
+  // Filter 144 Products
+  const filteredCatalogProducts = ALL_MENU_PRODUCTS.filter((prod) => {
+    // Category filter
+    const matchesCat =
+      selectedCatalogCategory === "all" || prod.categoryKey === selectedCatalogCategory;
+    if (!matchesCat) return false;
+
+    // Price filter
+    if (catalogPriceFilter === "under200" && prod.minPrice > 200) return false;
+    if (catalogPriceFilter === "under400" && prod.minPrice > 400) return false;
+    if (
+      catalogPriceFilter === "special" &&
+      !["সিগনেচার", "শেফ স্পেশাল", "বেস্টসেলার"].some((b) => prod.badge.includes(b))
+    )
+      return false;
+
+    // Search query
+    const query = catalogSearchQuery.trim().toLowerCase();
+    if (!query) return true;
+
+    return (
+      prod.nameBn.toLowerCase().includes(query) ||
+      prod.nameEn.toLowerCase().includes(query) ||
+      prod.categoryNameBn.toLowerCase().includes(query) ||
+      prod.categoryNameEn.toLowerCase().includes(query) ||
+      prod.descriptionBn.toLowerCase().includes(query) ||
+      prod.descriptionEn.toLowerCase().includes(query) ||
+      prod.badge.toLowerCase().includes(query)
+    );
+  });
 
   // Open modal with specific dish preselected
   const handleOrderDish = (dishTitle: string) => {
@@ -931,26 +1000,26 @@ export default function KutumBariLandingPage() {
         </div>
       </section>
 
-      {/* 6. MENU SECTION (UI/UX Pro Max: Full 19-Page Authentic Menu Book + Signature Dishes) */}
+      {/* 6. MENU SECTION (UI/UX Pro Max: Full 144-Product Interactive Catalog + 19-Page Authentic Menu Book) */}
       <section id="menu" className="py-16 sm:py-24 bg-brand-cream/40 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand-red mb-2 bg-red-50 border border-brand-red/20 px-3.5 py-1.5 rounded-full">
               <Utensils className="w-3.5 h-3.5" />
               {language === "bn"
-                ? "অফিশিয়াল মেনু কার্ড ও পূর্ণাঙ্গ তালিকা"
-                : "Official Restaurant Menu & Pricing"}
+                ? "১৪৪ টি খাবারের পূর্ণাঙ্গ মেনু ও অফিশিয়াল বুক"
+                : "Full 144-Dish Menu & Official Book"}
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-brand-green-deep mb-3 leading-tight">
               {language === "bn"
-                ? "কুটুমবাড়ির সম্পূর্ণ মেনু বুক"
-                : "Explore Our Full 19-Page Menu"}
+                ? "কুটুমবাড়ির সম্পূর্ণ মেনু ও খাবার তালিকা"
+                : "KutumBari Complete Menu & Dishes"}
             </h2>
             <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
               {language === "bn"
-                ? "বাংলা, চাইনিজ, ফাস্ট-ফুড, বিরিয়ানি ও রিফ্রেশিং বেভারেজের ১৯ পৃষ্ঠার সম্পূর্ণ মেনু। প্রতিটি পৃষ্ঠায় ট্যাপ করে বড় করে দেখুন এবং মূল্যসহ বিস্তারিত যাচাই করুন।"
-                : "Browse our authentic 19-page restaurant menu book covering authentic Bengali feasts, Chinese wok, crispy fast-food, royal biryani, and beverages. Tap any page to view full size."}
+                ? "অ্যাপেটাইজার, স্যুপ, কাচ্চি বিরিয়ানি, সিজলিং, চাইনিজ ওক, পিজ্জা, পাস্তা, বার্গার ও খাঁটি বাংলা খাবারের ১৪৪ টি মুখরোচক পদ। যেকোনো খাবারে ক্লিক করে সহজে অর্ডার ও টেবিল বুক করুন।"
+                : "Explore authentic Bengali feasts, royal biryani, sizzling meats, wok-fried Chinese, artisan pizzas, and handcrafted beverages. Browse all 144 items with individual pricing."}
             </p>
           </div>
 
@@ -959,33 +1028,327 @@ export default function KutumBariLandingPage() {
             <div className="inline-flex p-1 rounded-2xl bg-white border border-gray-200/80 shadow-sm max-w-md w-full">
               <button
                 type="button"
-                onClick={() => setActiveMenuTab("pages")}
+                onClick={() => setActiveMenuTab("catalog")}
                 className={`cursor-pointer flex-1 min-h-[46px] py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-red ${
-                  activeMenuTab === "pages"
+                  activeMenuTab === "catalog"
                     ? "bg-brand-green-deep text-white shadow-md"
                     : "text-gray-600 hover:text-brand-charcoal hover:bg-gray-50"
                 }`}
               >
-                <BookOpen className="w-4 h-4" />
-                <span>{language === "bn" ? "অফিশিয়াল মেনু (১৯ পৃষ্ঠা)" : "Full Menu (19 Pages)"}</span>
+                <Utensils className="w-4 h-4" />
+                <span>{language === "bn" ? "খাবার তালিকা (১৪৪ পদ)" : "Full Catalog (144 Items)"}</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => setActiveMenuTab("dishes")}
+                onClick={() => setActiveMenuTab("pages")}
                 className={`cursor-pointer flex-1 min-h-[46px] py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-red ${
-                  activeMenuTab === "dishes"
+                  activeMenuTab === "pages"
                     ? "bg-brand-red text-white shadow-md"
                     : "text-gray-600 hover:text-brand-charcoal hover:bg-gray-50"
                 }`}
               >
-                <Utensils className="w-4 h-4" />
-                <span>{language === "bn" ? "জনপ্রিয় ডিশ তালিকা" : "Popular Highlights"}</span>
+                <BookOpen className="w-4 h-4" />
+                <span>{language === "bn" ? "অফিশিয়াল মেনু বুক (১৯ পৃষ্ঠা)" : "Printed Book (19 Pages)"}</span>
               </button>
             </div>
           </div>
 
-          {/* TAB 1: 19-PAGE AUTHENTIC MENU BOOK */}
+          {/* TAB 1: 144-PRODUCT INTERACTIVE CATALOG */}
+          {activeMenuTab === "catalog" && (
+            <div className="space-y-6 sm:space-y-8 animate-fadeIn">
+              {/* Search & Quick Filter Controls */}
+              <div className="max-w-2xl mx-auto space-y-3">
+                <div className="relative">
+                  <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={catalogSearchQuery}
+                    onChange={(e) => {
+                      setCatalogSearchQuery(e.target.value);
+                      setVisibleProductCount(24);
+                    }}
+                    placeholder={
+                      language === "bn"
+                        ? "খাবার বা মেনু খুঁজুন (যেমন: Wonton, বিরিয়ানি, কালা ভুনা, Pizza, Burger, স্যুপ, কফি)..."
+                        : "Search 144 dishes (e.g. Wonton, Biryani, Kala Bhuna, Pizza, Burger, Soup, Coffee)..."
+                    }
+                    className="w-full pl-12 pr-10 py-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-brand-green text-sm text-brand-charcoal transition-all placeholder:text-gray-400 min-h-[48px]"
+                  />
+                  {catalogSearchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setCatalogSearchQuery("")}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 min-h-[36px] min-w-[36px] flex items-center justify-center text-gray-400 hover:text-brand-charcoal rounded-full"
+                      aria-label="Clear search"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+
+                {/* Filter Row: Stats + Quick Filters */}
+                <div className="flex flex-wrap items-center justify-between gap-2 px-1 text-xs">
+                  <span className="font-semibold text-gray-600">
+                    {language === "bn"
+                      ? `${filteredCatalogProducts.length} টি খাবার প্রদর্শিত (মোট ১৪৪ টি)`
+                      : `Showing ${filteredCatalogProducts.length} of 144 dishes`}
+                  </span>
+
+                  <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                    {[
+                      { id: "all", labelBn: "সব", labelEn: "All" },
+                      { id: "special", labelBn: "⭐ স্পেশাল", labelEn: "Special" },
+                      { id: "under200", labelBn: "৳২০০ এর নিচে", labelEn: "< ৳200" },
+                      { id: "under400", labelBn: "৳৪০০ এর নিচে", labelEn: "< ৳400" },
+                    ].map((f) => (
+                      <button
+                        key={f.id}
+                        type="button"
+                        onClick={() => {
+                          setCatalogPriceFilter(f.id as any);
+                          setVisibleProductCount(24);
+                        }}
+                        className={`cursor-pointer min-h-[44px] px-3.5 py-2 rounded-full font-bold text-xs transition-all flex items-center justify-center ${
+                          catalogPriceFilter === f.id
+                            ? "bg-brand-green-deep text-white shadow-xs"
+                            : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                        }`}
+                      >
+                        {language === "bn" ? f.labelBn : f.labelEn}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* 18-Category Navigation Carousel (Touch-friendly & Smooth) */}
+              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 no-scrollbar max-w-full justify-start">
+                {/* All Items Pill */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCatalogCategory("all");
+                    setVisibleProductCount(24);
+                  }}
+                  className={`cursor-pointer min-h-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
+                    selectedCatalogCategory === "all"
+                      ? "bg-brand-green-deep text-white shadow-md scale-105"
+                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                  }`}
+                >
+                  <span>🍽️</span>
+                  <span>{language === "bn" ? "সকল ক্যাটাগরি" : "All Categories"}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                      selectedCatalogCategory === "all"
+                        ? "bg-white/20 text-white"
+                        : "bg-gray-100 text-gray-500"
+                    }`}
+                  >
+                    144
+                  </span>
+                </button>
+
+                {CATALOG_CATEGORIES.map((cat) => {
+                  const isActive = selectedCatalogCategory === cat.key;
+                  return (
+                    <button
+                      key={cat.key}
+                      type="button"
+                      onClick={() => {
+                        setSelectedCatalogCategory(cat.key);
+                        setVisibleProductCount(24);
+                      }}
+                      className={`cursor-pointer min-h-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
+                        isActive
+                          ? "bg-brand-green-deep text-white shadow-md scale-105"
+                          : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                      }`}
+                    >
+                      <span>{cat.icon}</span>
+                      <span>{language === "bn" ? cat.nameBn : cat.nameEn}</span>
+                      <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                          isActive
+                            ? "bg-white/20 text-white"
+                            : "bg-gray-100 text-gray-500"
+                        }`}
+                      >
+                        {cat.itemCount}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* 144 Products Grid */}
+              {filteredCatalogProducts.length === 0 ? (
+                <div className="bg-white rounded-3xl p-10 text-center max-w-md mx-auto border border-gray-100 shadow-sm">
+                  <Utensils className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                  <h4 className="font-serif font-bold text-lg text-brand-charcoal mb-1">
+                    {language === "bn" ? "কোনো খাবার পাওয়া যায়নি" : "No matching dishes"}
+                  </h4>
+                  <p className="text-xs text-gray-500 mb-4">
+                    {language === "bn"
+                      ? "অনুগ্রহ করে অন্য শব্দ দিয়ে অনুসন্ধান করুন বা সব খাবার নির্বাচন করুন।"
+                      : "Try a different search keyword or clear filters."}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCatalogSearchQuery("");
+                      setSelectedCatalogCategory("all");
+                      setCatalogPriceFilter("all");
+                    }}
+                    className="cursor-pointer min-h-[44px] bg-brand-green-deep text-white px-5 py-2 rounded-xl text-xs font-bold"
+                  >
+                    {language === "bn" ? "সব খাবার দেখুন" : "View All Dishes"}
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+                  {filteredCatalogProducts.slice(0, visibleProductCount).map((prod) => {
+                    const selectedIdx = selectedPortions[prod.id] ?? 0;
+                    const activePortion = prod.portions[selectedIdx] || prod.portions[0];
+                    const activePriceDisplay =
+                      prod.portions.length > 1 && activePortion && activePortion.price > 0
+                        ? `৳${activePortion.price}`
+                        : prod.priceDisplay;
+
+                    return (
+                      <div
+                        key={prod.id}
+                        className="bg-white rounded-3xl overflow-hidden border border-gray-200/80 shadow-subtle hover:shadow-card hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                      >
+                        {/* Top: Image + Badges */}
+                        <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100 group/img">
+                          <Image
+                            src={prod.image}
+                            alt={`${prod.nameBn} - ${prod.nameEn}`}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+
+                          {/* Top-Left Category Badge */}
+                          <span className="absolute top-3 left-3 bg-white/95 text-brand-green-deep text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm capitalize backdrop-blur-sm flex items-center gap-1">
+                            <span>{prod.categoryIcon}</span>
+                            <span>{language === "bn" ? prod.categoryNameBn : prod.categoryNameEn}</span>
+                          </span>
+
+                          {/* Top-Right Badge */}
+                          {prod.badge && (
+                            <span className="absolute top-3 right-3 bg-brand-red text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+                              {prod.badge}
+                            </span>
+                          )}
+
+                          {/* Price Tag (Over Image) */}
+                          <div className="absolute bottom-3 right-3 bg-brand-red text-white font-extrabold text-sm sm:text-base px-3 py-1 rounded-xl shadow-md backdrop-blur-xs">
+                            {activePriceDisplay}
+                          </div>
+                        </div>
+
+                        {/* Middle: Content & Portions */}
+                        <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between bg-white">
+                          <div>
+                            <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal group-hover:text-brand-green-deep transition-colors leading-snug line-clamp-1 mb-0.5">
+                              {language === "bn" ? prod.nameBn : prod.nameEn}
+                            </h3>
+                            <p className="text-xs text-brand-orange font-semibold mb-2 line-clamp-1">
+                              {prod.nameEn}
+                            </p>
+                            <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-3">
+                              {language === "bn" ? prod.descriptionBn : prod.descriptionEn}
+                            </p>
+
+                            {/* Portion Selector Pills (if multiple options) */}
+                            {prod.portions.length > 1 && (
+                              <div className="mb-3 pt-2 border-t border-gray-100">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-1.5">
+                                  {language === "bn" ? "সাইজ / অংশ বেছে নিন:" : "Select Portion:"}
+                                </span>
+                                <div className="flex flex-wrap gap-1.5">
+                                  {prod.portions.map((portion, pIdx) => {
+                                    const isSelected = selectedIdx === pIdx;
+                                    return (
+                                       <button
+                                        key={pIdx}
+                                        type="button"
+                                        onClick={() => handleSelectPortion(prod.id, pIdx)}
+                                        className={`cursor-pointer min-h-[40px] px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center ${
+                                          isSelected
+                                            ? "bg-brand-green-deep text-white shadow-xs scale-102"
+                                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                        }`}
+                                      >
+                                        <span>{portion.name}</span>
+                                        <span className="opacity-80 ml-1">
+                                          {portion.price > 0 ? `৳${portion.price}` : ""}
+                                        </span>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Bottom Action Row (Touch target compliant >= 44x44px) */}
+                          <div className="pt-3 border-t border-gray-100 flex items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => handleOrderProduct(prod)}
+                              className="cursor-pointer min-h-[44px] flex-1 bg-brand-red hover:bg-brand-red-hover text-white rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 shadow-xs active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand-red"
+                            >
+                              <Calendar className="w-4 h-4" />
+                              <span>{language === "bn" ? "অর্ডার / বুকিং" : "Order / Book"}</span>
+                            </button>
+
+                            <a
+                              href="tel:01351327933"
+                              className="cursor-pointer min-h-[44px] min-w-[44px] w-11 h-11 bg-brand-green-surface hover:bg-emerald-100 text-brand-green-deep rounded-xl flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green"
+                              title="কল করুন (01351327933)"
+                              aria-label={`Call to order ${prod.nameEn}`}
+                            >
+                              <Phone className="w-4 h-4" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Load More / Show All Controls */}
+              {filteredCatalogProducts.length > visibleProductCount && (
+                <div className="text-center pt-6 flex flex-wrap items-center justify-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setVisibleProductCount((prev) => prev + 24)}
+                    className="cursor-pointer min-h-[46px] px-6 py-2.5 rounded-full bg-brand-green-deep hover:bg-brand-green text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95 flex items-center gap-2"
+                  >
+                    <span>{language === "bn" ? "আরো ২৪ টি খাবার দেখুন" : "Load 24 More Dishes"}</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setVisibleProductCount(filteredCatalogProducts.length)}
+                    className="cursor-pointer min-h-[46px] px-5 py-2.5 rounded-full bg-white hover:bg-gray-100 text-brand-charcoal border border-gray-300 font-bold text-xs sm:text-sm shadow-xs transition-all active:scale-95"
+                  >
+                    <span>{language === "bn" ? `সবগুলো (${filteredCatalogProducts.length}) একসাথে দেখুন` : `Show All (${filteredCatalogProducts.length})`}</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 2: 19-PAGE AUTHENTIC PRINTED MENU BOOK */}
           {activeMenuTab === "pages" && (
             <div className="space-y-8 animate-fadeIn">
               {/* Search Bar & Stats */}
@@ -998,8 +1361,8 @@ export default function KutumBariLandingPage() {
                     onChange={(e) => setMenuSearchQuery(e.target.value)}
                     placeholder={
                       language === "bn"
-                        ? "খাবার বা মেনু খুঁজুন (যেমন: কালা ভুনা, Biryani, Pizza, Wonton, Coffee, মোমো)..."
-                        : "Search dishes (e.g. Kala Bhuna, Biryani, Pizza, Wonton, Coffee, Momo)..."
+                        ? "মেনু পেজ খুঁজুন (যেমন: পৃষ্ঠা ১, কালা ভুনা, Biryani, Pizza, Wonton, Coffee)..."
+                        : "Search menu pages (e.g. Page 1, Kala Bhuna, Biryani, Pizza, Wonton)..."
                     }
                     className="w-full pl-12 pr-10 py-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-brand-green text-sm text-brand-charcoal transition-all placeholder:text-gray-400 min-h-[48px]"
                   />
@@ -1026,9 +1389,9 @@ export default function KutumBariLandingPage() {
                 </div>
               </div>
 
-              {/* Category Filter Pills */}
+              {/* Category Filter Pills for Menu Book */}
               <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 no-scrollbar max-w-full justify-start md:justify-center">
-                {MENU_CATEGORIES.map((cat) => {
+                {PRINTED_MENU_CATEGORIES.map((cat) => {
                   const isActive = activePageCategory === cat.id;
                   return (
                     <button
@@ -1183,141 +1546,6 @@ export default function KutumBariLandingPage() {
                   ))}
                 </div>
               )}
-            </div>
-          )}
-
-          {/* TAB 2: POPULAR SIGNATURE DISHES */}
-          {activeMenuTab === "dishes" && (
-            <div className="animate-fadeIn space-y-8">
-              {/* Circular Category Selector */}
-              <div className="flex items-center justify-center gap-4 sm:gap-8 mb-6 overflow-x-auto py-2 no-scrollbar max-w-full">
-                {[
-                  {
-                    id: "all" as CuisineCategory,
-                    labelBn: "সব খাবার",
-                    labelEn: "All Items",
-                    image: "/images/hero-dish.jpg",
-                  },
-                  {
-                    id: "bangla" as CuisineCategory,
-                    labelBn: "বাংলা (Bangla)",
-                    labelEn: "Bangla Delights",
-                    image: "/images/bangla-cat.jpg",
-                  },
-                  {
-                    id: "chinese" as CuisineCategory,
-                    labelBn: "চাইনিজ (Chinese)",
-                    labelEn: "Chinese Wok",
-                    image: "/images/chinese-cat.jpg",
-                  },
-                  {
-                    id: "fastfood" as CuisineCategory,
-                    labelBn: "ফাস্ট-ফুড (Fast-Food)",
-                    labelEn: "Fast-Food",
-                    image: "/images/fastfood-cat.jpg",
-                  },
-                ].map((cat) => {
-                  const isActive = activeCategory === cat.id;
-                  return (
-                    <button
-                      key={cat.id}
-                      type="button"
-                      onClick={() => setActiveCategory(cat.id)}
-                      className="cursor-pointer flex flex-col items-center group focus:outline-none focus:ring-2 focus:ring-brand-red rounded-2xl flex-shrink-0 min-h-[44px] min-w-[44px] p-1 transition-all"
-                    >
-                      <div
-                        className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 transition-all duration-300 ${
-                          isActive
-                            ? "ring-4 ring-brand-red scale-105 shadow-md"
-                            : "ring-2 ring-gray-200 group-hover:ring-brand-orange/60"
-                        }`}
-                      >
-                        <div className="relative w-full h-full rounded-full overflow-hidden">
-                          <Image
-                            src={cat.image}
-                            alt={cat.labelEn}
-                            fill
-                            className="object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                        </div>
-                      </div>
-                      <span
-                        className={`mt-2 text-xs sm:text-sm font-bold tracking-tight transition-colors ${
-                          isActive ? "text-brand-red" : "text-brand-charcoal group-hover:text-brand-orange"
-                        }`}
-                      >
-                        {language === "bn" ? cat.labelBn : cat.labelEn}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Dish Cards Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-                {filteredMenuItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-subtle hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
-                  >
-                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-gray-100">
-                      <Image
-                        src={item.image}
-                        alt={item.titleEn}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
-
-                      <span className="absolute top-3 left-3 bg-white/95 text-brand-green-deep text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm capitalize backdrop-blur-sm">
-                        {item.category === "bangla"
-                          ? "বাংলা"
-                          : item.category === "chinese"
-                          ? "চাইনিজ"
-                          : "ফাস্ট-ফুড"}
-                      </span>
-
-                      {item.isChefSpecial && (
-                        <span className="absolute top-3 right-3 bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
-                          <Star className="w-3 h-3 fill-white" /> স্পেশাল
-                        </span>
-                      )}
-
-                      <div className="absolute bottom-3 right-3 bg-brand-red text-white font-extrabold text-sm sm:text-base px-3 py-1 rounded-xl shadow-md">
-                        {item.price}
-                      </div>
-                    </div>
-
-                    <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between">
-                      <div>
-                        <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal group-hover:text-brand-green-deep transition-colors line-clamp-1">
-                          {language === "bn" ? item.titleBn : item.titleEn}
-                        </h3>
-                        <p className="text-xs text-brand-orange font-semibold mb-2 line-clamp-1">
-                          {item.titleEn}
-                        </p>
-                        <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-4">
-                          {language === "bn" ? item.descriptionBn : item.descriptionEn}
-                        </p>
-                      </div>
-
-                      <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
-                        <span className="text-[11px] text-gray-400 font-medium">
-                          তাৎক্ষণিক প্রস্তুত
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => handleOrderDish(item.titleBn)}
-                          className="cursor-pointer min-h-[44px] text-xs font-bold text-brand-red hover:text-brand-red-hover flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red"
-                        >
-                          <span>অর্ডার/বুকিং</span>
-                          <ChevronRight className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           )}
 

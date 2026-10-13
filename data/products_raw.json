@@ -1,0 +1,3382 @@
+[
+  {
+    "id": "appetizer-001",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "Chicken Wonton",
+    "nameBn": "চিকেন ওয়ানটন",
+    "portions": [
+      {
+        "name": "4 Pcs",
+        "price": 110
+      },
+      {
+        "name": "8 Pcs",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳110 - ৳220",
+    "minPrice": 110,
+    "descriptionBn": "মুচমুচে সোনালী ফ্রাইড ওয়ানটন, ভিতরে জুসি স্পাইসি চিকেন কিমা পুর ও ডিপ সস।",
+    "descriptionEn": "Crispy golden fried wontons filled with seasoned chicken mince, served with sweet chili dip.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "crispy chicken wonton fried",
+    "image": "/products/appetizer-001.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-002",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "Prawn Wonton",
+    "nameBn": "প্রন ওয়ানটন",
+    "portions": [
+      {
+        "name": "4 Pcs",
+        "price": 120
+      },
+      {
+        "name": "8 Pcs",
+        "price": 240
+      }
+    ],
+    "priceDisplay": "৳120 - ৳240",
+    "minPrice": 120,
+    "descriptionBn": "তাজা গলদা চিংড়ির সুস্বাদু পুরে ভরা ক্রিসপি ওয়ানটন।",
+    "descriptionEn": "Crispy wontons stuffed with savory spiced fresh prawn filling.",
+    "badge": "শেফ স্পেশাল",
+    "searchQuery": "prawn wonton fried golden",
+    "image": "/products/appetizer-002.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-003",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "KutumBari Special Wonton",
+    "nameBn": "কুটুমবাড়ি স্পেশাল ওয়ানটন",
+    "portions": [
+      {
+        "name": "8 Pcs",
+        "price": 270
+      }
+    ],
+    "priceDisplay": "৳270",
+    "minPrice": 270,
+    "descriptionBn": "আমাদের সিক্রেট স্পেশাল রেসিপির স্পেশাল বিগ সাইজ ওয়ানটন (৮ পিস)।",
+    "descriptionEn": "Signature KutumBari chef-special deep-fried crispy wontons (8 pcs).",
+    "badge": "সিগনেচার",
+    "searchQuery": "crispy wonton dish platter",
+    "image": "/products/appetizer-003.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-004",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "Chicken Lollipop",
+    "nameBn": "চিকেন ললিপপ",
+    "portions": [
+      {
+        "name": "6 Pcs",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "মচমচে ফ্রাইড চিকেন উইং ললিপপ, হট অ্যান্ড স্পাইসি গার্লিক সস কোটেড।",
+    "descriptionEn": "Succulent chicken drumettes shaped into lollipops with spicy oriental glaze.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "chicken lollipop fried indo chinese",
+    "image": "/products/appetizer-004.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-005",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "Chicken Cutlet",
+    "nameBn": "চিকেন কাটলেট",
+    "portions": [
+      {
+        "name": "1 Pc",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "মশলাদার প্রিমিয়াম বোনলেস চিকেন ও ব্রেডক্রাম্ব ক্রাস্টেড ডিপ ফ্রাইড কাটলেট।",
+    "descriptionEn": "Golden breaded chicken cutlet seasoned with aromatic herbs and spices.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "chicken cutlet breadcrumb fried",
+    "image": "/products/appetizer-005.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-006",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "Fish Cutlet",
+    "nameBn": "ফিশ কাটলেট",
+    "portions": [
+      {
+        "name": "1 Pc",
+        "price": 280
+      }
+    ],
+    "priceDisplay": "৳280",
+    "minPrice": 280,
+    "descriptionBn": "তাজা নদীর মাছের নরম পেটি ও সুস্বাদু মুচমুচে কোটিং।",
+    "descriptionEn": "Flavorful fish patty coated in breadcrumbs and deep fried to golden perfection.",
+    "badge": "তাজা মাছ",
+    "searchQuery": "fish cutlet fried patty",
+    "image": "/products/appetizer-006.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-007",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "Fish Finger",
+    "nameBn": "ফিশ ফিঙ্গার",
+    "portions": [
+      {
+        "name": "6 Pcs",
+        "price": 260
+      }
+    ],
+    "priceDisplay": "৳260",
+    "minPrice": 260,
+    "descriptionBn": "তাজা নরম ভেটকি/কোরাল ফিলে ক্রিসপি স্ট্রিপস, টারটার সসের সাথে পরিবেশিত।",
+    "descriptionEn": "Tender fish fillets cut into fingers, coated in seasoned panko crumbs.",
+    "badge": "ক্রিসপি",
+    "searchQuery": "crispy fish fingers tartar sauce",
+    "image": "/products/appetizer-007.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-008",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "Fish Fry",
+    "nameBn": "ফিশ ফ্রাই",
+    "portions": [
+      {
+        "name": "6 Pcs",
+        "price": 270
+      }
+    ],
+    "priceDisplay": "৳270",
+    "minPrice": 270,
+    "descriptionBn": "বাঙালি স্টাইলের খাঁটি ক্রিসপি ফিশ ফ্রাই, মাস্টার্ড কাসুন্দি ও সালাদ সহ।",
+    "descriptionEn": "Bengali style classic crispy fish fry served with mustard dip and onion salad.",
+    "badge": "ট্রেডিশনাল",
+    "searchQuery": "bengali fish fry kolkata style",
+    "image": "/products/appetizer-008.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-009",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "French Fry",
+    "nameBn": "ফ্রেঞ্চ ফ্রাই",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 110
+      }
+    ],
+    "priceDisplay": "৳110",
+    "minPrice": 110,
+    "descriptionBn": "মুচমুচে সোনালী গোল্ডেন পটেটো ফ্রাই, হালকা পেরি পেরি ও সল্ট সিজনিং।",
+    "descriptionEn": "Classic golden crisp french fries seasoned with salt and spices.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "golden crispy french fries",
+    "image": "/products/appetizer-009.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "appetizer-010",
+    "categoryKey": "appetizer",
+    "categoryNameBn": "অ্যাপেটাইজার",
+    "categoryNameEn": "Appetizers",
+    "categoryIcon": "🥟",
+    "nameEn": "Potato Wedges",
+    "nameBn": "পটেটো ওয়েজেস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 120
+      }
+    ],
+    "priceDisplay": "৳120",
+    "minPrice": 120,
+    "descriptionBn": "মশলা মাখানো ক্রাঞ্চি স্কিন-অন পটেটো ওয়েজেস, মেয়ো ডিপ সহ।",
+    "descriptionEn": "Seasoned crispy herb potato wedges served with spicy mayo dip.",
+    "badge": "ক্রাঞ্চি",
+    "searchQuery": "seasoned potato wedges roasted crispy",
+    "image": "/products/appetizer-010.webp",
+    "fallbackImage": "public/images/wonton.jpg"
+  },
+  {
+    "id": "soup-011",
+    "categoryKey": "soup",
+    "categoryNameBn": "স্যুপ",
+    "categoryNameEn": "Soups",
+    "categoryIcon": "🍲",
+    "nameEn": "KutumBari Special Thai Soup",
+    "nameBn": "কুটুমবাড়ি স্পেশাল থাই স্যুপ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 460
+      }
+    ],
+    "priceDisplay": "৳460",
+    "minPrice": 460,
+    "descriptionBn": "চিকেন, চিংড়ি, মাশরুম ও লেমনগ্রাস ইনফিউজড ঘন গাঢ় প্রিমিয়াম থাই স্যুপ (১:৩)।",
+    "descriptionEn": "Rich, thick aromatic Thai soup loaded with chicken, prawn, mushroom & lemongrass (1:3).",
+    "badge": "সিগনেচার",
+    "searchQuery": "authentic thai soup chicken shrimp bowl",
+    "image": "/products/soup-011.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "soup-012",
+    "categoryKey": "soup",
+    "categoryNameBn": "স্যুপ",
+    "categoryNameEn": "Soups",
+    "categoryIcon": "🍲",
+    "nameEn": "Chicken Thai Soup",
+    "nameBn": "চিকেন থাই স্যুপ",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 120
+      },
+      {
+        "name": "1:3",
+        "price": 350
+      }
+    ],
+    "priceDisplay": "৳120 - ৳350",
+    "minPrice": 120,
+    "descriptionBn": "চিকেন চাঙ্কস, কাঁচামরিচ ও লেমনগ্রাসের অথেনটিক ব্যালেন্সড স্বাদের স্যুপ।",
+    "descriptionEn": "Authentic spicy and tangy Thai soup packed with tender chicken bits.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "chicken thai soup hot bowl",
+    "image": "/products/soup-012.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "soup-013",
+    "categoryKey": "soup",
+    "categoryNameBn": "স্যুপ",
+    "categoryNameEn": "Soups",
+    "categoryIcon": "🍲",
+    "nameEn": "Special Corn Soup",
+    "nameBn": "স্পেশাল কর্ন স্যুপ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 350
+      }
+    ],
+    "priceDisplay": "৳350",
+    "minPrice": 350,
+    "descriptionBn": "মিষ্টি কর্ন কার্নেল ও ক্রিমি ঘন সুস্বাদু চিকেন-এগ ড্রপ স্যুপ (১:৩)।",
+    "descriptionEn": "Sweet corn egg drop soup enriched with signature secret stock (1:3).",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "sweet corn egg drop soup chinese",
+    "image": "/products/soup-013.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "soup-014",
+    "categoryKey": "soup",
+    "categoryNameBn": "স্যুপ",
+    "categoryNameEn": "Soups",
+    "categoryIcon": "🍲",
+    "nameEn": "Chicken Corn Soup",
+    "nameBn": "চিকেন কর্ন স্যুপ",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 100
+      },
+      {
+        "name": "1:3",
+        "price": 290
+      }
+    ],
+    "priceDisplay": "৳100 - ৳290",
+    "minPrice": 100,
+    "descriptionBn": "নরম চিকেন শ্রেডস ও কর্নের হালকা সুস্বাদু স্বাস্থ্যকর আরামদায়ক স্যুপ।",
+    "descriptionEn": "Heartwarming comfort soup with shredded chicken and sweet corn.",
+    "badge": "হেলদি চয়েস",
+    "searchQuery": "chicken sweet corn soup bowl",
+    "image": "/products/soup-014.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "soup-015",
+    "categoryKey": "soup",
+    "categoryNameBn": "স্যুপ",
+    "categoryNameEn": "Soups",
+    "categoryIcon": "🍲",
+    "nameEn": "Thai Clear Soup",
+    "nameBn": "থাই ক্লিয়ার স্যুপ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 320
+      }
+    ],
+    "priceDisplay": "৳320",
+    "minPrice": 320,
+    "descriptionBn": "লেমনগ্রাস, থাই জিঞ্জার ও তাজা হার্বসের পরিষ্কার রিফ্রেশিং পুষ্টিকর স্যুপ (১:৩)।",
+    "descriptionEn": "Clear, light and aromatic broth infused with fresh galangal, lemongrass & herbs (1:3).",
+    "badge": "লাইট অ্যান্ড ফ্রেশ",
+    "searchQuery": "thai clear soup lemongrass cilantro",
+    "image": "/products/soup-015.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "soup-016",
+    "categoryKey": "soup",
+    "categoryNameBn": "স্যুপ",
+    "categoryNameEn": "Soups",
+    "categoryIcon": "🍲",
+    "nameEn": "Vegetable Clear Soup",
+    "nameBn": "ভেজিটেবল ক্লিয়ার স্যুপ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 210
+      }
+    ],
+    "priceDisplay": "৳210",
+    "minPrice": 210,
+    "descriptionBn": "তাজা সিজনাল সবজি দিয়ে তৈরি হালকা ও পুষ্টিকর পরিষ্কার স্যুপ (১:৩)।",
+    "descriptionEn": "Nutritious clear soup with a vibrant medley of fresh farm vegetables (1:3).",
+    "badge": "১০০% ভেজ",
+    "searchQuery": "fresh vegetable clear soup bowl",
+    "image": "/products/soup-016.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "soup-017",
+    "categoryKey": "soup",
+    "categoryNameBn": "স্যুপ",
+    "categoryNameEn": "Soups",
+    "categoryIcon": "🍲",
+    "nameEn": "Cream of Mushroom Soup",
+    "nameBn": "ক্রিম অব মাশরুম স্যুপ",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 360
+      }
+    ],
+    "priceDisplay": "৳360",
+    "minPrice": 360,
+    "descriptionBn": "বাটনে মাশরুম, তাজা ক্রিম ও গোলমরিচ ইনফিউজড ঘন কন্টিনেন্টাল স্যুপ (১:১)।",
+    "descriptionEn": "Velvety smooth and rich soup made with sautéed button mushrooms and fresh cream (1:1).",
+    "badge": "প্রিমিয়াম",
+    "searchQuery": "cream of mushroom soup warm bowl",
+    "image": "/products/soup-017.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "rice-vegetable-018",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "KutumBari Special Fried Rice",
+    "nameBn": "কুটুমবাড়ি স্পেশাল ফ্রাইড রাইস",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 380
+      }
+    ],
+    "priceDisplay": "৳380",
+    "minPrice": 380,
+    "descriptionBn": "চিকেন, গলদা চিংড়ি, ডিম ও সিজনাল সবজির রয়াল মিক্সড ফ্রাইড রাইস (১:৩)।",
+    "descriptionEn": "Grand combination of basmati rice wok-tossed with chicken, prawns, eggs & veggies (1:3).",
+    "badge": "সিগনেচার",
+    "searchQuery": "special mixed fried rice chicken prawn",
+    "image": "/products/rice-vegetable-018.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "rice-vegetable-019",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "Chicken Fried Rice",
+    "nameBn": "চিকেন ফ্রাইড রাইস",
+    "portions": [
+      {
+        "name": "1:2",
+        "price": 210
+      },
+      {
+        "name": "1:4",
+        "price": 410
+      }
+    ],
+    "priceDisplay": "৳210 - ৳410",
+    "minPrice": 210,
+    "descriptionBn": "মজাদার চিকেন চাঙ্কস, স্ক্র্যাম্বলড এগ ও সয়া সিজনিংয়ে ওক-টসড সুগন্ধি ফ্রাইড রাইস।",
+    "descriptionEn": "Wok-tossed fragrant rice with juicy chicken bites, egg ribbon and scallions.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "chinese chicken fried rice wok",
+    "image": "/products/rice-vegetable-019.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "rice-vegetable-020",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "Prawn Fried Rice",
+    "nameBn": "প্রন ফ্রাইড রাইস",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 320
+      }
+    ],
+    "priceDisplay": "৳320",
+    "minPrice": 320,
+    "descriptionBn": "তাজা গলদা চিংড়ি ও সিজনিং মেশানো ওক-ফ্রাইড জুসি সুস্বাদু রাইস (১:৩)।",
+    "descriptionEn": "Aromatic stir-fried rice loaded with tender fresh prawns and garlic chives (1:3).",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "prawn fried rice shrimp bowl",
+    "image": "/products/rice-vegetable-020.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "rice-vegetable-021",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "Egg Fried Rice",
+    "nameBn": "এগ ফ্রাইড রাইস",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 230
+      }
+    ],
+    "priceDisplay": "৳230",
+    "minPrice": 230,
+    "descriptionBn": "ডিম ও পেঁয়াজ কলি দিয়ে সতেজ ড্রপ ফ্রাইড ক্লাসিক রাইস (১:৩)।",
+    "descriptionEn": "Classic Asian egg fried rice tossed on high flame with light soy and spring onions (1:3).",
+    "badge": "ক্লাসিক",
+    "searchQuery": "classic egg fried rice chinese",
+    "image": "/products/rice-vegetable-021.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "rice-vegetable-022",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "Thai Fried Rice",
+    "nameBn": "থাই ফ্রাইড রাইস",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 360
+      }
+    ],
+    "priceDisplay": "৳360",
+    "minPrice": 360,
+    "descriptionBn": "থাই চিলি, বেসিল ও ওরিয়েন্টাল সসের ঝাল-মিষ্টি ফ্লেভারযুক্ত স্পাইসি ফ্রাইড রাইস (১:৩)।",
+    "descriptionEn": "Authentic Thai style spicy fried rice infused with chili, garlic and basil (1:3).",
+    "badge": "স্পাইসি",
+    "searchQuery": "thai spicy basil fried rice",
+    "image": "/products/rice-vegetable-022.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "rice-vegetable-023",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "KutumBari Special Vegetable",
+    "nameBn": "কুটুমবাড়ি স্পেশাল ভেজিটেবল",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 250
+      }
+    ],
+    "priceDisplay": "৳250",
+    "minPrice": 250,
+    "descriptionBn": "ব্রোকলি, বেবিকর্ন, মাশরুম ও স্পেশাল চাইনিজ সসে কুকড রিচ সবজি (১:৩)।",
+    "descriptionEn": "Signature medley of premium crisp vegetables in savory oriental sauce (1:3).",
+    "badge": "শেফ চয়েস",
+    "searchQuery": "chinese mixed vegetable stir fry plate",
+    "image": "/products/rice-vegetable-023.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "rice-vegetable-024",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "Chicken Vegetable",
+    "nameBn": "চিকেন ভেজিটেবল",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "নরম চিকেন স্লাইস ও রঙিন তাজা সবজির চাইনিজ গ্রেভি ডিশ (১:৩)।",
+    "descriptionEn": "Tender chicken slices stir-fried with colorful fresh vegetables in light gravy (1:3).",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "chicken vegetable stir fry chinese",
+    "image": "/products/rice-vegetable-024.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "rice-vegetable-025",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "Thai Vegetable",
+    "nameBn": "থাই ভেজিটেবল",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "থাই সস ও ভেষজ সুগন্ধে রান্না করা ক্রাঞ্চি সবজি ডিশ (১:৩)।",
+    "descriptionEn": "Crispy crunchy vegetables tossed in flavorful sweet and savory Thai glaze (1:3).",
+    "badge": "স্পাইসি",
+    "searchQuery": "thai stir fry mixed vegetables",
+    "image": "/products/rice-vegetable-025.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "rice-vegetable-026",
+    "categoryKey": "rice-vegetable",
+    "categoryNameBn": "রাইস ও ভেজিটেবল",
+    "categoryNameEn": "Rice & Vegetables",
+    "categoryIcon": "🍚",
+    "nameEn": "Fresh Vegetable",
+    "nameBn": "ফ্রেশ ভেজিটেবল",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 140
+      }
+    ],
+    "priceDisplay": "৳140",
+    "minPrice": 140,
+    "descriptionBn": "ঘরোয়া মিষ্টি স্বাদে হালকা স্টিমড ও সোতে করা টাটকা সবজি (১:৩)।",
+    "descriptionEn": "Healthy and lightly sautéed seasonal farm-fresh garden vegetables (1:3).",
+    "badge": "হেলদি",
+    "searchQuery": "fresh green vegetable sauté plate",
+    "image": "/products/rice-vegetable-026.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "chicken-027",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "Chicken Fry",
+    "nameBn": "চিকেন ফ্রাই",
+    "portions": [
+      {
+        "name": "4 Pcs",
+        "price": 200
+      },
+      {
+        "name": "8 Pcs",
+        "price": 380
+      }
+    ],
+    "priceDisplay": "৳200 - ৳380",
+    "minPrice": 200,
+    "descriptionBn": "দেশি মশলায় ম্যারিনেট করা মুচমুচে সুস্বাদু ক্লাসিক ফ্রাইড চিকেন।",
+    "descriptionEn": "Crisp and juicy seasoned fried chicken made with special KutumBari marinade.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "crispy golden fried chicken pieces",
+    "image": "/products/chicken-027.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-028",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "Chicken Pop Corn",
+    "nameBn": "চিকেন পপ কর্ন",
+    "portions": [
+      {
+        "name": "8 Pcs",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "ছোট ছোট বাইট-সাইজ মুচমুচে কুড়মুড়ে ক্রাঞ্চি চিকেন কিউবস (৮ পিস)।",
+    "descriptionEn": "Crunchy, bite-sized spiced chicken poppers coated in golden breadcrumbs (8 pcs).",
+    "badge": "কিডস ফেভারিট",
+    "searchQuery": "crunchy chicken popcorn bite basket",
+    "image": "/products/chicken-028.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-029",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "BBQ Chicken",
+    "nameBn": "বারবিকিউ চিকেন",
+    "portions": [
+      {
+        "name": "6 Pcs",
+        "price": 240
+      }
+    ],
+    "priceDisplay": "৳240",
+    "minPrice": 240,
+    "descriptionBn": "স্মোকি বারবিকিউ সসে গ্লেজ করা জুসি রোস্টেড চিকেন পিস (৬ পিস)।",
+    "descriptionEn": "Tender chicken pieces glazed with sweet and smoky BBQ sauce and char-grilled (6 pcs).",
+    "badge": "স্মোকি ফ্লেভার",
+    "searchQuery": "barbecue chicken glaze grilled",
+    "image": "/products/chicken-029.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-030",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "Crispy Chicken",
+    "nameBn": "ক্রিসপি চিকেন",
+    "portions": [
+      {
+        "name": "1 Pcs",
+        "price": 120
+      }
+    ],
+    "priceDisplay": "৳120",
+    "minPrice": 120,
+    "descriptionBn": "এক্সট্রা ক্রাঞ্চি ফ্লেকি কোটিং ও ভেতরটা রসালো নরম স্পাইসি চিকেন (১ পিস)।",
+    "descriptionEn": "Extra crunchy crispy deep fried chicken with juicy and tender meat inside (1 pc).",
+    "badge": "সুপার ক্রাঞ্চি",
+    "searchQuery": "crispy fried chicken drumstick piece",
+    "image": "/products/chicken-030.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-031",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "Style Chicken",
+    "nameBn": "স্টাইল চিকেন",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 260
+      }
+    ],
+    "priceDisplay": "৳260",
+    "minPrice": 260,
+    "descriptionBn": "কুটুমবাড়ির ইউনিক স্টাইল সিক্রেট সস ও স্পাইসে রান্না করা চিকেন।",
+    "descriptionEn": "Unique fusion style chicken cooked in rich aromatic sauce blend.",
+    "badge": "স্পেশাল",
+    "searchQuery": "chinese style chicken gravy dish",
+    "image": "/products/chicken-031.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-032",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "Chicken Masala",
+    "nameBn": "চিকেন মাসালা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 300
+      }
+    ],
+    "priceDisplay": "৳300",
+    "minPrice": 300,
+    "descriptionBn": "ঘন পেঁয়াজ-টমেটো গ্রেভি ও গরম মশলায় ভুনা করা দেশি স্বাদের চিকেন।",
+    "descriptionEn": "Rich aromatic chicken curry simmered in flavorful onion-tomato masala.",
+    "badge": "ট্রেডিশনাল",
+    "searchQuery": "indian chicken masala curry bowl",
+    "image": "/products/chicken-032.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-033",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "KutumBari Special Chicken",
+    "nameBn": "কুটুমবাড়ি স্পেশাল চিকেন",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 350
+      }
+    ],
+    "priceDisplay": "৳350",
+    "minPrice": 350,
+    "descriptionBn": "আমাদের হেড শেফের এক্সক্লুসিভ সিক্রেট রেসিপির প্রিমিয়াম চিকেন গ্রেভি।",
+    "descriptionEn": "Executive chef special chicken delicacy simmered in exotic thick gravy.",
+    "badge": "সিগনেচার",
+    "searchQuery": "royal chicken curry special gravy",
+    "image": "/products/chicken-033.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-034",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "Chicken Chili Onion",
+    "nameBn": "চিকেন চিলি অনিয়ন",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 320
+      }
+    ],
+    "priceDisplay": "৳320",
+    "minPrice": 320,
+    "descriptionBn": "কাঁচামরিচ, পেঁয়াজের পাপড়ি ও সয়া সসে ওক-ফ্রাইড চাইনিজ চিকেন (১:৩)।",
+    "descriptionEn": "Crispy chicken pieces stir-fried with green chilies, onions and savory sauce (1:3).",
+    "badge": "স্পাইসি হট",
+    "searchQuery": "chili chicken dry onion capsicum",
+    "image": "/products/chicken-034.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-035",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "Chicken Naga Drums",
+    "nameBn": "চিকেন নাগা ড্রামস",
+    "portions": [
+      {
+        "name": "1 Pcs",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "খাঁটি নাগা মরিচের তীব্র সুবাস ও ঝালে ম্যারিনেট করা ফায়ার ড্রামস্টিক (১ পিস)।",
+    "descriptionEn": "Fiery hot chicken drumstick infused with pungent Naga chili pepper glaze (1 pc).",
+    "badge": "ঝাল এক্সট্রিম 🌶️",
+    "searchQuery": "spicy chicken drumstick fiery pepper",
+    "image": "/products/chicken-035.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "chicken-036",
+    "categoryKey": "chicken",
+    "categoryNameBn": "চিকেন আইটেম",
+    "categoryNameEn": "Chicken Specials",
+    "categoryIcon": "🍗",
+    "nameEn": "Chicken Naga Wings",
+    "nameBn": "চিকেন নাগা উইংস",
+    "portions": [
+      {
+        "name": "8 Pcs",
+        "price": 280
+      }
+    ],
+    "priceDisplay": "৳280",
+    "minPrice": 280,
+    "descriptionBn": "নাগা চিলি সসে টস করা আগুনে ঝাল মুচমুচে চিকেন উইংস (৮ পিস)।",
+    "descriptionEn": "Crispy chicken wings glazed in lethal and addictive spicy Naga pepper sauce (8 pcs).",
+    "badge": "ঝাল এক্সট্রিম 🌶️",
+    "searchQuery": "spicy hot chicken wings red pepper",
+    "image": "/products/chicken-036.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-037",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "Beef Curry",
+    "nameBn": "বিফ কারি",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 380
+      }
+    ],
+    "priceDisplay": "৳380",
+    "minPrice": 380,
+    "descriptionBn": "ঐতিহ্যবাহী মশলায় কষিয়ে রান্না করা নরম তুলতুলে সুস্বাদু গরুর মাংস (১:৩)।",
+    "descriptionEn": "Tender chunks of beef simmered slowly in traditional Bengali aromatic curry (1:3).",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "bengali beef curry slow cooked meat",
+    "image": "/products/beef-mutton-fish-037.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-038",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "Mutton Masala",
+    "nameBn": "মাটন মাসালা",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 400
+      }
+    ],
+    "priceDisplay": "৳400",
+    "minPrice": 400,
+    "descriptionBn": "ঘিয়ে ভাজা সুগন্ধি গরম মশলা ও ঘন গ্রেভিতে রান্না করা খাসির মাংস (১:৩)।",
+    "descriptionEn": "Succulent mutton pieces braised in rich, spicy and aromatic thick masala (1:3).",
+    "badge": "রয়াল ডিশ",
+    "searchQuery": "mutton masala curry rich gravy bowl",
+    "image": "/products/beef-mutton-fish-038.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-039",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "Beef Dopiaza",
+    "nameBn": "বিফ দো পেঁয়াজা",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 340
+      }
+    ],
+    "priceDisplay": "৳340",
+    "minPrice": 340,
+    "descriptionBn": "প্রচুর পেঁয়াজের কিউব ও কড়া মশলায় ভুনা করা গরুর মাংসের দোপেঁয়াজা (১:৩)।",
+    "descriptionEn": "Classic Mughlai beef dish cooked with double the onions and rich spices (1:3).",
+    "badge": "ট্রেডিশনাল",
+    "searchQuery": "beef do pyaza curry rich meat",
+    "image": "/products/beef-mutton-fish-039.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-040",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "Mutton Chili Onion",
+    "nameBn": "মাটন চিলি অনিয়ন",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 440
+      }
+    ],
+    "priceDisplay": "৳440",
+    "minPrice": 440,
+    "descriptionBn": "কাঁচামরিচ, ক্যাপসিকাম ও পেঁয়াজের সাথে ওক-টসড চাইনিজ স্টাইল মাটন (১:৩)।",
+    "descriptionEn": "Tender mutton strips wok-fried with crisp onions, capsicum & green chilies (1:3).",
+    "badge": "স্পাইসি",
+    "searchQuery": "spicy mutton stir fry onion capsicum",
+    "image": "/products/beef-mutton-fish-040.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-041",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "KutumBari Special Beef",
+    "nameBn": "কুটুমবাড়ি স্পেশাল বিফ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 480
+      }
+    ],
+    "priceDisplay": "৳480",
+    "minPrice": 480,
+    "descriptionBn": "আমাদের স্পেশাল রন্ধনশৈলীর সুস্বাদু ও ঘন গ্রেভির সিগনেচার বিফ (১:৩)।",
+    "descriptionEn": "House-special tender beef slow braised in our secret spice mixture (1:3).",
+    "badge": "সিগনেচার",
+    "searchQuery": "special rich beef gravy gourmet meat",
+    "image": "/products/beef-mutton-fish-041.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-042",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "Prawn Masala",
+    "nameBn": "প্রন মাসালা",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 380
+      }
+    ],
+    "priceDisplay": "৳380",
+    "minPrice": 380,
+    "descriptionBn": "তাজা মিষ্টি গলদা চিংড়ি ও মশলাদার ঘন কড়াই গ্রেভির জুসি ডিশ (১:৩)।",
+    "descriptionEn": "Succulent river prawns cooked in spicy onion-tomato gravy with herbs (1:3).",
+    "badge": "সমুদ্রের স্বাদ",
+    "searchQuery": "prawn masala curry shrimp rich",
+    "image": "/products/beef-mutton-fish-042.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-043",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "Prawn Butter Fry",
+    "nameBn": "প্রন বাটার ফ্রাই",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 340
+      }
+    ],
+    "priceDisplay": "৳340",
+    "minPrice": 340,
+    "descriptionBn": "খাঁটি মাখনে ভাজা সুস্বাদু গোল্ডেন ক্রিসপি বড় চিংড়ি (১:৩)।",
+    "descriptionEn": "Jumbo prawns pan-sautéed in rich golden butter, garlic and mild herbs (1:3).",
+    "badge": "বাটার ডিলাইট",
+    "searchQuery": "garlic butter fried prawns shrimp",
+    "image": "/products/beef-mutton-fish-043.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-044",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "Prawn Chili Gravy",
+    "nameBn": "প্রন চিলি গ্রেভি",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 350
+      }
+    ],
+    "priceDisplay": "৳350",
+    "minPrice": 350,
+    "descriptionBn": "ঝাল চিলি সস ও সুস্বাদু গ্রেভিতে ওক-ফ্রাইড চাইনিজ স্টাইল প্রন (১:৩)।",
+    "descriptionEn": "Spicy wok-tossed prawns bathed in zesty sweet and tangy chili sauce (1:3).",
+    "badge": "স্পাইসি",
+    "searchQuery": "chili prawn shrimp chinese sauce",
+    "image": "/products/beef-mutton-fish-044.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-045",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "KutumBari Special Fish",
+    "nameBn": "কুটুমবাড়ি স্পেশাল ফিশ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 420
+      }
+    ],
+    "priceDisplay": "৳420",
+    "minPrice": 420,
+    "descriptionBn": "লোকাল নদীর তাজা সেরা মাছের সাথে শেফের সিক্রেট স্পেশাল রন্ধন (১:৩)।",
+    "descriptionEn": "Signature whole fish delicacy cooked to perfection with house special recipe (1:3).",
+    "badge": "সিগনেচার",
+    "searchQuery": "whole fish curry special sauce",
+    "image": "/products/beef-mutton-fish-045.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "beef-mutton-fish-046",
+    "categoryKey": "beef-mutton-fish",
+    "categoryNameBn": "বিফ, মাটন, প্রন ও ফিশ",
+    "categoryNameEn": "Meat & Seafood",
+    "categoryIcon": "🥩",
+    "nameEn": "Fish Masala",
+    "nameBn": "ফিশ মাসালা",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 320
+      }
+    ],
+    "priceDisplay": "৳320",
+    "minPrice": 320,
+    "descriptionBn": "সরিষা ও গরম মশলার সুগন্ধে মাখামাখি তাজা সুস্বাদু মাছের ভুনা (১:৩)।",
+    "descriptionEn": "Fresh river fish steaks simmered in traditional fragrant onion tomato masala (1:3).",
+    "badge": "ট্রেডিশনাল",
+    "searchQuery": "bengali fish masala curry",
+    "image": "/products/beef-mutton-fish-046.webp",
+    "fallbackImage": "public/images/kalabhuna.jpg"
+  },
+  {
+    "id": "salad-sizzling-047",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "KutumBari Special Cashewnut Salad",
+    "nameBn": "কুটুমবাড়ি স্পেশাল কাজুবাদাম সালাদ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 450
+      }
+    ],
+    "priceDisplay": "৳450",
+    "minPrice": 450,
+    "descriptionBn": "চিকেন, চিংড়ি, ক্রাঞ্চি কাজুবাদাম ও স্পেশাল ড্রেসিংয়ের রয়াল সালাদ (১:৩)।",
+    "descriptionEn": "Grand Thai style salad loaded with roasted cashews, chicken, prawns and tangy dressing (1:3).",
+    "badge": "সিগনেচার",
+    "searchQuery": "thai cashew nut salad chicken prawn",
+    "image": "/products/salad-sizzling-047.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-048",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Chicken & Cashewnut Salad",
+    "nameBn": "চিকেন ক্যাশিউনাট সালাদ",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 180
+      },
+      {
+        "name": "1:3",
+        "price": 380
+      }
+    ],
+    "priceDisplay": "৳180 - ৳380",
+    "minPrice": 180,
+    "descriptionBn": "ভাজা কাজুবাদাম, গ্রিলড চিকেন ও ফ্রেশ সালাদের রিফ্রেশিং মেলবন্ধন।",
+    "descriptionEn": "Tender chicken and golden roasted cashews tossed with crisp greens and sweet sour sauce.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "chicken cashew nut salad crispy",
+    "image": "/products/salad-sizzling-048.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-049",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Prawn Cashewnut Salad",
+    "nameBn": "প্রন ক্যাশিউনাট সালাদ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 400
+      }
+    ],
+    "priceDisplay": "৳400",
+    "minPrice": 400,
+    "descriptionBn": "তাজা চিংড়ি ও মুচমুচে কাজুবাদামের থাই স্টাইল ব্যালেন্সড সালাদ (১:৩)।",
+    "descriptionEn": "Fresh prawns and crunchy cashews in zesty lime-chili cilantro dressing (1:3).",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "prawn cashew nut thai salad",
+    "image": "/products/salad-sizzling-049.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-050",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Coleslaw Salad",
+    "nameBn": "কোলসল সালাদ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "মিহি কুচানো বাঁধাকপি, গাজর ও প্রিমিয়াম ক্রিমি মেয়োনিজের ফ্রেশ কোলসল (১:৩)।",
+    "descriptionEn": "Crisp shredded cabbage and carrots tossed in sweet and creamy dressing (1:3).",
+    "badge": "ক্রিমি ফ্রেশ",
+    "searchQuery": "creamy coleslaw salad bowl cabbage",
+    "image": "/products/salad-sizzling-050.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-051",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Schezwan Salad",
+    "nameBn": "সেজুয়ান সালাদ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 390
+      }
+    ],
+    "priceDisplay": "৳390",
+    "minPrice": 390,
+    "descriptionBn": "ঝাল মশলাদার সেজুয়ান সস ও সতেজ ক্রিসপি সবজির চাইনিজ সালাদ (১:৩)।",
+    "descriptionEn": "Fiery Schezwan infused shredded salad with spicy chili kick and sesame crunch (1:3).",
+    "badge": "স্পাইসি",
+    "searchQuery": "spicy schezwan noodle vegetable salad",
+    "image": "/products/salad-sizzling-051.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-052",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Green Salad",
+    "nameBn": "গ্রিন সালাদ",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 120
+      }
+    ],
+    "priceDisplay": "৳120",
+    "minPrice": 120,
+    "descriptionBn": "টাটকা শসা, টমেটো, গাজর, লেবু ও কাঁচামরিচের খাঁটি দেশি সালাদ (১:৩)।",
+    "descriptionEn": "Fresh slices of cucumbers, juicy tomatoes, onions, carrots and green chilies (1:3).",
+    "badge": "১০০% ফ্রেশ",
+    "searchQuery": "fresh green garden salad cucumber tomato",
+    "image": "/products/salad-sizzling-052.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-053",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "KutumBari Special Sizzling",
+    "nameBn": "কুটুমবাড়ি স্পেশাল সিজলিং",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 460
+      }
+    ],
+    "priceDisplay": "৳460",
+    "minPrice": 460,
+    "descriptionBn": "চিকেন, বিফ ও প্রনের ধোঁয়া ওঠা হট কাস্ট আয়রন সিজলার প্ল্যাটার (১:৩)।",
+    "descriptionEn": "Grand sizzling skillet bursting with chicken, beef, prawns and bell peppers (1:3).",
+    "badge": "সিগনেচার হট 🔥",
+    "searchQuery": "hot sizzling fajita platter skillet",
+    "image": "/products/salad-sizzling-053.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-054",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Chicken Sizzling",
+    "nameBn": "চিকেন সিজলিং",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 320
+      }
+    ],
+    "priceDisplay": "৳320",
+    "minPrice": 320,
+    "descriptionBn": "লোহার গরম তাওয়ায় ছ্যাঁৎ করে ওঠা ধোঁয়াটে স্পাইসি চাইনিজ চিকেন (১:৩)।",
+    "descriptionEn": "Sizzling hot plate loaded with juicy marinated chicken, onions & bell peppers (1:3).",
+    "badge": "বেস্টসেলার 🔥",
+    "searchQuery": "sizzling chicken platter hot smoke",
+    "image": "/products/salad-sizzling-054.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-055",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Beef Sizzling",
+    "nameBn": "বিফ সিজলিং",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 420
+      }
+    ],
+    "priceDisplay": "৳420",
+    "minPrice": 420,
+    "descriptionBn": "স্মোকি ফ্লেভার ও কড়া মশলায় ভুনা নরম গরুর মাংসের সিজলিং প্ল্যাটার (১:৩)।",
+    "descriptionEn": "Tender strips of beef seared on cast iron skillet with aromatic spices (1:3).",
+    "badge": "হট অ্যান্ড স্পাইসি 🔥",
+    "searchQuery": "sizzling beef steak skillet fajita",
+    "image": "/products/salad-sizzling-055.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-056",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Mutton Sizzling",
+    "nameBn": "মাটন সিজলিং",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 440
+      }
+    ],
+    "priceDisplay": "৳440",
+    "minPrice": 440,
+    "descriptionBn": "লোভনীয় ধোঁয়া ও রয়াল মশলায় হট প্লেটে পরিবেশিত খাসির মাংস (১:৩)।",
+    "descriptionEn": "Smoky, sizzling hot mutton tossed with caramelised onions and green chilies (1:3).",
+    "badge": "রয়াল সিজলার 🔥",
+    "searchQuery": "sizzling lamb mutton skillet meat",
+    "image": "/products/salad-sizzling-056.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "salad-sizzling-057",
+    "categoryKey": "salad-sizzling",
+    "categoryNameBn": "সালাদ ও সিজলিং",
+    "categoryNameEn": "Salads & Sizzlers",
+    "categoryIcon": "🥗",
+    "nameEn": "Fish Sizzling",
+    "nameBn": "ফিশ সিজলিং",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 350
+      }
+    ],
+    "priceDisplay": "৳350",
+    "minPrice": 350,
+    "descriptionBn": "গার্লিক চিলি বাটার সসে ধোঁয়া ওঠা গরম তাওয়ায় সিজলিং মাছের ফিলে (১:৩)।",
+    "descriptionEn": "Pan-seared fish fillets served smoking hot in sweet and pungent chili garlic sauce (1:3).",
+    "badge": "সমুদ্রের স্বাদ 🔥",
+    "searchQuery": "sizzling fish platter hot plate",
+    "image": "/products/salad-sizzling-057.webp",
+    "fallbackImage": "public/images/chilichicken.jpg"
+  },
+  {
+    "id": "fast-food-058",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Chicken Shawarma",
+    "nameBn": "চিকেন শর্মা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 160
+      }
+    ],
+    "priceDisplay": "৳160",
+    "minPrice": 160,
+    "descriptionBn": "স্পাইসি রোস্টেড চিকেন, গার্লিক মেয়ো ও ক্রাঞ্চি সালাদে মোড়ানো পিটা ব্রেড রোল।",
+    "descriptionEn": "Middle Eastern spiced juicy chicken wrapped in soft pita bread with garlic mayo.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "chicken shawarma wrap pita roll",
+    "image": "/products/fast-food-058.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-059",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Wrap Shawarma",
+    "nameBn": "র‌্যাপ শর্মা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "টর্টিলা রুটিতে মোড়ানো এক্সট্রা সিজনিং ও চিজ মেয়োর প্রিমিয়াম শর্মা র‌্যাপ।",
+    "descriptionEn": "Extra loaded chicken wrap packed with pickled veggies, cheese and signature mayo.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "crispy chicken wrap roll tortilla",
+    "image": "/products/fast-food-059.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-060",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Arabian Shawarma",
+    "nameBn": "অ্যারাবিয়ান শর্মা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "খাঁটি এরাবিক মশলা, তাহিনী গার্লিক ক্রিম ও জুসি চিকেনের অথেনটিক স্বাদ।",
+    "descriptionEn": "Traditional Arabian style shawarma with slow roasted chicken, tahini sauce and herbs.",
+    "badge": "অথেনটিক",
+    "searchQuery": "authentic arabian shawarma pita",
+    "image": "/products/fast-food-060.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-061",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Chicken Nachos",
+    "nameBn": "চিকেন নাচোস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "মুচমুচে টর্টিলা চিপসের উপরে স্পাইসি চিকেন কিমা, মেল্টেড চিজ ও মেয়ো ড্রপ।",
+    "descriptionEn": "Crisp tortilla chips topped with spiced chicken chunks, melted cheese and jalapeños.",
+    "badge": "ক্রাঞ্চি",
+    "searchQuery": "loaded chicken nachos melted cheese",
+    "image": "/products/fast-food-061.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-062",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Hell Nachos",
+    "nameBn": "হেল নাচোস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 250
+      }
+    ],
+    "priceDisplay": "৳250",
+    "minPrice": 250,
+    "descriptionBn": "আগুন ঝাল নাগা চিলি, এক্সট্রা সালসা ও মেল্টেড চিজের স্পাইসি নাচোস প্ল্যাটার।",
+    "descriptionEn": "Extremely spicy nachos layered with fiery chili sauce, cheese and diced chicken.",
+    "badge": "ঝাল এক্সট্রিম 🌶️",
+    "searchQuery": "spicy hot nachos jalapeno salsa cheese",
+    "image": "/products/fast-food-062.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-063",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Nachos Tower",
+    "nameBn": "নাচোস টাওয়ার",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 270
+      }
+    ],
+    "priceDisplay": "৳270",
+    "minPrice": 270,
+    "descriptionBn": "বিশাল উঁচু লেয়ারের চিজি নাচোস টাওয়ার, ফ্রেন্ডস অ্যান্ড ফ্যামিলি ফেভারিট।",
+    "descriptionEn": "Towering stack of crunchy tortilla chips fully loaded with cheese, meat and dips.",
+    "badge": "মেগা প্ল্যাটার",
+    "searchQuery": "giant nachos tower cheese loaded",
+    "image": "/products/fast-food-063.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-064",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "KutumBari Special Mix Box",
+    "nameBn": "কুটুমবাড়ি স্পেশাল মিক্স বক্স",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 280
+      }
+    ],
+    "priceDisplay": "৳280",
+    "minPrice": 280,
+    "descriptionBn": "চিকেন, সসেজ, ফ্রাই ও চিজের স্পেশাল বিগ সাইজ অল-ইন-ওয়ান লোডেড বক্স।",
+    "descriptionEn": "Ultimate snack box loaded with crispy chicken, wedges, sausages, and double cheese.",
+    "badge": "সিগনেচার",
+    "searchQuery": "loaded snack box fries chicken cheese",
+    "image": "/products/fast-food-064.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-065",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Chicken Cheese Mix Box",
+    "nameBn": "চিকেন চিজ মিক্স বক্স",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "টেন্ডার চিকেন বাইটস, ক্রিসপি ফ্রাই ও গলিত চিজে ভরপুর মজাদার বক্স।",
+    "descriptionEn": "Delicious mix box featuring seasoned chicken, french fries, and rich creamy cheese sauce.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "chicken cheese fries mix box loaded",
+    "image": "/products/fast-food-065.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-066",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Chicken Burger",
+    "nameBn": "চিকেন বার্গার",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 100
+      }
+    ],
+    "priceDisplay": "৳100",
+    "minPrice": 100,
+    "descriptionBn": "নরম বান, মুচমুচে জুসি চিকেন পেটি, লেটুস ও মেয়োনিজের ক্লাসিক বার্গার।",
+    "descriptionEn": "Classic burger with crispy golden chicken patty, fresh lettuce and mayo spread.",
+    "badge": "ক্লাসিক",
+    "searchQuery": "classic crispy chicken burger bun",
+    "image": "/products/fast-food-066.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-067",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Chicken Cheese Burger",
+    "nameBn": "চিকেন চিজ বার্গার",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 140
+      }
+    ],
+    "priceDisplay": "৳140",
+    "minPrice": 140,
+    "descriptionBn": "গলিত চেডার চিজের স্লাইস সহ প্রিমিয়াম জুসি চিকেন পেটি বার্গার।",
+    "descriptionEn": "Juicy crispy chicken patty crowned with melted cheddar cheese slice in toasted bun.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "chicken cheese burger melted cheddar",
+    "image": "/products/fast-food-067.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-068",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Chicken Jumbo Burger",
+    "nameBn": "চিকেন জাম্বো বার্গার",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "বিশাল ডাবল পেটি, ডাবল চিজ ও এক্সট্রা টপিংয়ের জাম্বো সাইজ বার্গার।",
+    "descriptionEn": "Giant burger loaded with double chicken patties, double cheese layers, and crunchy veggies.",
+    "badge": "মেগা সাইজ",
+    "searchQuery": "huge giant double chicken burger",
+    "image": "/products/fast-food-068.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-069",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Chicken Crispy Burger",
+    "nameBn": "চিকেন ক্রিসপি বার্গার",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 160
+      }
+    ],
+    "priceDisplay": "৳160",
+    "minPrice": 160,
+    "descriptionBn": "এক্সট্রা কুড়মুড়ে ক্রিসপি জিঞ্জার চিকেন পেটি ও স্পাইসি স্প্রেডের বার্গার।",
+    "descriptionEn": "Extra crunchy golden crusted chicken patty burger with zesty peri mayo.",
+    "badge": "ক্রিসপি",
+    "searchQuery": "crunchy fried chicken fillet burger",
+    "image": "/products/fast-food-069.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-070",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Patty Burger",
+    "nameBn": "পেটি বার্গার",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "গ্রিলড চিকেন পেটি, ক্যারামেলাইজড অনিয়ন ও সিগনেচার সসের বার্গার।",
+    "descriptionEn": "Handmade grilled chicken patty burger with caramelized onions and house sauce.",
+    "badge": "গ্রিলড",
+    "searchQuery": "grilled chicken patty burger sesame",
+    "image": "/products/fast-food-070.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-071",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Naga Burger",
+    "nameBn": "নাগা বার্গার",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 180
+      }
+    ],
+    "priceDisplay": "৳180",
+    "minPrice": 180,
+    "descriptionBn": "নাগা চিলির মারাত্মক ঝালে ম্যারিনেট করা স্পাইসি ক্রাঞ্চি বার্গার।",
+    "descriptionEn": "Fiery hot burger infused with spicy Naga ghost pepper sauce for thrill seekers.",
+    "badge": "ঝাল এক্সট্রিম 🌶️",
+    "searchQuery": "spicy naga burger red chili sauce",
+    "image": "/products/fast-food-071.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "fast-food-072",
+    "categoryKey": "fast-food",
+    "categoryNameBn": "ফাস্ট ফুড (বার্গার ও শর্মা)",
+    "categoryNameEn": "Fast Food",
+    "categoryIcon": "🍔",
+    "nameEn": "Sub Sandwich",
+    "nameBn": "সাব স্যান্ডউইচ",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 80
+      }
+    ],
+    "priceDisplay": "৳80",
+    "minPrice": 80,
+    "descriptionBn": "লং ফ্রেশ সাব বান, গ্রিলড চিকেন ও ফ্রেশ ভেজির লাইট স্যান্ডউইচ।",
+    "descriptionEn": "Fresh footlong style sub filled with marinated chicken, sliced veggies and honey mustard.",
+    "badge": "লাইট স্ন্যাক",
+    "searchQuery": "chicken sub sandwich roll lettuce",
+    "image": "/products/fast-food-072.webp",
+    "fallbackImage": "public/images/burger.jpg"
+  },
+  {
+    "id": "chowmein-chopsuey-073",
+    "categoryKey": "chowmein-chopsuey",
+    "categoryNameBn": "চাউমিন ও চপ সুয়ে",
+    "categoryNameEn": "Chowmein & Chop Suey",
+    "categoryIcon": "🍜",
+    "nameEn": "KutumBari Special Chowmein",
+    "nameBn": "কুটুমবাড়ি স্পেশাল চাউমিন",
+    "portions": [
+      {
+        "name": "1:2",
+        "price": 260
+      }
+    ],
+    "priceDisplay": "৳260",
+    "minPrice": 260,
+    "descriptionBn": "চিকেন, চিংড়ি, ডিম ও রঙিন সবজি সহযোগে স্পেশাল ওক-টসড চাউমিন (১:২)।",
+    "descriptionEn": "Grand wok-tossed chowmein laden with shredded chicken, prawns, eggs & veggies (1:2).",
+    "badge": "সিগনেচার",
+    "searchQuery": "chinese special chowmein noodles stir fry",
+    "image": "/products/chowmein-chopsuey-073.webp",
+    "fallbackImage": "public/images/chowmein.jpg"
+  },
+  {
+    "id": "chowmein-chopsuey-074",
+    "categoryKey": "chowmein-chopsuey",
+    "categoryNameBn": "চাউমিন ও চপ সুয়ে",
+    "categoryNameEn": "Chowmein & Chop Suey",
+    "categoryIcon": "🍜",
+    "nameEn": "Chicken Chowmein",
+    "nameBn": "চিকেন চাউমিন",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 120
+      },
+      {
+        "name": "1:3",
+        "price": 350
+      }
+    ],
+    "priceDisplay": "৳120 - ৳350",
+    "minPrice": 120,
+    "descriptionBn": "সুস্বাদু চিকেন স্ট্রিপস ও চাউমিন নুডলসের ওরিয়েন্টাল চাইনিজ ক্লাসিক।",
+    "descriptionEn": "Classic stir-fried noodles with seasoned chicken slivers, cabbage and spring onions.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "chicken chowmein noodles wok",
+    "image": "/products/chowmein-chopsuey-074.webp",
+    "fallbackImage": "public/images/chowmein.jpg"
+  },
+  {
+    "id": "chowmein-chopsuey-075",
+    "categoryKey": "chowmein-chopsuey",
+    "categoryNameBn": "চাউমিন ও চপ সুয়ে",
+    "categoryNameEn": "Chowmein & Chop Suey",
+    "categoryIcon": "🍜",
+    "nameEn": "Prawn Chowmein",
+    "nameBn": "প্রন চাউমিন",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 340
+      }
+    ],
+    "priceDisplay": "৳340",
+    "minPrice": 340,
+    "descriptionBn": "রসালো গলদা চিংড়ি ও সয়া সসে ওক-টসড মজাদার ফ্রাইড নুডলস (১:৩)।",
+    "descriptionEn": "Wok-tossed noodles with fresh juicy prawns and crunchy julienne vegetables (1:3).",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "prawn noodles stir fry shrimp",
+    "image": "/products/chowmein-chopsuey-075.webp",
+    "fallbackImage": "public/images/chowmein.jpg"
+  },
+  {
+    "id": "chowmein-chopsuey-076",
+    "categoryKey": "chowmein-chopsuey",
+    "categoryNameBn": "চাউমিন ও চপ সুয়ে",
+    "categoryNameEn": "Chowmein & Chop Suey",
+    "categoryIcon": "🍜",
+    "nameEn": "Egg Chowmein",
+    "nameBn": "এগ চাউমিন",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "ডিমের ভাজা স্ক্র্যাম্বল ও সবজি দিয়ে তৈরি লাইট ও টেস্টি চাউমিন (১:৩)।",
+    "descriptionEn": "Comforting street-style egg chowmein tossed with light soy and fresh greens (1:3).",
+    "badge": "ক্লাসিক",
+    "searchQuery": "egg noodles chowmein stir fry",
+    "image": "/products/chowmein-chopsuey-076.webp",
+    "fallbackImage": "public/images/chowmein.jpg"
+  },
+  {
+    "id": "chowmein-chopsuey-077",
+    "categoryKey": "chowmein-chopsuey",
+    "categoryNameBn": "চাউমিন ও চপ সুয়ে",
+    "categoryNameEn": "Chowmein & Chop Suey",
+    "categoryIcon": "🍜",
+    "nameEn": "American Chop Suey",
+    "nameBn": "আমেরিকান চপ সুয়ে",
+    "portions": [
+      {
+        "name": "1:2",
+        "price": 280
+      }
+    ],
+    "priceDisplay": "৳280",
+    "minPrice": 280,
+    "descriptionBn": "মুচমুচে ফ্রাইড ক্রিসপি নুডলস বেডের উপর মিষ্টি ও টক চিকেন গ্রেভি ও ডিমের পোচ (১:২)।",
+    "descriptionEn": "Crispy fried noodle nest topped with sweet-and-sour chicken glaze and fried egg (1:2).",
+    "badge": "শেফ স্পেশাল",
+    "searchQuery": "american chop suey crispy noodle",
+    "image": "/products/chowmein-chopsuey-077.webp",
+    "fallbackImage": "public/images/chowmein.jpg"
+  },
+  {
+    "id": "chowmein-chopsuey-078",
+    "categoryKey": "chowmein-chopsuey",
+    "categoryNameBn": "চাউমিন ও চপ সুয়ে",
+    "categoryNameEn": "Chowmein & Chop Suey",
+    "categoryIcon": "🍜",
+    "nameEn": "Chicken Chop Suey",
+    "nameBn": "চিকেন চপ সুয়ে",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 260
+      }
+    ],
+    "priceDisplay": "৳260",
+    "minPrice": 260,
+    "descriptionBn": "নরম নুডলস ও গাড় চিকেন-ভেজিটেবল সস টপিংয়ের সুস্বাদু চপ সুয়ে (১:৩)।",
+    "descriptionEn": "Stir-fried noodles smothered in thick and luscious chicken vegetable sauce (1:3).",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "chinese chicken chop suey plate",
+    "image": "/products/chowmein-chopsuey-078.webp",
+    "fallbackImage": "public/images/chowmein.jpg"
+  },
+  {
+    "id": "pizza-079",
+    "categoryKey": "pizza",
+    "categoryNameBn": "পিজ্জা",
+    "categoryNameEn": "Artisan Pizza",
+    "categoryIcon": "🍕",
+    "nameEn": "KutumBari Special Pizza",
+    "nameBn": "কুটুমবাড়ি স্পেশাল পিজ্জা",
+    "portions": [
+      {
+        "name": "12\"",
+        "price": 650
+      }
+    ],
+    "priceDisplay": "৳650",
+    "minPrice": 650,
+    "descriptionBn": "চিকেন, মাশরুম, ব্ল্যাক অলিভ, বেল পেপার ও মোজারেলা চিজে ঠাসা প্রিমিয়াম পিজ্জা (১২ ইঞ্চি)।",
+    "descriptionEn": "Signature 12-inch pizza loaded with spiced chicken, mushroom, black olives and double mozzarella.",
+    "badge": "সিগনেচার ১২\"",
+    "searchQuery": "special gourmet pizza supreme loaded",
+    "image": "/products/pizza-079.webp",
+    "fallbackImage": "public/images/pizza.jpg"
+  },
+  {
+    "id": "pizza-080",
+    "categoryKey": "pizza",
+    "categoryNameBn": "পিজ্জা",
+    "categoryNameEn": "Artisan Pizza",
+    "categoryIcon": "🍕",
+    "nameEn": "Plow Pizza",
+    "nameBn": "প্লো পিজ্জা",
+    "portions": [
+      {
+        "name": "8\"",
+        "price": 400
+      },
+      {
+        "name": "10\"",
+        "price": 460
+      },
+      {
+        "name": "12\"",
+        "price": 560
+      }
+    ],
+    "priceDisplay": "৳400 - ৳560",
+    "minPrice": 400,
+    "descriptionBn": "ক্রিসপি হ্যান্ড-টসড ক্রাস্ট, সিজনিং ও চিজের স্পেশাল ফ্লেভারযুক্ত পিজ্জা।",
+    "descriptionEn": "Hand-tossed artisan crust loaded with signature toppings and melted mozzarella cheese.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "artisan cheese pizza freshly baked",
+    "image": "/products/pizza-080.webp",
+    "fallbackImage": "public/images/pizza.jpg"
+  },
+  {
+    "id": "pizza-081",
+    "categoryKey": "pizza",
+    "categoryNameBn": "পিজ্জা",
+    "categoryNameEn": "Artisan Pizza",
+    "categoryIcon": "🍕",
+    "nameEn": "Chicken Pizza",
+    "nameBn": "চিকেন পিজ্জা",
+    "portions": [
+      {
+        "name": "8\"",
+        "price": 280
+      },
+      {
+        "name": "10\"",
+        "price": 360
+      },
+      {
+        "name": "12\"",
+        "price": 550
+      }
+    ],
+    "priceDisplay": "৳280 - ৳550",
+    "minPrice": 280,
+    "descriptionBn": "মশলাদার চিকেন কিউবস, অনিয়ন, ক্যাপসিকাম ও চিজের অল-টাইম ফেভারিট পিজ্জা।",
+    "descriptionEn": "All-time favorite pizza topped with seasoned chicken tikka, bell peppers and gooey cheese.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "classic chicken pizza bell pepper cheese",
+    "image": "/products/pizza-081.webp",
+    "fallbackImage": "public/images/pizza.jpg"
+  },
+  {
+    "id": "pizza-082",
+    "categoryKey": "pizza",
+    "categoryNameBn": "পিজ্জা",
+    "categoryNameEn": "Artisan Pizza",
+    "categoryIcon": "🍕",
+    "nameEn": "Italian Pizza",
+    "nameBn": "ইতালিয়ান পিজ্জা",
+    "portions": [
+      {
+        "name": "8\"",
+        "price": 400
+      },
+      {
+        "name": "10\"",
+        "price": 450
+      },
+      {
+        "name": "12\"",
+        "price": 520
+      }
+    ],
+    "priceDisplay": "৳400 - ৳520",
+    "minPrice": 400,
+    "descriptionBn": "ইতালিয়ান হার্বস, সতেজ টমেটো পিউরি, মোজারেলা ও অলিভ অয়েলের ক্লাসিক পিজ্জা।",
+    "descriptionEn": "Traditional Italian recipe with rich marinara base, aromatic basil, and pure mozzarella cheese.",
+    "badge": "ইতালিয়ান ক্রাস্ট",
+    "searchQuery": "italian style margherita pizza herbs",
+    "image": "/products/pizza-082.webp",
+    "fallbackImage": "public/images/pizza.jpg"
+  },
+  {
+    "id": "pasta-083",
+    "categoryKey": "pasta",
+    "categoryNameBn": "পাস্তা",
+    "categoryNameEn": "Gourmet Pasta",
+    "categoryIcon": "🍝",
+    "nameEn": "Oven Baked Pasta",
+    "nameBn": "ওভেন বেকড পাস্তা",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 180
+      }
+    ],
+    "priceDisplay": "৳180",
+    "minPrice": 180,
+    "descriptionBn": "পাস্তা, চিকেন ও চিজ ওভেনে বেক করে সোনালী ক্রাস্ট তৈরি করা রয়াল ডিশ (১:১)।",
+    "descriptionEn": "Penne pasta tossed in rich sauce, topped with mozzarella and baked until golden bubbly (1:1).",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "oven baked pasta bubbling mozzarella cheese",
+    "image": "/products/pasta-083.webp",
+    "fallbackImage": "public/images/fastfood-cat.jpg"
+  },
+  {
+    "id": "pasta-084",
+    "categoryKey": "pasta",
+    "categoryNameBn": "পাস্তা",
+    "categoryNameEn": "Gourmet Pasta",
+    "categoryIcon": "🍝",
+    "nameEn": "Pan Pasta",
+    "nameBn": "প্যান পাস্তা",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 160
+      }
+    ],
+    "priceDisplay": "৳160",
+    "minPrice": 160,
+    "descriptionBn": "স্টোভটপ প্যানে ওক-টসড লাইট টমেটো হার্ব সস পাস্তা (১:১)।",
+    "descriptionEn": "Pan-tossed penne pasta coated in vibrant tomato basil sauce with tender chicken (1:1).",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "creamy penne pasta skillet pan",
+    "image": "/products/pasta-084.webp",
+    "fallbackImage": "public/images/fastfood-cat.jpg"
+  },
+  {
+    "id": "pasta-085",
+    "categoryKey": "pasta",
+    "categoryNameBn": "পাস্তা",
+    "categoryNameEn": "Gourmet Pasta",
+    "categoryIcon": "🍝",
+    "nameEn": "Hot Sauce Pasta",
+    "nameBn": "হট সস পাস্তা",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "স্পাইসি রেড চিলি ও পেপেরনচিনো সসে কুকড ঝাল পাস্তা (১:১)।",
+    "descriptionEn": "Fiery arrabbiata style pasta cooked with roasted red chili flakes and tangy tomatoes (1:1).",
+    "badge": "স্পাইসি হট 🌶️",
+    "searchQuery": "spicy red sauce pasta arrabbiata",
+    "image": "/products/pasta-085.webp",
+    "fallbackImage": "public/images/fastfood-cat.jpg"
+  },
+  {
+    "id": "pasta-086",
+    "categoryKey": "pasta",
+    "categoryNameBn": "পাস্তা",
+    "categoryNameEn": "Gourmet Pasta",
+    "categoryIcon": "🍝",
+    "nameEn": "White & Red Cheese Pasta",
+    "nameBn": "হোয়াইট অ্যান্ড রেড চিজ পাস্তা",
+    "portions": [
+      {
+        "name": "1:1",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "হোয়াইট আলফ্রেডো ও রেড মারিনারার কম্বিনেশন পিঙ্ক চিজ পাস্তা (১:১)।",
+    "descriptionEn": "Velvety pink sauce pasta harmonizing rich white cream and savory red tomato flavors (1:1).",
+    "badge": "চিজি ডিলাইট",
+    "searchQuery": "creamy pink sauce pasta cheese",
+    "image": "/products/pasta-086.webp",
+    "fallbackImage": "public/images/fastfood-cat.jpg"
+  },
+  {
+    "id": "pasta-087",
+    "categoryKey": "pasta",
+    "categoryNameBn": "পাস্তা",
+    "categoryNameEn": "Gourmet Pasta",
+    "categoryIcon": "🍝",
+    "nameEn": "Sizzling Pasta",
+    "nameBn": "সিজলিং পাস্তা",
+    "portions": [
+      {
+        "name": "1:3",
+        "price": 340
+      }
+    ],
+    "priceDisplay": "৳340",
+    "minPrice": 340,
+    "descriptionBn": "লোহার গরম তাওয়ায় ধোঁয়া ওঠা হট সিজলার চিজ পাস্তা (১:৩)।",
+    "descriptionEn": "Exciting sizzling plate loaded with hot bubbly saucy pasta and molten cheese (1:3).",
+    "badge": "সিজলিং হট 🔥",
+    "searchQuery": "sizzling pasta platter hot smoke",
+    "image": "/products/pasta-087.webp",
+    "fallbackImage": "public/images/fastfood-cat.jpg"
+  },
+  {
+    "id": "momo-ramen-088",
+    "categoryKey": "momo-ramen",
+    "categoryNameBn": "মোমো ও রামেন",
+    "categoryNameEn": "Momo & Ramen",
+    "categoryIcon": "🥟",
+    "nameEn": "KutumBari Special Ramen",
+    "nameBn": "কুটুমবাড়ি স্পেশাল রামেন",
+    "portions": [
+      {
+        "name": "2X / 3X",
+        "price": 280
+      }
+    ],
+    "priceDisplay": "৳280",
+    "minPrice": 280,
+    "descriptionBn": "ঝাল স্পাইসি ব্রথ, স্প্রিং নুডলস, বয়েলড এগ ও চিকেন টপিং রামেন (2X / 3X)।",
+    "descriptionEn": "Authentic spicy noodle ramen bowl with rich savory broth, marinated egg & chicken (2X / 3X).",
+    "badge": "ঝাল স্পাইসি 🍜",
+    "searchQuery": "korean spicy ramen bowl egg broth",
+    "image": "/products/momo-ramen-088.webp",
+    "fallbackImage": "public/images/chinese-cat.jpg"
+  },
+  {
+    "id": "momo-ramen-089",
+    "categoryKey": "momo-ramen",
+    "categoryNameBn": "মোমো ও রামেন",
+    "categoryNameEn": "Momo & Ramen",
+    "categoryIcon": "🥟",
+    "nameEn": "Chicken Momos",
+    "nameBn": "চিকেন মোমোস",
+    "portions": [
+      {
+        "name": "6 Pcs",
+        "price": 180
+      }
+    ],
+    "priceDisplay": "৳180",
+    "minPrice": 180,
+    "descriptionBn": "নরম পাতলা আবরণে মোড়ানো রসালো ভাপে সেদ্ধ চিকেন মোমো ও স্পাইসি চাটনি (৬ পিস)।",
+    "descriptionEn": "Delicate steamed dumplings packed with juicy minced chicken and fresh scallions (6 pcs).",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "steamed chicken momos dumplings basket",
+    "image": "/products/momo-ramen-089.webp",
+    "fallbackImage": "public/images/chinese-cat.jpg"
+  },
+  {
+    "id": "momo-ramen-090",
+    "categoryKey": "momo-ramen",
+    "categoryNameBn": "মোমো ও রামেন",
+    "categoryNameEn": "Momo & Ramen",
+    "categoryIcon": "🥟",
+    "nameEn": "Naga Momos",
+    "nameBn": "নাগা মোমোস",
+    "portions": [
+      {
+        "name": "6 Pcs",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "আগুনে ঝাল নাগা চিলি পেস্টে টস করা স্পাইসি মোমো (৬ পিস)।",
+    "descriptionEn": "Steamed dumplings coated in spicy flaming hot Naga pepper sauce (6 pcs).",
+    "badge": "ঝাল এক্সট্রিম 🌶️",
+    "searchQuery": "spicy steamed momos red chili sauce",
+    "image": "/products/momo-ramen-090.webp",
+    "fallbackImage": "public/images/chinese-cat.jpg"
+  },
+  {
+    "id": "momo-ramen-091",
+    "categoryKey": "momo-ramen",
+    "categoryNameBn": "মোমো ও রামেন",
+    "categoryNameEn": "Momo & Ramen",
+    "categoryIcon": "🥟",
+    "nameEn": "Chili Garlic Momos",
+    "nameBn": "চিলি গার্লিক মোমোস",
+    "portions": [
+      {
+        "name": "6 Pcs",
+        "price": 240
+      }
+    ],
+    "priceDisplay": "৳240",
+    "minPrice": 240,
+    "descriptionBn": "পোড়া রসুনের সুবাস ও রেড চিলি সসে সঁতে করা প্যান ফ্রাইড মোমো (৬ পিস)।",
+    "descriptionEn": "Pan-fried dumplings tossed in fragrant charred garlic and spicy chili oil (6 pcs).",
+    "badge": "গার্লিক ফ্লেভার",
+    "searchQuery": "chili garlic pan fried momos",
+    "image": "/products/momo-ramen-091.webp",
+    "fallbackImage": "public/images/chinese-cat.jpg"
+  },
+  {
+    "id": "momo-ramen-092",
+    "categoryKey": "momo-ramen",
+    "categoryNameBn": "মোমো ও রামেন",
+    "categoryNameEn": "Momo & Ramen",
+    "categoryIcon": "🥟",
+    "nameEn": "Soup Momos",
+    "nameBn": "স্যুপ মোমোস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 290
+      }
+    ],
+    "priceDisplay": "৳290",
+    "minPrice": 290,
+    "descriptionBn": "গরম সুস্বাদু ক্লিয়ার চিকেন ব্রথের ভেতরে ডুবানো নরম জুসি মোমো।",
+    "descriptionEn": "Juicy dumplings served immersed in a steaming bowl of comforting aromatic soup.",
+    "badge": "কমফোর্ট ফুড",
+    "searchQuery": "dumpling soup wonton noodle broth",
+    "image": "/products/momo-ramen-092.webp",
+    "fallbackImage": "public/images/chinese-cat.jpg"
+  },
+  {
+    "id": "dessert-093",
+    "categoryKey": "dessert",
+    "categoryNameBn": "ডেজার্ট ও মিষ্টিমুখ",
+    "categoryNameEn": "Desserts",
+    "categoryIcon": "🍧",
+    "nameEn": "Falooda",
+    "nameBn": "ফালুদা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "নুডলস, মিষ্টি মিল্ক, সাবুদানা, জেলির কিউব ও আইসক্রিমের রিফ্রেশিং ডেজার্ট।",
+    "descriptionEn": "Traditional sweet dessert drink with vermicelli, basil seeds, jelly & ice cream.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "royal falooda dessert glass ice cream",
+    "image": "/products/dessert-093.webp",
+    "fallbackImage": "public/images/ambience.jpg"
+  },
+  {
+    "id": "dessert-094",
+    "categoryKey": "dessert",
+    "categoryNameBn": "ডেজার্ট ও মিষ্টিমুখ",
+    "categoryNameEn": "Desserts",
+    "categoryIcon": "🍧",
+    "nameEn": "KutumBari Special Falooda",
+    "nameBn": "কুটুমবাড়ি স্পেশাল ফালুদা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 260
+      }
+    ],
+    "priceDisplay": "৳260",
+    "minPrice": 260,
+    "descriptionBn": "ড্রাই ফ্রুটস, কাজুবাদাম, পেস্তা, এক্সট্রা প্রিমিয়াম আইসক্রিম স্কুপ সহ স্পেশাল ফালুদা।",
+    "descriptionEn": "Royal dessert packed with mixed dry nuts, saffron milk, fruits, and rich ice cream.",
+    "badge": "সিগনেচার",
+    "searchQuery": "special royal falooda glass nuts",
+    "image": "/products/dessert-094.webp",
+    "fallbackImage": "public/images/ambience.jpg"
+  },
+  {
+    "id": "dessert-095",
+    "categoryKey": "dessert",
+    "categoryNameBn": "ডেজার্ট ও মিষ্টিমুখ",
+    "categoryNameEn": "Desserts",
+    "categoryIcon": "🍧",
+    "nameEn": "Ice Cream",
+    "nameBn": "আইসক্রিম",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "ভ্যানিলা / চকলেট / স্ট্রবেরি স্বাদের ক্রিমি ঠান্ডা সুস্বাদু আইসক্রিম।",
+    "descriptionEn": "Choice of rich and creamy gourmet ice cream scoops.",
+    "badge": "ঠান্ডা মিষ্টি",
+    "searchQuery": "gourmet ice cream scoops bowl",
+    "image": "/products/dessert-095.webp",
+    "fallbackImage": "public/images/ambience.jpg"
+  },
+  {
+    "id": "dessert-096",
+    "categoryKey": "dessert",
+    "categoryNameBn": "ডেজার্ট ও মিষ্টিমুখ",
+    "categoryNameEn": "Desserts",
+    "categoryIcon": "🍧",
+    "nameEn": "Firni",
+    "nameBn": "ফিরনি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 70
+      }
+    ],
+    "priceDisplay": "৳70",
+    "minPrice": 70,
+    "descriptionBn": "সুগন্ধি পোলাও চালের গুঁড়া, দুধ, জাফরান ও পেস্তাবাদামের খাঁটি শাহী ফিরনি।",
+    "descriptionEn": "Slow-cooked traditional rice pudding infused with saffron, cardamom and nuts.",
+    "badge": "শাহী ট্রেডিশনাল",
+    "searchQuery": "bengali shahi firni rice pudding bowl",
+    "image": "/products/dessert-096.webp",
+    "fallbackImage": "public/images/ambience.jpg"
+  },
+  {
+    "id": "dessert-097",
+    "categoryKey": "dessert",
+    "categoryNameBn": "ডেজার্ট ও মিষ্টিমুখ",
+    "categoryNameEn": "Desserts",
+    "categoryIcon": "🍧",
+    "nameEn": "Jorda",
+    "nameBn": "জর্দা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 60
+      }
+    ],
+    "priceDisplay": "৳60",
+    "minPrice": 60,
+    "descriptionBn": "ঘিয়ে ভাজা মিষ্টি সুগন্ধি পোলাও, মোরব্বা, মাওয়া ও ছোট মিষ্টি টপিং জর্দা।",
+    "descriptionEn": "Sweet festive saffron rice enriched with pure ghee, candied fruits, and baby sweets.",
+    "badge": "ঐতিহ্যবাহী মিষ্টি",
+    "searchQuery": "bengali sweet jorda rice dessert",
+    "image": "/products/dessert-097.webp",
+    "fallbackImage": "public/images/ambience.jpg"
+  },
+  {
+    "id": "combo-098",
+    "categoryKey": "combo",
+    "categoryNameBn": "স্পেশাল কম্বো মিল",
+    "categoryNameEn": "Combo Platters",
+    "categoryIcon": "🍱",
+    "nameEn": "Combo-1",
+    "nameBn": "কম্বো-১",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 230
+      }
+    ],
+    "priceDisplay": "৳230",
+    "minPrice": 230,
+    "descriptionBn": "এগ ফ্রাইড রাইস + চিকেন ফ্রাই (২ পিস) + ভেজিটেবল + সালাদ + সফট ড্রিংক।",
+    "descriptionEn": "Egg Fried Rice + 2 Pcs Chicken Fry + Fresh Vegetable + Green Salad + Soft Drink.",
+    "badge": "ভ্যালু কম্বো 🌟",
+    "searchQuery": "combo meal fried rice chicken drink",
+    "image": "/products/combo-098.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "combo-099",
+    "categoryKey": "combo",
+    "categoryNameBn": "স্পেশাল কম্বো মিল",
+    "categoryNameEn": "Combo Platters",
+    "categoryIcon": "🍱",
+    "nameEn": "Combo-2",
+    "nameBn": "কম্বো-২",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 250
+      }
+    ],
+    "priceDisplay": "৳250",
+    "minPrice": 250,
+    "descriptionBn": "এগ ফ্রাইড রাইস + সুস্বাদু চিকেন কারি + ভেজিটেবল + সালাদ + কোল্ড ড্রিংক।",
+    "descriptionEn": "Egg Fried Rice + Savory Chicken Curry + Fresh Vegetable + Green Salad + Cold Drink.",
+    "badge": "ভ্যালু কম্বো 🌟",
+    "searchQuery": "combo meal rice curry salad drink",
+    "image": "/products/combo-099.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "combo-100",
+    "categoryKey": "combo",
+    "categoryNameBn": "স্পেশাল কম্বো মিল",
+    "categoryNameEn": "Combo Platters",
+    "categoryIcon": "🍱",
+    "nameEn": "Combo-3",
+    "nameBn": "কম্বো-৩",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 280
+      }
+    ],
+    "priceDisplay": "৳280",
+    "minPrice": 280,
+    "descriptionBn": "এগ ফ্রাইড রাইস + বারবিকিউ চিকেন (১ পিস) + ভেজিটেবল + সালাদ + কোল্ড ড্রিংক।",
+    "descriptionEn": "Egg Fried Rice + 1 Pc Smoky BBQ Chicken + Mixed Veg + Green Salad + Cold Drink.",
+    "badge": "স্মোকি কম্বো 🌟",
+    "searchQuery": "combo platter rice bbq chicken drink",
+    "image": "/products/combo-100.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "combo-101",
+    "categoryKey": "combo",
+    "categoryNameBn": "স্পেশাল কম্বো মিল",
+    "categoryNameEn": "Combo Platters",
+    "categoryIcon": "🍱",
+    "nameEn": "Combo-4",
+    "nameBn": "কম্বো-৪",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 300
+      }
+    ],
+    "priceDisplay": "৳300",
+    "minPrice": 300,
+    "descriptionBn": "এগ ফ্রাইড রাইস + তন্দুরি চিকেন + ভেজিটেবল + সালাদ + কোল্ড ড্রিংক।",
+    "descriptionEn": "Egg Fried Rice + Flavorful Tandoori Chicken + Mixed Veg + Green Salad + Cold Drink.",
+    "badge": "রয়াল কম্বো 🌟",
+    "searchQuery": "combo platter rice tandoori chicken drink",
+    "image": "/products/combo-101.webp",
+    "fallbackImage": "public/images/friedrice.jpg"
+  },
+  {
+    "id": "biryani-khichuri-102",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Chicken Biryani",
+    "nameBn": "চিকেন বিরিয়ানি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 70
+      }
+    ],
+    "priceDisplay": "৳70",
+    "minPrice": 70,
+    "descriptionBn": "সুগন্ধি বাসমতী চাল ও দেশি মশলায় দমে রান্না করা নরম তুলতুলে চিকেন বিরিয়ানি।",
+    "descriptionEn": "Fragrant basmati rice slow cooked in dum with tender chicken and aromatic spices.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "bengali chicken biryani plate kolkata",
+    "image": "/products/biryani-khichuri-102.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "biryani-khichuri-103",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Beef Biryani",
+    "nameBn": "বিফ বিরিয়ানি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 230
+      }
+    ],
+    "priceDisplay": "৳230",
+    "minPrice": 230,
+    "descriptionBn": "রসালো গরুর মাংস ও সুস্বাদু আলুর রয়াল ফ্লেভারযুক্ত দমে রান্না বিরিয়ানি।",
+    "descriptionEn": "Mouthwatering dum cooked beef biryani with tender spiced meat and potato.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "beef biryani plate succulent meat",
+    "image": "/products/biryani-khichuri-103.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "biryani-khichuri-104",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Mutton Biryani",
+    "nameBn": "মাটন বিরিয়ানি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 250
+      }
+    ],
+    "priceDisplay": "৳250",
+    "minPrice": 250,
+    "descriptionBn": "খাসির নরম রসালো মাংস ও শাহী মশলায় রান্না করা প্রিমিয়াম মাটন বিরিয়ানি।",
+    "descriptionEn": "Royal mutton biryani with succulent meat infused with rich spices and saffron.",
+    "badge": "শাহী বিরিয়ানি",
+    "searchQuery": "mutton biryani plate saffron meat",
+    "image": "/products/biryani-khichuri-104.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "biryani-khichuri-105",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Hyderabadi Kacchi Biryani",
+    "nameBn": "হায়দ্রাবাদি কাচ্চি বিরিয়ানি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 300
+      }
+    ],
+    "priceDisplay": "৳300",
+    "minPrice": 300,
+    "descriptionBn": "কাঁচা ম্যারিনেট করা মাংস ও চাল একসঙ্গে দমে বসানো খাঁটি হায়দ্রাবাদি কাচ্চি।",
+    "descriptionEn": "Authentic Hyderabadi kacchi style biryani layered with raw marinated meat and long-grain rice.",
+    "badge": "সিগনেচার কাচ্চি",
+    "searchQuery": "hyderabadi kacchi biryani pot plate",
+    "image": "/products/biryani-khichuri-105.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "biryani-khichuri-106",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Hyderabadi Biryani",
+    "nameBn": "হায়দ্রাবাদি বিরিয়ানি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 350
+      }
+    ],
+    "priceDisplay": "৳350",
+    "minPrice": 350,
+    "descriptionBn": "জাফরানি রঙ ও স্পাইসি অ্যারোমার রয়াল হায়দ্রাবাদি দম বিরিয়ানি।",
+    "descriptionEn": "Exquisite spiced Hyderabadi dum biryani cooked in royal royal Mughal tradition.",
+    "badge": "রয়াল স্পেশাল",
+    "searchQuery": "hyderabadi dum biryani rice plate",
+    "image": "/products/biryani-khichuri-106.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "biryani-khichuri-107",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Arabian Kabsa",
+    "nameBn": "অ্যারাবিয়ান কাবসা",
+    "portions": [
+      {
+        "name": "1:2",
+        "price": 650
+      },
+      {
+        "name": "1:4",
+        "price": 1200
+      }
+    ],
+    "priceDisplay": "৳650 - ৳1200",
+    "minPrice": 650,
+    "descriptionBn": "খাঁটি আরবীয় সুগন্ধি চাল, রোস্টেড মিট ও ড্রাই ফ্রুটসের জমকালো কাবসা ডিস (১:২ / ১:৪)।",
+    "descriptionEn": "Authentic Middle-Eastern Kabsa rice flavored with black lime, spices and roasted meat (1:2 / 1:4).",
+    "badge": "রয়াল প্ল্যাটার",
+    "searchQuery": "arabian kabsa rice roasted meat platter",
+    "image": "/products/biryani-khichuri-107.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "biryani-khichuri-108",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Egg Khichuri",
+    "nameBn": "এগ খিচুড়ি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 70
+      }
+    ],
+    "priceDisplay": "৳70",
+    "minPrice": 70,
+    "descriptionBn": "মুগ ও মসুর ডালের ঘন খিচুড়ির সাথে ফ্রাইড ডিম ও খাঁটি ঘিয়ের সুবাস।",
+    "descriptionEn": "Comforting fragrant lentil rice khichuri served with spiced fried boiled egg.",
+    "badge": "কমফোর্ট ফুড",
+    "searchQuery": "bengali egg khichuri ghee dal",
+    "image": "/products/biryani-khichuri-108.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "biryani-khichuri-109",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Beef Khichuri",
+    "nameBn": "বিফ খিচুড়ি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "ভুনা খিচুড়ির সাথে কষা গরুর মাংসের খাঁটি বাঙালি স্বাদের লোভনীয় মেলবন্ধন।",
+    "descriptionEn": "Rich aromatic roasted moong dal khichuri loaded with slow-cooked tender beef.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "bengali beef khichuri plate meat",
+    "image": "/products/biryani-khichuri-109.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "biryani-khichuri-110",
+    "categoryKey": "biryani-khichuri",
+    "categoryNameBn": "বিরিয়ানি ও খিচুড়ি",
+    "categoryNameEn": "Biryani & Khichuri",
+    "categoryIcon": "🍛",
+    "nameEn": "Chicken Khichuri",
+    "nameBn": "চিকেন খিচুড়ি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "দেশি চিকেনের নরম টুকরো ও ঘি-ভাজা ডালের সুস্বাদু ভুনা খিচুড়ি।",
+    "descriptionEn": "Comforting yellow dal khichuri cooked with tender chicken pieces and whole spices.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "bengali chicken khichuri plate",
+    "image": "/products/biryani-khichuri-110.webp",
+    "fallbackImage": "public/images/kacchi.jpg"
+  },
+  {
+    "id": "naan-grill-111",
+    "categoryKey": "naan-grill",
+    "categoryNameBn": "নান ও গ্রিল",
+    "categoryNameEn": "Naan & Grill",
+    "categoryIcon": "🫓",
+    "nameEn": "Butter Naan",
+    "nameBn": "বাটার নান",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 40
+      }
+    ],
+    "priceDisplay": "৳40",
+    "minPrice": 40,
+    "descriptionBn": "তন্দুর ওভেনে সেঁকা নরম তুলতুলে নান, উপর দিয়ে গলিত তাজা মাখন ব্রাশ করা।",
+    "descriptionEn": "Soft and fluffy tandoori leavened flatbread brushed with luscious creamy butter.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "butter naan tandoori flatbread basket",
+    "image": "/products/naan-grill-111.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "naan-grill-112",
+    "categoryKey": "naan-grill",
+    "categoryNameBn": "নান ও গ্রিল",
+    "categoryNameEn": "Naan & Grill",
+    "categoryIcon": "🫓",
+    "nameEn": "Plain Naan",
+    "nameBn": "প্লেন নান",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 30
+      }
+    ],
+    "priceDisplay": "৳30",
+    "minPrice": 30,
+    "descriptionBn": "তন্দুরে তৈরি হালকা কুড়মুড়ে সোনালী নরম ট্র্যাডিশনাল নান রুটি।",
+    "descriptionEn": "Classic traditional tandoor-baked soft and airy leavened flatbread.",
+    "badge": "ক্লাসিক",
+    "searchQuery": "plain naan flatbread tandoor",
+    "image": "/products/naan-grill-112.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "naan-grill-113",
+    "categoryKey": "naan-grill",
+    "categoryNameBn": "নান ও গ্রিল",
+    "categoryNameEn": "Naan & Grill",
+    "categoryIcon": "🫓",
+    "nameEn": "Garlic Naan",
+    "nameBn": "গার্লিক নান",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 80
+      }
+    ],
+    "priceDisplay": "৳80",
+    "minPrice": 80,
+    "descriptionBn": "কুচানো রসুন ও ধনেপাতার সুবাসে তৈরি বাটারি গার্লিক তন্দুর নান।",
+    "descriptionEn": "Tandoor naan topped with fragrant minced garlic, fresh coriander and butter glaze.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "garlic naan butter coriander flatbread",
+    "image": "/products/naan-grill-113.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "naan-grill-114",
+    "categoryKey": "naan-grill",
+    "categoryNameBn": "নান ও গ্রিল",
+    "categoryNameEn": "Naan & Grill",
+    "categoryIcon": "🫓",
+    "nameEn": "Kashmiri Naan",
+    "nameBn": "কাশ্মীরি নান",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 120
+      }
+    ],
+    "priceDisplay": "৳120",
+    "minPrice": 120,
+    "descriptionBn": "বাদাম, কিশমিশ ও মিষ্টি ফ্লেভারযুক্ত রয়াল কাশ্মীরি নান।",
+    "descriptionEn": "Royal Kashmiri flatbread stuffed with dry fruits, nuts, coconut and cherries.",
+    "badge": "রয়াল নান",
+    "searchQuery": "kashmiri naan sweet dry fruit flatbread",
+    "image": "/products/naan-grill-114.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "naan-grill-115",
+    "categoryKey": "naan-grill",
+    "categoryNameBn": "নান ও গ্রিল",
+    "categoryNameEn": "Naan & Grill",
+    "categoryIcon": "🫓",
+    "nameEn": "Grilled Chicken",
+    "nameBn": "গ্রিলড চিকেন",
+    "portions": [
+      {
+        "name": "1/4 (Quarter)",
+        "price": 120
+      },
+      {
+        "name": "1/2 (Half)",
+        "price": 240
+      },
+      {
+        "name": "Full",
+        "price": 480
+      }
+    ],
+    "priceDisplay": "৳120 - ৳480",
+    "minPrice": 120,
+    "descriptionBn": "কয়লার আগুনে পোড়া স্মোকি জুসি গ্রিলড চিকেন (কোয়ার্টার / হাফ / ফুল)।",
+    "descriptionEn": "Charcoal flame-grilled chicken marinated in yogurt and special tandoori spices (Quarter / Half / Full).",
+    "badge": "সিগনেচার গ্রিল 🔥",
+    "searchQuery": "charcoal grilled chicken quarters barbecue",
+    "image": "/products/naan-grill-115.webp",
+    "fallbackImage": "public/images/crispychicken.jpg"
+  },
+  {
+    "id": "beverage-116",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "KutumBari Special Coffee",
+    "nameBn": "কুটুমবাড়ি স্পেশাল কফি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 100
+      }
+    ],
+    "priceDisplay": "৳100",
+    "minPrice": 100,
+    "descriptionBn": "হাতে তৈরি ক্রিমি ফ্রথ ও চকলেট ফ্লেভারের প্রিমিয়াম হট কফি।",
+    "descriptionEn": "Signature barista crafted hot coffee with rich crema and dark cocoa dust.",
+    "badge": "সিগনেচার",
+    "searchQuery": "special hot cappuccino coffee mug foam",
+    "image": "/products/beverage-116.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-117",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Hot Coffee",
+    "nameBn": "হট কফি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 80
+      }
+    ],
+    "priceDisplay": "৳80",
+    "minPrice": 80,
+    "descriptionBn": "তাজা রোস্টেড বিনের সুবাসে তৈরি উষ্ণ ও রিফ্রেশিং ক্লাসিক কফি।",
+    "descriptionEn": "Classic freshly brewed hot coffee with rich aroma and rich milk foam.",
+    "badge": "ক্লাসিক",
+    "searchQuery": "hot coffee mug steam foam",
+    "image": "/products/beverage-117.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-118",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Cappuccino Coffee",
+    "nameBn": "ক্যাপুচিনো কফি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "গাঢ় এস্প্রেসো, স্টিমড মিল্ক ও ঘন ফোমের ক্লাসিক ইতালিয়ান ক্যাপুচিনো।",
+    "descriptionEn": "Classic Italian coffee made with rich espresso, steamed milk, and velvety foam art.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "cappuccino latte art cup foam",
+    "image": "/products/beverage-118.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-119",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Hot Chocolate",
+    "nameBn": "হট চকলেট",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 160
+      }
+    ],
+    "priceDisplay": "৳160",
+    "minPrice": 160,
+    "descriptionBn": "ঘন বেলজিয়ান কোকো ও ক্রিমি গরম দুধের প্রিমিয়াম চকলেট পানীয়।",
+    "descriptionEn": "Indulgent melted cocoa drink made with rich chocolate and warm frothy milk.",
+    "badge": "চকলেটি",
+    "searchQuery": "hot chocolate mug marshmallows cocoa",
+    "image": "/products/beverage-119.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-120",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Cold Coffee",
+    "nameBn": "কোল্ড কফি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 120
+      }
+    ],
+    "priceDisplay": "৳120",
+    "minPrice": 120,
+    "descriptionBn": "আইসড চিলড রিফ্রেশিং ফ্রথি কোল্ড কফি, ভ্যানিলা মেজাজ সহ।",
+    "descriptionEn": "Chilled blended iced coffee topped with rich coffee foam and chocolate drizzle.",
+    "badge": "জনপ্রিয়",
+    "searchQuery": "cold coffee glass ice chocolate swirl",
+    "image": "/products/beverage-120.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-121",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Chocolate Milk Shake",
+    "nameBn": "চকলেট মিল্ক শেক",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "ঘন ডার্ক চকলেট, দুধ ও আইসক্রিমের ক্রিমি মিল্কশেক।",
+    "descriptionEn": "Thick and luscious chocolate milkshake topped with chocolate chips and whipped cream.",
+    "badge": "কিডস ফেভারিট",
+    "searchQuery": "chocolate milkshake tall glass whipped cream",
+    "image": "/products/beverage-121.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-122",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Strawberry Milk Shake",
+    "nameBn": "স্ট্রবেরি মিল্ক শেক",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 140
+      }
+    ],
+    "priceDisplay": "৳140",
+    "minPrice": 140,
+    "descriptionBn": "মিষ্টি তাজা স্ট্রবেরির সুগন্ধ ও ক্রিমি পিঙ্ক কালারের মিল্কশেক।",
+    "descriptionEn": "Vibrant pink creamy strawberry shake blended with ripe berries and ice cream.",
+    "badge": "ফ্রুটি",
+    "searchQuery": "strawberry milkshake pink glass cherry",
+    "image": "/products/beverage-122.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-123",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Vanilla Milk Shake",
+    "nameBn": "ভ্যানিলা মিল্ক শেক",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "ক্লাসিক ভ্যানিলা বিন আইসক্রিম ও খাঁটি দুধের স্মুথ শেক।",
+    "descriptionEn": "Classic creamy milkshake crafted with pure Madagascar vanilla extract and milk.",
+    "badge": "ক্লাসিক",
+    "searchQuery": "vanilla milkshake tall glass froth",
+    "image": "/products/beverage-123.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-124",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Mango Milk Shake",
+    "nameBn": "ম্যাঙ্গো মিল্ক শেক",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 160
+      }
+    ],
+    "priceDisplay": "৳160",
+    "minPrice": 160,
+    "descriptionBn": "পাকা আমের মিষ্টি পিউরি ও ঠান্ডা দুধের রয়াল মিল্কশেক।",
+    "descriptionEn": "Tropical rich mango shake blended with ripe sweet mango pulp and milk.",
+    "badge": "সিজনাল হিট",
+    "searchQuery": "mango milkshake yellow tall glass",
+    "image": "/products/beverage-124.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-125",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "KutumBari Special Lassi",
+    "nameBn": "কুটুমবাড়ি স্পেশাল লাচ্ছি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "ঘন টক-মিষ্টি দই, কাজুবাদাম, পেস্তা ও জাফরান ছোঁয়ায় তৈরি রাজকীয় লাচ্ছি।",
+    "descriptionEn": "Signature creamy yogurt lassi blended with saffron, pistachio and cardamom.",
+    "badge": "সিগনেচার",
+    "searchQuery": "sweet yogurt lassi glass garnished nuts",
+    "image": "/products/beverage-125.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-126",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Sweet Lassi",
+    "nameBn": "সুইট লাচ্ছি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 120
+      }
+    ],
+    "priceDisplay": "৳120",
+    "minPrice": 120,
+    "descriptionBn": "ঐতিহ্যবাহী মিষ্টি দইয়ের রিফ্রেশিং ও হজমকারক ঠান্ডা লাচ্ছি।",
+    "descriptionEn": "Traditional sweet Punjabi style churned yogurt drink served ice-cold.",
+    "badge": "ট্রেডিশনাল",
+    "searchQuery": "traditional sweet lassi glass yogurt",
+    "image": "/products/beverage-126.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "beverage-127",
+    "categoryKey": "beverage",
+    "categoryNameBn": "হট ও কোল্ড বেভারেজ",
+    "categoryNameEn": "Hot & Cold Drinks",
+    "categoryIcon": "☕",
+    "nameEn": "Smoothie",
+    "nameBn": "স্মুদি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 250
+      }
+    ],
+    "priceDisplay": "৳250",
+    "minPrice": 250,
+    "descriptionBn": "তাজা ফলের ঘন পিউরি ও দইয়ের পুষ্টিকর বরফ-শীতল স্মুদি।",
+    "descriptionEn": "Thick healthy fruit smoothie packed with vitamins and chilled goodness.",
+    "badge": "হেলদি চয়েস",
+    "searchQuery": "mixed berry fruit smoothie glass jar",
+    "image": "/products/beverage-127.webp",
+    "fallbackImage": "public/images/hero-dish.jpg"
+  },
+  {
+    "id": "juice-tea-128",
+    "categoryKey": "juice-tea",
+    "categoryNameBn": "ফ্রেশ জুস ও চা",
+    "categoryNameEn": "Fresh Juice & Tea",
+    "categoryIcon": "🧃",
+    "nameEn": "Orange Juice",
+    "nameBn": "অরেঞ্জ জুস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "তাজা কমলার রস, ১০০% ন্যাচারাল ও ভিটামিন সি সমৃদ্ধ।",
+    "descriptionEn": "Freshly pressed 100% pure orange juice bursting with natural citrus flavor.",
+    "badge": "ন্যাচারাল",
+    "searchQuery": "fresh squeezed orange juice glass slices",
+    "image": "/products/juice-tea-128.webp",
+    "fallbackImage": "public/images/bangla-cat.jpg"
+  },
+  {
+    "id": "juice-tea-129",
+    "categoryKey": "juice-tea",
+    "categoryNameBn": "ফ্রেশ জুস ও চা",
+    "categoryNameEn": "Fresh Juice & Tea",
+    "categoryIcon": "🧃",
+    "nameEn": "Lemon Juice",
+    "nameBn": "লেমন জুস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 80
+      }
+    ],
+    "priceDisplay": "৳80",
+    "minPrice": 80,
+    "descriptionBn": "তাজা পাতিলেবুর রস ও পুদিনা পাতার রিফ্রেশিং লেমনেড।",
+    "descriptionEn": "Crisp and zesty freshly squeezed lemonade with a hint of mint and ice.",
+    "badge": "রিফ্রেশিং",
+    "searchQuery": "fresh lemon juice lemonade ice glass",
+    "image": "/products/juice-tea-129.webp",
+    "fallbackImage": "public/images/bangla-cat.jpg"
+  },
+  {
+    "id": "juice-tea-130",
+    "categoryKey": "juice-tea",
+    "categoryNameBn": "ফ্রেশ জুস ও চা",
+    "categoryNameEn": "Fresh Juice & Tea",
+    "categoryIcon": "🧃",
+    "nameEn": "Apple Juice",
+    "nameBn": "অ্যাপল জুস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 150
+      }
+    ],
+    "priceDisplay": "৳150",
+    "minPrice": 150,
+    "descriptionBn": "মিষ্টি আপেলের ঠান্ডা ও সতেজকারী প্রাকৃতিক জুস।",
+    "descriptionEn": "Crisp and pure freshly pressed sweet apple juice served cold.",
+    "badge": "ন্যাচারাল",
+    "searchQuery": "fresh apple juice glass red apple",
+    "image": "/products/juice-tea-130.webp",
+    "fallbackImage": "public/images/bangla-cat.jpg"
+  },
+  {
+    "id": "juice-tea-131",
+    "categoryKey": "juice-tea",
+    "categoryNameBn": "ফ্রেশ জুস ও চা",
+    "categoryNameEn": "Fresh Juice & Tea",
+    "categoryIcon": "🧃",
+    "nameEn": "Seasonal Juice",
+    "nameBn": "সিজনাল জুস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 200
+      }
+    ],
+    "priceDisplay": "৳200",
+    "minPrice": 200,
+    "descriptionBn": "ঋতুভিত্তিক সেরা ফলের তাজা রস (আম / তরমুজ / আনারস)।",
+    "descriptionEn": "Chef selected freshly made juice from seasonal peak ripened fruits.",
+    "badge": "সিজনাল ফ্রেশ",
+    "searchQuery": "fresh fruit seasonal juice glass melon",
+    "image": "/products/juice-tea-131.webp",
+    "fallbackImage": "public/images/bangla-cat.jpg"
+  },
+  {
+    "id": "juice-tea-132",
+    "categoryKey": "juice-tea",
+    "categoryNameBn": "ফ্রেশ জুস ও চা",
+    "categoryNameEn": "Fresh Juice & Tea",
+    "categoryIcon": "🧃",
+    "nameEn": "Mocktail Juice",
+    "nameBn": "মকটেল জুস",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "রঙিন ফলের জুস, সোডা ও সাইট্রাস ফ্লেভারের পার্টি মকটেল।",
+    "descriptionEn": "Layered colorful non-alcoholic mocktail sparkling with citrus fizz and herbs.",
+    "badge": "পার্টি স্পেশাল",
+    "searchQuery": "colorful tropical mocktail glass garnish",
+    "image": "/products/juice-tea-132.webp",
+    "fallbackImage": "public/images/bangla-cat.jpg"
+  },
+  {
+    "id": "juice-tea-133",
+    "categoryKey": "juice-tea",
+    "categoryNameBn": "ফ্রেশ জুস ও চা",
+    "categoryNameEn": "Fresh Juice & Tea",
+    "categoryIcon": "🧃",
+    "nameEn": "Milk Tea",
+    "nameBn": "দুধ চা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 20
+      }
+    ],
+    "priceDisplay": "৳20",
+    "minPrice": 20,
+    "descriptionBn": "খাঁটি তরল দুধ ও সুগন্ধি চা পাতার কড়া লিকারের ক্লাসিক বাঙালি দুধ চা।",
+    "descriptionEn": "Authentic rich Bengali style milk tea slow simmered to strong perfection.",
+    "badge": "বাঙালি ক্লাসিক",
+    "searchQuery": "bengali milk tea cup saucer clay",
+    "image": "/products/juice-tea-133.webp",
+    "fallbackImage": "public/images/bangla-cat.jpg"
+  },
+  {
+    "id": "juice-tea-134",
+    "categoryKey": "juice-tea",
+    "categoryNameBn": "ফ্রেশ জুস ও চা",
+    "categoryNameEn": "Fresh Juice & Tea",
+    "categoryIcon": "🧃",
+    "nameEn": "Lemon Tea",
+    "nameBn": "লেমন চা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 30
+      }
+    ],
+    "priceDisplay": "৳30",
+    "minPrice": 30,
+    "descriptionBn": "পাতিলেবুর মিষ্টি ঘ্রাণ ও আদা-গোলমরিচের হালকা লিকারের রিফ্রেশিং চা।",
+    "descriptionEn": "Soothing and cleansing black tea infused with fresh lemon juice and honey.",
+    "badge": "হেলদি",
+    "searchQuery": "lemon tea cup slice black tea glass",
+    "image": "/products/juice-tea-134.webp",
+    "fallbackImage": "public/images/bangla-cat.jpg"
+  },
+  {
+    "id": "juice-tea-135",
+    "categoryKey": "juice-tea",
+    "categoryNameBn": "ফ্রেশ জুস ও চা",
+    "categoryNameEn": "Fresh Juice & Tea",
+    "categoryIcon": "🧃",
+    "nameEn": "KutumBari Special Tea",
+    "nameBn": "কুটুমবাড়ি স্পেশাল চা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 100
+      }
+    ],
+    "priceDisplay": "৳100",
+    "minPrice": 100,
+    "descriptionBn": "এলাচ, দারুচিনি, জাফরান ও স্পেশাল মসলায় তৈরি শাহী রাজকীয় চা।",
+    "descriptionEn": "Signature royal masala chai brewed with crushed spices, saffron, and cream.",
+    "badge": "সিগনেচার",
+    "searchQuery": "masala chai special tea cup spices",
+    "image": "/products/juice-tea-135.webp",
+    "fallbackImage": "public/images/bangla-cat.jpg"
+  },
+  {
+    "id": "bangla-food-136",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "White Rice",
+    "nameBn": "সাদা ভাত",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 30
+      }
+    ],
+    "priceDisplay": "৳30",
+    "minPrice": 30,
+    "descriptionBn": "ঝরঝরে গরম সুগন্ধি চালের সাদা ভাত।",
+    "descriptionEn": "Steaming hot, fluffy, and aromatic long-grain white rice.",
+    "badge": "ঐতিহ্যবাহী",
+    "searchQuery": "steamed white rice bowl fluffy",
+    "image": "/products/bangla-food-136.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  },
+  {
+    "id": "bangla-food-137",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "Bhorta",
+    "nameBn": "স্পেশাল ভর্তা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 25
+      }
+    ],
+    "priceDisplay": "৳25",
+    "minPrice": 25,
+    "descriptionBn": "আলু / বেগুন / শুঁটকি / ডাল ভর্তার খাঁটি সরিষার তেলের ঝাঁঝালো স্বাদ।",
+    "descriptionEn": "Traditional Bengali mashed delicacies prepared with mustard oil and green chilies.",
+    "badge": "খাঁটি স্বাদ",
+    "searchQuery": "bengali aloo bhorta mashed potato mustard",
+    "image": "/products/bangla-food-137.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  },
+  {
+    "id": "bangla-food-138",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "Vegetable",
+    "nameBn": "সবজি ভাজি / লাবড়া",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 30
+      }
+    ],
+    "priceDisplay": "৳30",
+    "minPrice": 30,
+    "descriptionBn": "পাঁচমিশালি টাটকা দেশি সবজির স্বাস্থ্যকর নিরামিষ ভাজি।",
+    "descriptionEn": "Wholesome mixed vegetable dry curry seasoned with aromatic Panch Phoron.",
+    "badge": "১০০% ভেজ",
+    "searchQuery": "bengali mixed vegetable curry panch phoron",
+    "image": "/products/bangla-food-138.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  },
+  {
+    "id": "bangla-food-139",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "Beef Vuna",
+    "nameBn": "গরু ভুনা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 220
+      }
+    ],
+    "priceDisplay": "৳220",
+    "minPrice": 220,
+    "descriptionBn": "কড়া তেলে পেঁয়াজ-রসুন ও দেশি গরম মশলায় কষিয়ে রান্না করা গরুর মাংস ভুনা।",
+    "descriptionEn": "Classic Bengali slow-cooked rich beef bhuna with intensely caramelized gravy.",
+    "badge": "বেস্টসেলার",
+    "searchQuery": "bengali beef bhuna spicy rich curry",
+    "image": "/products/bangla-food-139.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  },
+  {
+    "id": "bangla-food-140",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "Beef Kala Vuna",
+    "nameBn": "গরু কালা ভুনা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 260
+      }
+    ],
+    "priceDisplay": "৳260",
+    "minPrice": 260,
+    "descriptionBn": "চট্টগ্রামের ঐতিহ্যবাহী খাঁটি কালো ভুনা, মুখে মিলিয়ে যাওয়া নরম মাংস ও মশলার ঘ্রাণ।",
+    "descriptionEn": "Famous traditional Chittagong style black beef curry with deep caramelized spices.",
+    "badge": "ঐতিহ্যবাহী স্পেশাল",
+    "searchQuery": "chittagong kala bhuna beef black rich",
+    "image": "/products/bangla-food-140.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  },
+  {
+    "id": "bangla-food-141",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "Mutton",
+    "nameBn": "খাসির রেজালা / কারি",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 260
+      }
+    ],
+    "priceDisplay": "৳260",
+    "minPrice": 260,
+    "descriptionBn": "খাসির নরম রসালো মাংস ও খাঁটি দেশি মশলার ঝাল-ঘন ঝোল।",
+    "descriptionEn": "Rich and aromatic mutton curry prepared with traditional spices and mustard oil.",
+    "badge": "রয়াল ডিশ",
+    "searchQuery": "bengali mutton curry goat meat rich gravy",
+    "image": "/products/bangla-food-141.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  },
+  {
+    "id": "bangla-food-142",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "Chicken Vuna",
+    "nameBn": "দেশি মুরগী ভুনা",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 140
+      }
+    ],
+    "priceDisplay": "৳140",
+    "minPrice": 140,
+    "descriptionBn": "দেশি স্টাইলের রসালো মুরগির মাংসের গাঢ় গ্রেভির ভুনা।",
+    "descriptionEn": "Traditional home-style chicken bhuna with roasted spices and flavorful onion gravy.",
+    "badge": "ঘরোয়া স্বাদ",
+    "searchQuery": "bengali chicken bhuna home style curry",
+    "image": "/products/bangla-food-142.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  },
+  {
+    "id": "bangla-food-143",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "Seasonal Fish",
+    "nameBn": "সিজনাল মাছের ঝোল",
+    "portions": [
+      {
+        "name": "বাজার অনুযায়ী (Market Price)",
+        "price": 0
+      }
+    ],
+    "priceDisplay": "বাজার অনুযায়ী",
+    "minPrice": 0,
+    "descriptionBn": "ভাণ্ডারিয়ার নদী ও বিলের তাজা ইলিশ / রুই / কোরাল মাছের সুস্বাদু রান্না।",
+    "descriptionEn": "Daily catch fresh river fish cooked in aromatic mustard or light cumin broth.",
+    "badge": "তাজা নদীর মাছ",
+    "searchQuery": "bengali ilish mach fish curry river",
+    "image": "/products/bangla-food-143.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  },
+  {
+    "id": "bangla-food-144",
+    "categoryKey": "bangla-food",
+    "categoryNameBn": "ঐতিহ্যবাহী বাংলা খাবার",
+    "categoryNameEn": "Traditional Bangla Food",
+    "categoryIcon": "🐟",
+    "nameEn": "Dal",
+    "nameBn": "ঘরোয়া পাতলা ডাল",
+    "portions": [
+      {
+        "name": "Regular",
+        "price": 10
+      }
+    ],
+    "priceDisplay": "৳10",
+    "minPrice": 10,
+    "descriptionBn": "লেবু ও শুকনো মরিচ বাগার দেওয়া খাঁটি মসুর ডাল।",
+    "descriptionEn": "Classic yellow lentil soup tempered with cumin, garlic and dried red chili.",
+    "badge": "কমফোর্ট ফুড",
+    "searchQuery": "yellow lentil soup dal tadka bowl",
+    "image": "/products/bangla-food-144.webp",
+    "fallbackImage": "public/images/ilish.jpg"
+  }
+]
