@@ -47,6 +47,12 @@ export default function RootLayout({
   return (
     <html lang="bn" className="scroll-smooth">
       <body className="antialiased bg-white text-brand-charcoal overflow-x-hidden selection:bg-brand-red selection:text-white">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2.5 focus:bg-brand-red focus:text-white focus:font-bold focus:rounded-xl focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-white"
+        >
+          মূল কনটেন্টে যান (Skip to main content)
+        </a>
         {children}
       </body>
     </html>

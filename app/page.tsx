@@ -344,17 +344,22 @@ export default function KutumBariLandingPage() {
     setZoomLevel((prev) => (prev === 1 ? 1.5 : prev === 1.5 ? 2 : 1));
   };
 
-  // Keyboard navigation for menu modal
+  // Keyboard navigation for modals and drawer (UI/UX Pro Max a11y)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!selectedMenuPage) return;
-      if (e.key === "Escape") handleClosePageModal();
-      if (e.key === "ArrowLeft") handlePrevPage();
-      if (e.key === "ArrowRight") handleNextPage();
+      if (e.key === "Escape") {
+        if (selectedMenuPage) handleClosePageModal();
+        if (bookingModalOpen) setBookingModalOpen(false);
+        if (mobileMenuOpen) setMobileMenuOpen(false);
+      }
+      if (selectedMenuPage) {
+        if (e.key === "ArrowLeft") handlePrevPage();
+        if (e.key === "ArrowRight") handleNextPage();
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedMenuPage]);
+  }, [selectedMenuPage, bookingModalOpen, mobileMenuOpen]);
 
   // Filter Menu Pages
   const filteredMenuPages = ALL_MENU_PAGES.filter((page) => {
@@ -477,7 +482,7 @@ export default function KutumBariLandingPage() {
       : MENU_ITEMS.filter((item) => item.category === activeCategory);
 
   return (
-    <div className="relative min-h-screen bg-white text-brand-charcoal overflow-x-hidden pb-24 md:pb-0 font-sans">
+    <div className="relative min-h-screen bg-white text-brand-charcoal overflow-x-hidden pb-[calc(env(safe-area-inset-bottom,0px)+88px)] md:pb-0 font-sans">
       {/* 1. TOP ANNOUNCEMENT BAR (UI/UX Pro Max: High contrast, SVG icon, responsive wrap) */}
       <div className="bg-brand-red text-white text-xs sm:text-sm font-medium py-2 px-3 text-center flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 shadow-inner z-50 relative w-full overflow-hidden">
         <span className="inline-flex items-center justify-center bg-white text-brand-red text-[10px] sm:text-[11px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider flex-shrink-0">
@@ -625,63 +630,74 @@ export default function KutumBariLandingPage() {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile Navigation Drawer with Frosted Backdrop */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white text-brand-charcoal border-b border-gray-200 shadow-xl px-4 py-6 transition-all duration-300">
-            <div className="flex flex-col space-y-2">
-              {[
-                { href: "#home", labelBn: "হোম (Home)", icon: Utensils },
-                { href: "#menu", labelBn: "খাবারের মেনু (Menu)", icon: Sparkles },
-                { href: "#events", labelBn: "সব উৎসবের আয়োজন (Events)", icon: PartyPopper },
-                { href: "#about", labelBn: "আমাদের সম্পর্কে (About)", icon: Heart },
-                { href: "#location", labelBn: "ঠিকানা ও যোগাযোগ (Contact)", icon: MapPin },
-              ].map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="cursor-pointer min-h-[48px] flex items-center justify-between p-3 rounded-xl hover:bg-brand-green-surface transition-colors font-semibold text-base text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-red"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-brand-green/10 flex items-center justify-center text-brand-green">
-                        <Icon className="w-5 h-5" />
+          <div
+            className="lg:hidden fixed inset-0 top-[60px] sm:top-[68px] z-40 bg-black/60 backdrop-blur-sm animate-fadeIn"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <div
+              className="bg-white text-brand-charcoal border-b border-gray-200 shadow-2xl px-4 py-6 max-h-[calc(100vh-80px)] overflow-y-auto animate-slideDown"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col space-y-2">
+                {[
+                  { href: "#home", labelBn: "হোম (Home)", icon: Utensils },
+                  { href: "#menu", labelBn: "খাবারের মেনু (Menu)", icon: Sparkles },
+                  { href: "#events", labelBn: "সব উৎসবের আয়োজন (Events)", icon: PartyPopper },
+                  { href: "#about", labelBn: "আমাদের সম্পর্কে (About)", icon: Heart },
+                  { href: "#location", labelBn: "ঠিকানা ও যোগাযোগ (Contact)", icon: MapPin },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="cursor-pointer min-h-[48px] flex items-center justify-between p-3 rounded-xl hover:bg-brand-green-surface transition-colors font-semibold text-base text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-red"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-brand-green/10 flex items-center justify-center text-brand-green">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <span>{item.labelBn}</span>
                       </div>
-                      <span>{item.labelBn}</span>
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-gray-400" />
-                  </a>
-                );
-              })}
+                      <ChevronRight className="w-4 h-4 text-gray-400" />
+                    </a>
+                  );
+                })}
 
-              <div className="pt-4 border-t border-gray-100 flex flex-col gap-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setBookingModalOpen(true);
-                  }}
-                  className="cursor-pointer min-h-[48px] w-full bg-brand-red hover:bg-brand-red-hover text-white py-3 px-4 rounded-xl font-bold text-center flex items-center justify-center gap-2 shadow-md active:scale-95 transition-transform focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
-                >
-                  <Calendar className="w-5 h-5" />
-                  <span>{language === "bn" ? "টেবিল বুক করুন" : "Book a Table"}</span>
-                </button>
+                <div className="pt-4 border-t border-gray-100 flex flex-col gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setBookingModalOpen(true);
+                    }}
+                    className="cursor-pointer min-h-[48px] w-full bg-brand-red hover:bg-brand-red-hover text-white py-3 px-4 rounded-xl font-bold text-center flex items-center justify-center gap-2 shadow-md active:scale-95 transition-transform focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
+                  >
+                    <Calendar className="w-5 h-5" />
+                    <span>{language === "bn" ? "টেবিল বুক করুন" : "Book a Table"}</span>
+                  </button>
 
-                <div className="flex items-center justify-center gap-4 text-xs text-gray-500 pt-1">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-brand-orange" /> Lunch & Dinner
-                  </span>
-                  <span>•</span>
-                  <span className="flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-brand-red" /> ভাণ্ডারিয়া
-                  </span>
+                  <div className="flex items-center justify-center gap-4 text-xs text-gray-500 pt-1">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-brand-orange" /> Lunch & Dinner
+                    </span>
+                    <span>•</span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-brand-red" /> ভাণ্ডারিয়া
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         )}
       </header>
+
+      {/* MAIN LANDMARK FOR KEYBOARD USERS & SCREEN READERS */}
+      <main id="main-content">
 
       {/* 3. HERO SECTION (UI/UX Pro Max: Deep contrast, appetizing floating visuals, zero layout shift) */}
       <section
@@ -1073,16 +1089,16 @@ export default function KutumBariLandingPage() {
                         ? "খাবার বা মেনু খুঁজুন (যেমন: Wonton, বিরিয়ানি, কালা ভুনা, Pizza, Burger, স্যুপ, কফি)..."
                         : "Search 144 dishes (e.g. Wonton, Biryani, Kala Bhuna, Pizza, Burger, Soup, Coffee)..."
                     }
-                    className="w-full pl-12 pr-10 py-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-brand-green text-sm text-brand-charcoal transition-all placeholder:text-gray-400 min-h-[48px]"
+                    className="w-full pl-12 pr-12 py-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-brand-green text-base sm:text-sm text-brand-charcoal transition-all placeholder:text-gray-400 min-h-[48px]"
                   />
                   {catalogSearchQuery && (
                     <button
                       type="button"
                       onClick={() => setCatalogSearchQuery("")}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 min-h-[36px] min-w-[36px] flex items-center justify-center text-gray-400 hover:text-brand-charcoal rounded-full"
+                      className="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] w-11 h-11 flex items-center justify-center text-gray-400 hover:text-brand-charcoal rounded-full focus:outline-none focus:ring-2 focus:ring-brand-green"
                       aria-label="Clear search"
                     >
-                      <X className="w-4 h-4" />
+                      <X className="w-5 h-5" />
                     </button>
                   )}
                 </div>
@@ -1095,7 +1111,7 @@ export default function KutumBariLandingPage() {
                       : `Showing ${filteredCatalogProducts.length} of 144 dishes`}
                   </span>
 
-                  <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                  <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
                     {[
                       { id: "all", labelBn: "সব", labelEn: "All" },
                       { id: "special", labelBn: "⭐ স্পেশাল", labelEn: "Special" },
@@ -1109,7 +1125,7 @@ export default function KutumBariLandingPage() {
                           setCatalogPriceFilter(f.id as any);
                           setVisibleProductCount(24);
                         }}
-                        className={`cursor-pointer min-h-[44px] px-3.5 py-2 rounded-full font-bold text-xs transition-all flex items-center justify-center ${
+                        className={`cursor-pointer min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-full font-bold text-xs transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-brand-green ${
                           catalogPriceFilter === f.id
                             ? "bg-brand-green-deep text-white shadow-xs"
                             : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
@@ -1122,8 +1138,8 @@ export default function KutumBariLandingPage() {
                 </div>
               </div>
 
-              {/* 18-Category Navigation Carousel (Touch-friendly & Smooth) */}
-              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 no-scrollbar max-w-full justify-start">
+              {/* 18-Category Navigation Carousel (Touch-friendly, Snap-scroll & Thumb-ergonomic) */}
+              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 no-scrollbar max-w-full justify-start snap-x snap-mandatory px-4 sm:px-0 scroll-px-4 -mx-4 sm:mx-0">
                 {/* All Items Pill */}
                 <button
                   type="button"
@@ -1131,7 +1147,7 @@ export default function KutumBariLandingPage() {
                     setSelectedCatalogCategory("all");
                     setVisibleProductCount(24);
                   }}
-                  className={`cursor-pointer min-h-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
+                  className={`cursor-pointer snap-start min-h-[44px] min-w-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
                     selectedCatalogCategory === "all"
                       ? "bg-brand-green-deep text-white shadow-md scale-105"
                       : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
@@ -1160,7 +1176,7 @@ export default function KutumBariLandingPage() {
                         setSelectedCatalogCategory(cat.key);
                         setVisibleProductCount(24);
                       }}
-                      className={`cursor-pointer min-h-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
+                      className={`cursor-pointer snap-start min-h-[44px] min-w-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
                         isActive
                           ? "bg-brand-green-deep text-white shadow-md scale-105"
                           : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
@@ -1271,7 +1287,7 @@ export default function KutumBariLandingPage() {
                                 <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-1.5">
                                   {language === "bn" ? "সাইজ / অংশ বেছে নিন:" : "Select Portion:"}
                                 </span>
-                                <div className="flex flex-wrap gap-1.5">
+                                <div className="flex flex-wrap gap-2">
                                   {prod.portions.map((portion, pIdx) => {
                                     const isSelected = selectedIdx === pIdx;
                                     return (
@@ -1279,14 +1295,14 @@ export default function KutumBariLandingPage() {
                                         key={pIdx}
                                         type="button"
                                         onClick={() => handleSelectPortion(prod.id, pIdx)}
-                                        className={`cursor-pointer min-h-[40px] px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center ${
+                                        className={`cursor-pointer min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-brand-green ${
                                           isSelected
-                                            ? "bg-brand-green-deep text-white shadow-xs scale-102"
+                                            ? "bg-brand-green-deep text-white shadow-xs scale-102 ring-2 ring-brand-green/30"
                                             : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                         }`}
                                       >
                                         <span>{portion.name}</span>
-                                        <span className="opacity-80 ml-1">
+                                        <span className="opacity-85 ml-1">
                                           {portion.price > 0 ? `৳${portion.price}` : ""}
                                         </span>
                                       </button>
@@ -1364,16 +1380,16 @@ export default function KutumBariLandingPage() {
                         ? "মেনু পেজ খুঁজুন (যেমন: পৃষ্ঠা ১, কালা ভুনা, Biryani, Pizza, Wonton, Coffee)..."
                         : "Search menu pages (e.g. Page 1, Kala Bhuna, Biryani, Pizza, Wonton)..."
                     }
-                    className="w-full pl-12 pr-10 py-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-brand-green text-sm text-brand-charcoal transition-all placeholder:text-gray-400 min-h-[48px]"
+                    className="w-full pl-12 pr-12 py-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-brand-green text-base sm:text-sm text-brand-charcoal transition-all placeholder:text-gray-400 min-h-[48px]"
                   />
                   {menuSearchQuery && (
                     <button
                       type="button"
                       onClick={() => setMenuSearchQuery("")}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 min-h-[36px] min-w-[36px] flex items-center justify-center text-gray-400 hover:text-brand-charcoal rounded-full"
+                      className="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] w-11 h-11 flex items-center justify-center text-gray-400 hover:text-brand-charcoal rounded-full focus:outline-none focus:ring-2 focus:ring-brand-green"
                       aria-label="Clear search"
                     >
-                      <X className="w-4 h-4" />
+                      <X className="w-5 h-5" />
                     </button>
                   )}
                 </div>
@@ -1389,8 +1405,8 @@ export default function KutumBariLandingPage() {
                 </div>
               </div>
 
-              {/* Category Filter Pills for Menu Book */}
-              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 no-scrollbar max-w-full justify-start md:justify-center">
+              {/* Category Filter Pills for Menu Book (Snap-scroll & Thumb-friendly) */}
+              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 no-scrollbar max-w-full justify-start md:justify-center snap-x snap-mandatory px-4 sm:px-0 scroll-px-4 -mx-4 sm:mx-0">
                 {PRINTED_MENU_CATEGORIES.map((cat) => {
                   const isActive = activePageCategory === cat.id;
                   return (
@@ -1401,7 +1417,7 @@ export default function KutumBariLandingPage() {
                         setActivePageCategory(cat.id);
                         setMenuSearchQuery("");
                       }}
-                      className={`cursor-pointer min-h-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
+                      className={`cursor-pointer snap-start min-h-[44px] min-w-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
                         isActive
                           ? "bg-brand-green-deep text-white shadow-md scale-105"
                           : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
@@ -1848,6 +1864,7 @@ export default function KutumBariLandingPage() {
           </div>
         </div>
       </section>
+      </main>
 
       {/* 9. FOOTER */}
       <footer className="bg-brand-green-dark text-white pt-16 pb-28 md:pb-12 border-t border-brand-green/30">
@@ -1983,7 +2000,7 @@ export default function KutumBariLandingPage() {
       </footer>
 
       {/* 10. STICKY MOBILE ACTION BAR */}
-      <div className="block md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 shadow-[0_-4px_25px_rgba(0,0,0,0.12)] pb-safe">
+      <div className="block md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200/90 px-4 pt-2.5 pb-[calc(env(safe-area-inset-bottom,0px)+12px)] shadow-[0_-4px_25px_rgba(0,0,0,0.12)]">
         <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
           <a
             href="tel:01351327933"
@@ -2004,16 +2021,28 @@ export default function KutumBariLandingPage() {
         </div>
       </div>
 
-      {/* 11. TABLE RESERVATION MODAL (UI/UX Pro Max: Explicit labels, accessible IDs, clear focus) */}
+      {/* 11. TABLE RESERVATION MODAL (UI/UX Pro Max: Mobile Bottom Sheet, Non-zoom Text Inputs, Safe Tap Targets) */}
       {bookingModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden max-h-[92vh] flex flex-col">
-            <div className="bg-brand-green-deep text-white p-5 sm:p-6 flex items-center justify-between">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="booking-modal-title"
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 bg-black/60 backdrop-blur-sm animate-fadeIn"
+          onClick={() => setBookingModalOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-lg bg-white rounded-t-[28px] sm:rounded-3xl shadow-2xl border-t sm:border border-gray-100 overflow-hidden max-h-[88vh] sm:max-h-[92vh] flex flex-col animate-slideUp sm:animate-scaleUp pb-[calc(env(safe-area-inset-bottom,0px)+12px)] sm:pb-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Mobile Sheet Drag Pill Handle */}
+            <div className="w-12 h-1.5 bg-gray-300 rounded-full mx-auto my-2.5 block sm:hidden flex-shrink-0" />
+
+            <div className="bg-brand-green-deep text-white px-5 py-4 sm:p-6 flex items-center justify-between flex-shrink-0">
               <div>
                 <span className="text-xs uppercase tracking-wider font-bold text-amber-300">
                   KutumBari Reservation
                 </span>
-                <h3 className="font-serif font-bold text-xl sm:text-2xl mt-0.5">
+                <h3 id="booking-modal-title" className="font-serif font-bold text-lg sm:text-2xl mt-0.5">
                   টেবিল বুকিং ফরম (Book a Table)
                 </h3>
               </div>
@@ -2057,7 +2086,7 @@ export default function KutumBariLandingPage() {
                       placeholder="যেমন: মোঃ রফিকুল ইসলাম"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm"
+                      className="min-h-[48px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-base sm:text-sm text-brand-charcoal"
                     />
                   </div>
 
@@ -2073,7 +2102,7 @@ export default function KutumBariLandingPage() {
                       placeholder="01XXXXXXXXX"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm"
+                      className="min-h-[48px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-base sm:text-sm text-brand-charcoal"
                     />
                   </div>
 
@@ -2087,7 +2116,7 @@ export default function KutumBariLandingPage() {
                         name="guests"
                         value={formData.guests}
                         onChange={handleInputChange}
-                        className="cursor-pointer min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm bg-white"
+                        className="cursor-pointer min-h-[48px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-base sm:text-sm bg-white text-brand-charcoal"
                       >
                         <option value="1">১ জন (1 Person)</option>
                         <option value="2">২ জন (2 Persons)</option>
@@ -2107,7 +2136,7 @@ export default function KutumBariLandingPage() {
                         name="timeSlot"
                         value={formData.timeSlot}
                         onChange={handleInputChange}
-                        className="cursor-pointer min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm bg-white"
+                        className="cursor-pointer min-h-[48px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-base sm:text-sm bg-white text-brand-charcoal"
                       >
                         <option value="Lunch (১২:০০ PM - ৪:০০ PM)">
                           লাঞ্চ (Lunch: ১২:০০ - ৪:০০)
@@ -2128,7 +2157,7 @@ export default function KutumBariLandingPage() {
                       name="occasion"
                       value={formData.occasion}
                       onChange={handleInputChange}
-                      className="cursor-pointer min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm bg-white"
+                      className="cursor-pointer min-h-[48px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-base sm:text-sm bg-white text-brand-charcoal"
                     >
                       <option value="Dine-in / সাধারণ ভোজন">সাধারণ ভোজন (Casual Dine-in)</option>
                       <option value="জন্মদিনের আয়োজন">জন্মদিনের আয়োজন (Birthday Party)</option>
@@ -2149,7 +2178,7 @@ export default function KutumBariLandingPage() {
                       placeholder="নির্দিষ্ট আসন, কেক ডেকোরেশন বা পছন্দের খাবার..."
                       value={formData.notes}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-base sm:text-sm text-brand-charcoal min-h-[48px]"
                     />
                   </div>
 
