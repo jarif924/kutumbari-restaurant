@@ -1,0 +1,1620 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import {
+  Phone,
+  Calendar,
+  Clock,
+  MapPin,
+  Menu as MenuIcon,
+  X,
+  Sparkles,
+  ChefHat,
+  Leaf,
+  PartyPopper,
+  Heart,
+  ChevronRight,
+  CheckCircle2,
+  Utensils,
+  ArrowRight,
+  ExternalLink,
+  MessageCircle,
+  Star,
+  Percent,
+  Globe,
+  Share2,
+  Award,
+} from "lucide-react";
+
+// Types
+type CuisineCategory = "all" | "bangla" | "chinese" | "fastfood";
+
+interface MenuItem {
+  id: string;
+  titleBn: string;
+  titleEn: string;
+  category: "bangla" | "chinese" | "fastfood";
+  price: string;
+  descriptionBn: string;
+  descriptionEn: string;
+  image: string;
+  popular?: boolean;
+  isChefSpecial?: boolean;
+}
+
+interface EventItem {
+  id: string;
+  titleBn: string;
+  titleEn: string;
+  descriptionBn: string;
+  descriptionEn: string;
+  image: string;
+  features: string[];
+}
+
+// Menu items data
+const MENU_ITEMS: MenuItem[] = [
+  {
+    id: "b1",
+    titleBn: "কাচ্চি বিরিয়ানি (স্পেশাল)",
+    titleEn: "Royal Kacchi Biryani",
+    category: "bangla",
+    price: "৳ ৩২০",
+    descriptionBn: "বাসমতী চাল, সুস্বাদু খাসির মাংস ও জাফরানের রাজকীয় ঘ্রাণে তৈরি ঐতিহ্যবাহী কাচ্চি।",
+    descriptionEn: "Aromatic basmati rice layered with tender mutton marinated in fragrant spices & saffron.",
+    image: "/images/kacchi.jpg",
+    popular: true,
+    isChefSpecial: true,
+  },
+  {
+    id: "b2",
+    titleBn: "স্পেশাল গরুর কালা ভুনা",
+    titleEn: "Chittagong Beef Kala Bhuna",
+    category: "bangla",
+    price: "৳ ২৮০",
+    descriptionBn: "ঐতিহ্যবাহী মশলায় কড়া ভাজা নরম গরুর মাংসের বিখ্যাত কালা ভুনা।",
+    descriptionEn: "Slow-cooked caramelised beef chuck roasted in signature dark ground spices.",
+    image: "/images/kalabhuna.jpg",
+    popular: true,
+    isChefSpecial: true,
+  },
+  {
+    id: "b3",
+    titleBn: "সর্ষে ইলিশ ও গরম ভাত",
+    titleEn: "Shorshe Hilsha Fish Platter",
+    category: "bangla",
+    price: "৳ ৩৫০",
+    descriptionBn: "তাজা পদ্মার ইলিশ, ঝাঁঝালো সর্ষে বাটা ও কাঁচা মরিচের খাঁটি দেশি স্বাদ।",
+    descriptionEn: "Fresh prime Hilsha simmered in spicy mustard seed gravy served with steamed rice.",
+    image: "/images/ilish.jpg",
+    popular: false,
+    isChefSpecial: true,
+  },
+  {
+    id: "b4",
+    titleBn: "ঘরোয়া স্পেশাল ভুনা খিচুড়ি",
+    titleEn: "Special Bhuna Khichuri",
+    category: "bangla",
+    price: "৳ ১৯০",
+    descriptionBn: "সুগন্ধি চিনিগুঁড়া চাল ও মুগ ডালের খাঁটি গাওয়া ঘিয়ে রান্না রসালো খিচুড়ি।",
+    descriptionEn: "Flavourful roasted moong dal & Chinigura rice infused with pure cow ghee & whole spices.",
+    image: "/images/khichuri.jpg",
+    popular: false,
+  },
+  {
+    id: "c1",
+    titleBn: "চিকেন ফ্রাইড রাইস ও কাজু বাদাম",
+    titleEn: "Chicken Cashewnut Fried Rice",
+    category: "chinese",
+    price: "৳ ২৫০",
+    descriptionBn: "সুস্বাদু চিকেন কিউব, ক্রিস্পি কাজু বাদাম এবং তাজা ক্যাপসিকামে ওক-টস্ট ফ্রাইড রাইস।",
+    descriptionEn: "Wok-tossed long-grain jasmine rice with tender chicken, roasted cashews, and fresh greens.",
+    image: "/images/friedrice.jpg",
+    popular: true,
+  },
+  {
+    id: "c2",
+    titleBn: "সিজেকুয়ান চিলি চিকেন (গ্রেভি)",
+    titleEn: "Szechuan Chili Chicken Gravy",
+    category: "chinese",
+    price: "৳ ২৭০",
+    descriptionBn: "ঝাল-মিষ্টি চাইনিজ সসে তাজা মরিচ ও রসুনের ফ্লেভারে ভাজা মচমচে চিকেন।",
+    descriptionEn: "Crisp chicken bites tossed with fiery red chillies, garlic, scallions, and soy reduction.",
+    image: "/images/chilichicken.jpg",
+    popular: true,
+    isChefSpecial: true,
+  },
+  {
+    id: "c3",
+    titleBn: "স্পেশাল মিক্সড চাউমিন",
+    titleEn: "Chef Special Mixed Chowmein",
+    category: "chinese",
+    price: "৳ ২২০",
+    descriptionBn: "হাতে তৈরি তাজা নুডলসে চিকেন, ডিম এবং ক্রাঞ্চি ভেজিটেবলের খাঁটি ওক স্বাদ।",
+    descriptionEn: "Authentic street-wok egg noodles loaded with spiced chicken chunks, eggs, and crisp slaw.",
+    image: "/images/chowmein.jpg",
+    popular: false,
+  },
+  {
+    id: "c4",
+    titleBn: "ক্রিস্পি ওয়ানটন ও হট অ্যান্ড সাওয়ার স্যুপ",
+    titleEn: "Crispy Wonton & Hot & Sour Soup",
+    category: "chinese",
+    price: "৳ ১৮০",
+    descriptionBn: "গোল্ডেন ক্রিস্পি চিকেন ওয়ানটন সাথে গরম ভাপ ওঠা ঝাঁঝালো স্পেশাল স্যুপ।",
+    descriptionEn: "Golden deep-fried wonton dumplings paired with comforting thick hot & sour soup bowl.",
+    image: "/images/wonton.jpg",
+    popular: false,
+  },
+  {
+    id: "f1",
+    titleBn: "কুটুমবাড়ি সিগনেচার বিফ/চিকেন বার্গার",
+    titleEn: "KutumBari Signature Gourmet Burger",
+    category: "fastfood",
+    price: "৳ ২১০",
+    descriptionBn: "জুসি গ্রিলড প্যাটি, চিজ স্লাইস, ক্যারামেলাইজড পেঁয়াজ এবং সিক্রেট হাউজ সস।",
+    descriptionEn: "Juicy grilled patty topped with melted cheddar, crisp lettuce, tomato, and secret sauce.",
+    image: "/images/burger.jpg",
+    popular: true,
+    isChefSpecial: true,
+  },
+  {
+    id: "f2",
+    titleBn: "ক্রিস্পি ফ্রাইড চিকেন বাকেট (৪ পিস)",
+    titleEn: "Crunchy Golden Fried Chicken (4 pcs)",
+    category: "fastfood",
+    price: "৳ ২৪০",
+    descriptionBn: "বাইরে মারাত্মক মচমচে, ভেতরে জুসি স্পাইসি ক্রাঞ্চি চিকেন সাথে গার্লিক মেয়ো।",
+    descriptionEn: "Signature 11-spice marinated chicken crusted to golden perfection, served with garlic dip.",
+    image: "/images/crispychicken.jpg",
+    popular: true,
+  },
+  {
+    id: "f3",
+    titleBn: "উড-ফায়ার্ড চিকেন পিৎজা (১০ ইঞ্চি)",
+    titleEn: "Artisan Chicken Fiesta Pizza (10\")",
+    category: "fastfood",
+    price: "৳ ৩৪০",
+    descriptionBn: "১০০% মোজারেলা চিজ, মশলাদার চিকেন চাংকস, অলিভ ও ক্যাপসিকামের দুর্দান্ত কম্বো।",
+    descriptionEn: "Crispy thin-crust base laden with rich tomato sauce, loaded mozzarella, spiced chicken & herbs.",
+    image: "/images/pizza.jpg",
+    popular: false,
+  },
+  {
+    id: "f4",
+    titleBn: "চিজি লোডেড ফ্রেঞ্চ ফ্রাইস",
+    titleEn: "Cheesy Loaded French Fries",
+    category: "fastfood",
+    price: "৳ ১৫০",
+    descriptionBn: "গোল্ডেন ফ্রাইস যার ওপর গলানো চিডার চিজ, স্পাইসি ডাস্ট ও স্পেশাল হার্ব সস।",
+    descriptionEn: "Fresh potato fries smothered with warm melted cheddar cheese, jalapeño bits & herb mayo.",
+    image: "/images/loadedfries.jpg",
+    popular: false,
+  },
+];
+
+// Events Hosted data
+const EVENTS: EventItem[] = [
+  {
+    id: "birthday",
+    titleBn: "জন্মদিনের আয়োজন",
+    titleEn: "Birthday Parties",
+    descriptionBn: "প্রিয়জনের জন্মদিনকে স্মরণীয় করতে বিশেষ আলোকসজ্জা, থিম ডেকোরেশন ও কাস্টমাইজড কেক ব্যবস্থা।",
+    descriptionEn: "Vibrant custom themes, ambient lighting, sound system, and tailored party menus for an unforgettable birthday.",
+    image: "/images/event-birthday.jpg",
+    features: ["থিম ডেকোরেশন সুবিধা", "মিউজিক ও সাউন্ড সিস্টেম", "কাস্টম কিডস ও পার্টি মেনু", "কেক কাটার বিশেষ কর্নার"],
+  },
+  {
+    id: "anniversary",
+    titleBn: "বিবাহ বার্ষিকী",
+    titleEn: "Wedding Anniversaries",
+    descriptionBn: "রোমান্টিক ও মার্জিত পরিবেশে দম্পতি ও পরিবারের জন্য বিশেষ আয়োজন ও প্রিমিয়াম ডাইনিং সুবিধা।",
+    descriptionEn: "Romantic ambient lighting, private family setups, and candle-lit dining packages to celebrate your special milestone.",
+    image: "/images/event-anniversary.jpg",
+    features: ["ক্যান্ডেল-লাইট ডাইনিং জোন", "প্রাইভেট ফ্যামিলি টেবিল", "বিশেষ ডেজার্ট উপহার", "ফটোশুট উপযোগী কর্নার"],
+  },
+  {
+    id: "meeting",
+    titleBn: "মিটিং ও সেমিনার",
+    titleEn: "Meetings & Seminars",
+    descriptionBn: "কর্পোরেট আলোচনা, ক্লাব মিটিং কিংবা অফিসিয়াল গেট-টুগেদারের জন্য শান্ত ও সুশৃঙ্খল পরিবেশ।",
+    descriptionEn: "Executive-friendly layout, projector support, comfortable seating, and hassle-free buffet/snack packages.",
+    image: "/images/event-meeting.jpg",
+    features: ["প্রজেক্টর ও অডিও সাপোর্ট", "হাই-স্পিড ওয়াইফাই", "এক্সিকিউটিভ টি ও স্ন্যাক্স প্ল্যান", "শান্ত ও প্রফেশনাল স্পেস"],
+  },
+  {
+    id: "family",
+    titleBn: "ঘরোয়া অনুষ্ঠান",
+    titleEn: "Family Programs",
+    descriptionBn: "পারিবারিক আড্ডা, দাওয়াত বা যেকোনো ঘরোয়া উৎসবে পরিবার-পরিজন নিয়ে নিশ্চিন্তে কাটানোর আপন ঠিকানা।",
+    descriptionEn: "Spacious seating where large family groups can dine together with personalized Bangla, Chinese & Fast food sets.",
+    image: "/images/event-family.jpg",
+    features: ["১০০+ জন ধারণক্ষমতা", "মহিলা ও শিশুদের বিশেষ সুবিধা", "ঐতিহ্যবাহী বাংলা দস্তরখান/টেবিল", "দক্ষ সার্ভিস কর্মী"],
+  },
+];
+
+export default function KutumBariLandingPage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<CuisineCategory>("all");
+  const [activeEventIndex, setActiveEventIndex] = useState(0);
+  const [language, setLanguage] = useState<"bn" | "en">("bn");
+
+  // Booking Form State
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    guests: "2",
+    date: "",
+    timeSlot: "Dinner (রাত)",
+    occasion: "Dine-in / সাধারণ ভোজন",
+    notes: "",
+  });
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu or modal is open
+  useEffect(() => {
+    if (mobileMenuOpen || bookingModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen, bookingModalOpen]);
+
+  // Handle Form Change
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Open modal with specific dish preselected
+  const handleOrderDish = (dishTitle: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      notes: `অর্ডার করতে আগ্রহী: ${dishTitle}`,
+    }));
+    setBookingModalOpen(true);
+  };
+
+  // Handle Booking Submit
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) {
+      alert("অনুগ্রহ করে আপনার নাম ও মোবাইল নম্বর প্রদান করুন।");
+      return;
+    }
+    setBookingSuccess(true);
+    setTimeout(() => {
+      setBookingSuccess(false);
+      setBookingModalOpen(false);
+      setFormData({
+        name: "",
+        phone: "",
+        guests: "2",
+        date: "",
+        timeSlot: "Dinner (রাত)",
+        occasion: "Dine-in / সাধারণ ভোজন",
+        notes: "",
+      });
+    }, 2800);
+  };
+
+  // Filter Menu Items
+  const filteredMenuItems =
+    activeCategory === "all"
+      ? MENU_ITEMS
+      : MENU_ITEMS.filter((item) => item.category === activeCategory);
+
+  return (
+    <div className="relative min-h-screen bg-white text-brand-charcoal overflow-x-hidden pb-24 md:pb-0 font-sans">
+      {/* 1. TOP ANNOUNCEMENT BAR (UI/UX Pro Max: High contrast, SVG icon, responsive wrap) */}
+      <div className="bg-brand-red text-white text-xs sm:text-sm font-medium py-2 px-3 text-center flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 shadow-inner z-50 relative w-full overflow-hidden">
+        <span className="inline-flex items-center justify-center bg-white text-brand-red text-[10px] sm:text-[11px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider flex-shrink-0">
+          {language === "bn" ? "অফার" : "OFFER"}
+        </span>
+        <span className="font-semibold tracking-tight text-center">
+          {language === "bn"
+            ? "শুভ উদ্বোধন উপলক্ষে ১৫% বিশেষ ছাড়! (Grand Opening 15% OFF)"
+            : "Grand Opening Celebration: Enjoy 15% Flat Discount On All Orders!"}
+        </span>
+        <span className="hidden md:inline-block opacity-80">|</span>
+        <a
+          href="tel:01351327933"
+          className="cursor-pointer hidden md:inline-flex items-center gap-1 font-bold underline hover:text-amber-200 transition-colors py-1 focus:outline-none focus:ring-1 focus:ring-white rounded"
+        >
+          <Phone className="w-3.5 h-3.5" /> 01351327933
+        </a>
+      </div>
+
+      {/* 2. NAVIGATION BAR (UI/UX Pro Max: No emoji, cursor-pointer, min 44x44px touch targets) */}
+      <header
+        className={`sticky top-0 z-40 transition-all duration-300 w-full ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-md text-brand-charcoal py-2 sm:py-3 border-b border-gray-100"
+            : "bg-brand-green-deep/95 backdrop-blur-sm text-white py-2.5 sm:py-4 border-b border-white/10"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-2">
+            {/* Brand Logo & Name */}
+            <a
+              href="#home"
+              className="cursor-pointer flex items-center gap-2 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-red rounded-xl p-1 min-h-[44px] min-w-0"
+            >
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow-md ring-2 ring-brand-red bg-white flex-shrink-0">
+                <Image
+                  src="/logo.jpg"
+                  alt="KutumBari Restaurant Logo"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col min-w-0 text-left">
+                <span
+                  className={`text-base sm:text-xl font-bold tracking-tight font-serif leading-tight truncate transition-colors ${
+                    isScrolled ? "text-brand-green-deep" : "text-white"
+                  }`}
+                >
+                  কুটুমবাড়ি <span className="text-brand-red">রেস্টুরেন্ট</span>
+                </span>
+                <span
+                  className={`text-[9px] sm:text-xs font-medium tracking-wider uppercase truncate ${
+                    isScrolled ? "text-brand-orange" : "text-emerald-200"
+                  }`}
+                >
+                  KutumBari • Bhandaria
+                </span>
+              </div>
+            </a>
+
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {[
+                { href: "#home", labelBn: "হোম", labelEn: "Home" },
+                { href: "#menu", labelBn: "খাবারের মেনু", labelEn: "Menu" },
+                { href: "#events", labelBn: "উৎসব ও আয়োজন", labelEn: "Events" },
+                { href: "#about", labelBn: "আমাদের সম্পর্কে", labelEn: "About" },
+                { href: "#location", labelBn: "ঠিকানা ও যোগাযোগ", labelEn: "Contact" },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`cursor-pointer text-sm font-semibold transition-colors duration-200 hover:text-brand-orange py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-brand-red rounded-lg px-1 ${
+                    isScrolled ? "text-brand-charcoal" : "text-white/90"
+                  }`}
+                >
+                  {language === "bn" ? item.labelBn : item.labelEn}
+                </a>
+              ))}
+            </nav>
+
+            {/* Desktop CTAs & Language Switcher */}
+            <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+              {/* Language Switcher (Uses SVG Globe Icon, NO EMOJI) */}
+              <button
+                type="button"
+                onClick={() => setLanguage(language === "bn" ? "en" : "bn")}
+                className={`cursor-pointer min-h-[44px] px-3.5 py-1.5 rounded-full text-xs font-bold border transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-red ${
+                  isScrolled
+                    ? "border-gray-300 text-brand-charcoal hover:bg-gray-100"
+                    : "border-white/30 text-white hover:bg-white/15"
+                }`}
+                title="Switch Language / ভাষা পরিবর্তন করুন"
+              >
+                <Globe className="w-3.5 h-3.5 text-brand-orange" />
+                <span>{language === "bn" ? "English" : "বাংলা"}</span>
+              </button>
+
+              {/* Book Table Button (Red CTA) */}
+              <button
+                type="button"
+                onClick={() => setBookingModalOpen(true)}
+                className="cursor-pointer min-h-[44px] bg-brand-red hover:bg-brand-red-hover text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
+              >
+                <Calendar className="w-4 h-4 group-hover:rotate-12 transition-transform duration-200" />
+                <span>{language === "bn" ? "টেবিল বুক করুন" : "Book a Table"}</span>
+              </button>
+            </div>
+
+            {/* Mobile Controls (Language + Accessible Hamburger Menu) */}
+            <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden flex-shrink-0">
+              <button
+                type="button"
+                onClick={() => setLanguage(language === "bn" ? "en" : "bn")}
+                className={`cursor-pointer min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-xl text-xs font-bold border flex items-center justify-center gap-1 focus:outline-none focus:ring-2 focus:ring-brand-red ${
+                  isScrolled
+                    ? "border-gray-300 text-brand-charcoal hover:bg-gray-100"
+                    : "border-white/30 text-white hover:bg-white/10"
+                }`}
+                aria-label="Toggle language between Bangla and English"
+              >
+                <Globe className="w-3 h-3 text-brand-orange" />
+                <span>{language === "bn" ? "EN" : "বাং"}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className={`cursor-pointer min-h-[44px] min-w-[44px] p-2 rounded-xl transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-brand-red ${
+                  isScrolled
+                    ? "text-brand-charcoal hover:bg-gray-100"
+                    : "text-white hover:bg-white/10"
+                }`}
+                aria-label="Open mobile navigation menu"
+                aria-expanded={mobileMenuOpen}
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <MenuIcon className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Drawer */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-white text-brand-charcoal border-b border-gray-200 shadow-xl px-4 py-6 transition-all duration-300">
+            <div className="flex flex-col space-y-2">
+              {[
+                { href: "#home", labelBn: "হোম (Home)", icon: Utensils },
+                { href: "#menu", labelBn: "খাবারের মেনু (Menu)", icon: Sparkles },
+                { href: "#events", labelBn: "সব উৎসবের আয়োজন (Events)", icon: PartyPopper },
+                { href: "#about", labelBn: "আমাদের সম্পর্কে (About)", icon: Heart },
+                { href: "#location", labelBn: "ঠিকানা ও যোগাযোগ (Contact)", icon: MapPin },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="cursor-pointer min-h-[48px] flex items-center justify-between p-3 rounded-xl hover:bg-brand-green-surface transition-colors font-semibold text-base text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-red"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-brand-green/10 flex items-center justify-center text-brand-green">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span>{item.labelBn}</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </a>
+                );
+              })}
+
+              <div className="pt-4 border-t border-gray-100 flex flex-col gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setBookingModalOpen(true);
+                  }}
+                  className="cursor-pointer min-h-[48px] w-full bg-brand-red hover:bg-brand-red-hover text-white py-3 px-4 rounded-xl font-bold text-center flex items-center justify-center gap-2 shadow-md active:scale-95 transition-transform focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
+                >
+                  <Calendar className="w-5 h-5" />
+                  <span>{language === "bn" ? "টেবিল বুক করুন" : "Book a Table"}</span>
+                </button>
+
+                <div className="flex items-center justify-center gap-4 text-xs text-gray-500 pt-1">
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-brand-orange" /> Lunch & Dinner
+                  </span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-brand-red" /> ভাণ্ডারিয়া
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* 3. HERO SECTION (UI/UX Pro Max: Deep contrast, appetizing floating visuals, zero layout shift) */}
+      <section
+        id="home"
+        className="relative min-h-[88vh] flex items-center pt-10 pb-16 md:pt-20 md:pb-24 bg-brand-green-deep text-white overflow-hidden w-full"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#041d14] via-[#073322] to-[#052619] opacity-95"></div>
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-[500px] h-64 sm:h-[500px] bg-brand-green/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-48 sm:w-80 h-48 sm:h-80 bg-brand-red/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
+            {/* Left Content Column */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl">
+              {/* Grand Opening Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs sm:text-sm font-semibold mb-6">
+                <Percent className="w-4 h-4 text-brand-orange" />
+                <span>
+                  {language === "bn"
+                    ? "শুভ উদ্বোধন উপলক্ষে ১৫% ছাড় • শুভ যাত্রা ৯ অক্টোবর"
+                    : "Grand Opening 15% OFF • Official Launch Oct 9th"}
+                </span>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white font-serif leading-[1.2] sm:leading-[1.15] mb-5">
+                {language === "bn" ? (
+                  <>
+                    স্বাদের সাথে ভালোবাসার <br className="hidden sm:inline" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-300 to-amber-100">
+                      এক আপন ঠিকানা
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Where Authentic Flavour <br className="hidden sm:inline" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-300 to-amber-100">
+                      Feels Like Home
+                    </span>
+                  </>
+                )}
+              </h1>
+
+              {/* Secondary Slogans */}
+              <p className="text-base sm:text-lg md:text-xl text-emerald-100/90 font-normal mb-3 max-w-xl">
+                {language === "bn"
+                  ? "কুটুমবাড়ি রেস্টুরেন্ট — বাংলা, চাইনিজ ও ফাস্ট-ফুডের সেরা স্বাদ ভাণ্ডারিয়ার প্রাণকেন্দ্রে।"
+                  : "KutumBari Restaurant — Good Food Together. Premium Bangla, Chinese & Fast-Food in the heart of Bhandaria."}
+              </p>
+
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-amber-300 font-medium mb-8">
+                <Sparkles className="w-4 h-4 text-brand-orange flex-shrink-0" />
+                <span>
+                  {language === "bn"
+                    ? "“সব উৎসবের ঠিকানা কুটুমবাড়ি” • জন্মদিন, বিবাহ বার্ষিকী ও ঘরোয়া আয়োজন"
+                    : "\"The Destination for All Celebrations\" • Birthdays, Anniversaries & Family Gatherings"}
+                </span>
+              </div>
+
+              {/* Hero Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a
+                  href="#menu"
+                  className="cursor-pointer min-h-[48px] w-full sm:w-auto bg-brand-red hover:bg-brand-red-hover text-white px-8 py-3.5 rounded-full font-bold text-base shadow-glow hover:shadow-lg transition-all duration-300 active:scale-95 flex items-center justify-center gap-2.5 text-center focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
+                >
+                  <Utensils className="w-5 h-5" />
+                  <span>{language === "bn" ? "মেনু দেখুন" : "Explore Menu"}</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => setBookingModalOpen(true)}
+                  className="cursor-pointer min-h-[48px] w-full sm:w-auto border-2 border-white/80 hover:border-white hover:bg-white/10 text-white px-8 py-3.5 rounded-full font-semibold text-base transition-all duration-300 active:scale-95 flex items-center justify-center gap-2.5 text-center focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <Calendar className="w-5 h-5 text-amber-300" />
+                  <span>{language === "bn" ? "টেবিল বুক করুন" : "Book a Table"}</span>
+                </button>
+              </div>
+
+              {/* Location micro-proof */}
+              <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs text-emerald-200/80">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4 text-brand-red" />
+                  <span>মেইন রোড (২য় তলা), রিজার্ভ পুকুর পাড়, ভাণ্ডারিয়া</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-4 h-4 text-brand-orange" />
+                  <span>লাঞ্চ ও ডিনার সার্ভিস</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Floating 3D-Style Dish Image */}
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg flex items-center justify-center">
+              <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-amber-500/20 via-brand-red/20 to-emerald-400/20 blur-2xl pointer-events-none"></div>
+
+              <div className="relative animate-float w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] md:w-[390px] md:h-[390px] rounded-full p-3 bg-gradient-to-b from-white/20 via-white/5 to-white/10 backdrop-blur-sm shadow-floating border border-white/25">
+                <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl ring-4 ring-white/30">
+                  <Image
+                    src="/images/hero-dish.jpg"
+                    alt="Signature Platter at KutumBari Restaurant"
+                    fill
+                    className="object-cover scale-105 hover:scale-110 transition-transform duration-700"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+
+                {/* Opening Promo Badge */}
+                <div className="absolute -top-2 -right-2 sm:top-2 sm:right-2 bg-brand-red text-white p-3 rounded-2xl shadow-xl flex items-center gap-2 border border-white/30 transform rotate-3">
+                  <Percent className="w-5 h-5 text-amber-300" />
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] uppercase font-bold tracking-wider leading-none">
+                      Opening Promo
+                    </span>
+                    <span className="text-sm font-black leading-tight">১৫% ছাড়!</span>
+                  </div>
+                </div>
+
+                {/* Master Chef Recipe Badge */}
+                <div className="absolute -bottom-3 left-2 sm:bottom-2 sm:left-2 bg-white/95 text-brand-charcoal py-2 px-3.5 sm:py-2.5 sm:px-4 rounded-2xl shadow-xl flex items-center gap-2.5 sm:gap-3 border border-gray-100 backdrop-blur-md">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green flex-shrink-0">
+                    <ChefHat className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-xs font-bold text-brand-green-deep">
+                      {language === "bn" ? "খাঁটি দেশি ও চাইনিজ" : "Authentic Flavours"}
+                    </span>
+                    <span className="text-[10px] sm:text-[11px] text-gray-500">
+                      {language === "bn" ? "সেরা শেফের রেসিপি" : "Master Chef Recipes"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. TRUST BADGES ROW (UI/UX Pro Max: 8px minimum touch gap, accessible hover) */}
+      <section className="relative z-20 -mt-6 sm:-mt-8 max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-card border border-gray-100 p-5 sm:p-7">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {[
+              {
+                icon: Leaf,
+                titleBn: "তাজা উপাদান",
+                titleEn: "Fresh Ingredients",
+                descBn: "১০০% খাঁটি ও স্বাস্থ্যসম্মত",
+                descEn: "100% Pure & Hygienic",
+                color: "text-emerald-600",
+                bg: "bg-emerald-50",
+              },
+              {
+                icon: ChefHat,
+                titleBn: "দক্ষ কারিগর ও শেফ",
+                titleEn: "Expert Chefs",
+                descBn: "পরিপাটি ও নিখুঁত রন্ধনশৈলী",
+                descEn: "Authentic Culinary Mastery",
+                color: "text-brand-orange",
+                bg: "bg-orange-50",
+              },
+              {
+                icon: Sparkles,
+                titleBn: "মনোরম পরিবেশ",
+                titleEn: "Cozy Ambience",
+                descBn: "শান্ত, মার্জিত ও পারিবারিক",
+                descEn: "Elegant Family Dining",
+                color: "text-amber-600",
+                bg: "bg-amber-50",
+              },
+              {
+                icon: PartyPopper,
+                titleBn: "সব উৎসবের আয়োজন",
+                titleEn: "Event Hosting",
+                descBn: "সব ধরণের উদযাপনের ঠিকানা",
+                descEn: "Birthdays & Gatherings",
+                color: "text-brand-red",
+                bg: "bg-red-50",
+              },
+            ].map((badge, idx) => {
+              const Icon = badge.icon;
+              return (
+                <div
+                  key={idx}
+                  className="flex flex-col items-center sm:items-start text-center sm:text-left p-3 rounded-xl hover:bg-gray-50/80 transition-colors group cursor-default"
+                >
+                  <div
+                    className={`min-h-[44px] min-w-[44px] w-12 h-12 rounded-2xl ${badge.bg} ${badge.color} flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-200`}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-brand-charcoal leading-tight">
+                    {language === "bn" ? badge.titleBn : badge.titleEn}
+                  </h3>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {language === "bn" ? badge.descBn : badge.descEn}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. ABOUT US / OUR STORY */}
+      <section id="about" className="py-16 sm:py-24 bg-brand-cream/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="relative mx-auto max-w-md lg:max-w-none">
+                <div className="relative h-72 sm:h-96 rounded-3xl overflow-hidden shadow-card border-4 border-white">
+                  <Image
+                    src="/images/ambience.jpg"
+                    alt="KutumBari Restaurant Ambience"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                  <div className="absolute bottom-5 left-5 right-5 text-white">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-amber-300">
+                      Reserve Pukur Par, Bhandaria
+                    </p>
+                    <p className="text-lg font-bold font-serif">
+                      রিজার্ভ পুকুর পাড়ের মনোরম পরিবেশে আপনার প্রিয় কুটুমবাড়ি
+                    </p>
+                  </div>
+                </div>
+
+                <div className="absolute -bottom-6 -right-2 sm:right-6 bg-white p-4 sm:p-5 rounded-2xl shadow-floating border border-gray-100 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center font-bold text-xl font-serif">
+                    ১৫%
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 font-medium">গ্র্যান্ড ওপেনিং অফার</p>
+                    <p className="text-sm font-bold text-brand-charcoal">
+                      শুভ উদ্বোধন উপলক্ষে ছাড়
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-start order-1 lg:order-2">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand-red mb-3">
+                <Heart className="w-3.5 h-3.5" />
+                {language === "bn" ? "আমাদের গল্প ও দর্শন" : "Our Story & Values"}
+              </span>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-brand-green-deep leading-tight mb-5">
+                {language === "bn" ? (
+                  <>
+                    “স্বাদের সাথে ভালোবাসার এক আপন ঠিকানা” —{" "}
+                    <span className="text-brand-red">কুটুমবাড়ি</span>
+                  </>
+                ) : (
+                  <>
+                    Bringing Genuine Warmth & Culinary Heritage to{" "}
+                    <span className="text-brand-red">Bhandaria</span>
+                  </>
+                )}
+              </h2>
+
+              <p className="text-sm sm:text-base text-brand-charcoal/80 leading-relaxed mb-4">
+                {language === "bn"
+                  ? "ভাণ্ডারিয়ার রিজার্ভ পুকুর পাড়ের মনোরম ২য় তলায় প্রতিষ্ঠিত 'কুটুমবাড়ি রেস্টুরেন্ট'। আমাদের লক্ষ্য কেবল খাবার পরিবেশন নয়, পরিবারের সবাইকে নিয়ে আপনজনের মতো স্বাচ্ছন্দ্যে উপভোগ করার একটি নিখুঁত পরিবেশ উপহার দেওয়া।"
+                  : "Located on the 2nd Floor of Reserve Pukur Par, Bhandaria, KutumBari Restaurant was created with a heartfelt vision: good food, genuine hospitality, and memorable celebrations under one roof."}
+              </p>
+
+              <p className="text-sm sm:text-base text-brand-charcoal/80 leading-relaxed mb-6">
+                {language === "bn"
+                  ? "ঐতিহ্যবাহী খাঁটি বাংলা খাবার, মুখের স্বাদে ভরপুর চাইনিজ সিগনেচার ডিশ কিংবা তরুণ প্রজন্মের পছন্দের গরম ক্রিস্পি ফাস্ট-ফুড — সব পাবেন এক ছাদের নিচে শতভাগ স্বাস্থ্যসম্মত উপায়ে।"
+                  : "From slow-cooked royal biryanis and authentic Bengali specialties to sizzling wok Chinese and crunchy fast-food favorites — our kitchen crafts every dish with supreme hygiene and love."}
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 w-full mb-8">
+                <div className="border border-gray-200/80 bg-white p-3.5 rounded-xl flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal">
+                      লাঞ্চ ও ডিনার সার্ভিস
+                    </h4>
+                    <p className="text-[11px] text-gray-500">প্রতিদিন সময়মত পরিবেশন</p>
+                  </div>
+                </div>
+
+                <div className="border border-gray-200/80 bg-white p-3.5 rounded-xl flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal">
+                      ১০০+ অতিথি ধারণক্ষমতা
+                    </h4>
+                    <p className="text-[11px] text-gray-500">প্রশস্ত ও আরামদায়ক স্পেস</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <button
+                  type="button"
+                  onClick={() => setBookingModalOpen(true)}
+                  className="cursor-pointer min-h-[44px] bg-brand-green-deep hover:bg-brand-green text-white px-6 py-3 rounded-full font-bold text-sm shadow-md transition-all duration-200 active:scale-95 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-green"
+                >
+                  <span>{language === "bn" ? "টেবিল রিজার্ভেশন" : "Reserve a Table"}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <a
+                  href="tel:01351327933"
+                  className="cursor-pointer min-h-[44px] text-brand-red hover:text-brand-red-hover font-bold text-sm flex items-center gap-1.5 underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-brand-red rounded-lg px-2"
+                >
+                  <Phone className="w-4 h-4" /> 01351327933
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. MENU SECTION (UI/UX Pro Max: Crisp categories, subtle shadows, clear price tags) */}
+      <section id="menu" className="py-16 sm:py-24 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand-red mb-2">
+              <Utensils className="w-3.5 h-3.5" />
+              {language === "bn" ? "খাবারের তালিকা ও মূল্য" : "Menu & Pricing"}
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-brand-green-deep mb-3">
+              {language === "bn" ? "আমাদের সুস্বাদু মেনু" : "Signature Culinary Selection"}
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600">
+              {language === "bn"
+                ? "বাংলা, চাইনিজ এবং ফাস্ট-ফুডের অপূর্ব সমাহার — পরিবারের সবার পছন্দের স্বাদ।"
+                : "A delightful fusion of traditional Bengali delicacies, Chinese wok creations & fast-food cravings."}
+            </p>
+          </div>
+
+          {/* Circular Category Thumbnails Row */}
+          <div className="flex items-center justify-center gap-4 sm:gap-8 mb-10 overflow-x-auto py-2 no-scrollbar max-w-full">
+            {[
+              {
+                id: "all" as CuisineCategory,
+                labelBn: "সব খাবার",
+                labelEn: "All Items",
+                image: "/images/hero-dish.jpg",
+              },
+              {
+                id: "bangla" as CuisineCategory,
+                labelBn: "বাংলা (Bangla)",
+                labelEn: "Bangla Delights",
+                image: "/images/bangla-cat.jpg",
+              },
+              {
+                id: "chinese" as CuisineCategory,
+                labelBn: "চাইনিজ (Chinese)",
+                labelEn: "Chinese Wok",
+                image: "/images/chinese-cat.jpg",
+              },
+              {
+                id: "fastfood" as CuisineCategory,
+                labelBn: "ফাস্ট-ফুড (Fast-Food)",
+                labelEn: "Fast-Food",
+                image: "/images/fastfood-cat.jpg",
+              },
+            ].map((cat) => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveCategory(cat.id)}
+                  className="cursor-pointer flex flex-col items-center group focus:outline-none focus:ring-2 focus:ring-brand-red rounded-2xl flex-shrink-0 min-h-[44px] min-w-[44px] p-1 transition-all"
+                >
+                  <div
+                    className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 transition-all duration-300 ${
+                      isActive
+                        ? "ring-4 ring-brand-red scale-105 shadow-md"
+                        : "ring-2 ring-gray-200 group-hover:ring-brand-orange/60"
+                    }`}
+                  >
+                    <div className="relative w-full h-full rounded-full overflow-hidden">
+                      <Image
+                        src={cat.image}
+                        alt={cat.labelEn}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                  <span
+                    className={`mt-2 text-xs sm:text-sm font-bold tracking-tight transition-colors ${
+                      isActive ? "text-brand-red" : "text-brand-charcoal group-hover:text-brand-orange"
+                    }`}
+                  >
+                    {language === "bn" ? cat.labelBn : cat.labelEn}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Menu Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {filteredMenuItems.map((item) => (
+              <div
+                key={item.id}
+                className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-subtle hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-gray-100">
+                  <Image
+                    src={item.image}
+                    alt={item.titleEn}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+
+                  <span className="absolute top-3 left-3 bg-white/95 text-brand-green-deep text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm capitalize backdrop-blur-sm">
+                    {item.category === "bangla"
+                      ? "বাংলা"
+                      : item.category === "chinese"
+                      ? "চাইনিজ"
+                      : "ফাস্ট-ফুড"}
+                  </span>
+
+                  {item.isChefSpecial && (
+                    <span className="absolute top-3 right-3 bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-white" /> স্পেশাল
+                    </span>
+                  )}
+
+                  <div className="absolute bottom-3 right-3 bg-brand-red text-white font-extrabold text-sm sm:text-base px-3 py-1 rounded-xl shadow-md">
+                    {item.price}
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between">
+                  <div>
+                    <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal group-hover:text-brand-green-deep transition-colors line-clamp-1">
+                      {language === "bn" ? item.titleBn : item.titleEn}
+                    </h3>
+                    <p className="text-xs text-brand-orange font-semibold mb-2 line-clamp-1">
+                      {item.titleEn}
+                    </p>
+                    <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-4">
+                      {language === "bn" ? item.descriptionBn : item.descriptionEn}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
+                    <span className="text-[11px] text-gray-400 font-medium">
+                      তাৎক্ষণিক প্রস্তুত
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleOrderDish(item.titleBn)}
+                      className="cursor-pointer min-h-[44px] text-xs font-bold text-brand-red hover:text-brand-red-hover flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red"
+                    >
+                      <span>অর্ডার/বুকিং</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Menu Notice Banner */}
+          <div className="mt-12 p-4 sm:p-6 rounded-2xl bg-brand-green-surface border border-brand-green/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-brand-green/20 text-brand-green flex items-center justify-center flex-shrink-0">
+                <Percent className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-bold text-sm sm:text-base text-brand-green-deep">
+                  শুভ উদ্বোধন উপলক্ষে সকল মেনুতে ১৫% ছাড়!
+                </h4>
+                <p className="text-xs text-gray-600">
+                  পরিবার ও বন্ধুদের নিয়ে আজই ঘুরে আসুন এবং উপভোগ করুন সেরা অফার।
+                </p>
+              </div>
+            </div>
+            <a
+              href="tel:01351327933"
+              className="cursor-pointer min-h-[44px] bg-brand-red hover:bg-brand-red-hover text-white px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md transition-colors flex items-center justify-center gap-2 flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
+            >
+              <Phone className="w-4 h-4" /> কল করুন: 01351327933
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. EVENT HOSTING (UI/UX Pro Max: Tab state, clear benefits) */}
+      <section id="events" className="py-16 sm:py-24 bg-brand-green-deep text-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-amber-300 mb-2">
+              <PartyPopper className="w-3.5 h-3.5" />
+              {language === "bn" ? "উৎসব ও পার্টি স্পেস" : "Celebrate With Us"}
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-white mb-3">
+              সব উৎসবের ঠিকানা কুটুমবাড়ি
+            </h2>
+            <p className="text-sm sm:text-base text-emerald-100/80">
+              {language === "bn"
+                ? "যেকোনো বিশেষ দিনকে আরও বর্ণাঢ্য ও স্মরণীয় করতে আমাদের সুসজ্জিত স্পেস রয়েছে আপনার অপেক্ষায়।"
+                : "A premium event destination for family milestones, joyful celebrations, and official meetings."}
+            </p>
+          </div>
+
+          {/* Event Category Tabs */}
+          <div className="flex items-center justify-center gap-2 sm:gap-4 mb-10 overflow-x-auto py-2 no-scrollbar max-w-full">
+            {EVENTS.map((event, idx) => (
+              <button
+                key={event.id}
+                type="button"
+                onClick={() => setActiveEventIndex(idx)}
+                className={`cursor-pointer min-h-[44px] px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex-shrink-0 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-amber-300 ${
+                  activeEventIndex === idx
+                    ? "bg-brand-red text-white shadow-lg scale-105"
+                    : "bg-white/10 text-white/80 hover:bg-white/20"
+                }`}
+              >
+                <span>{language === "bn" ? event.titleBn : event.titleEn}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Active Event Showcase */}
+          <div className="bg-white/5 border border-white/15 rounded-3xl p-6 sm:p-10 backdrop-blur-md">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20">
+                <Image
+                  src={EVENTS[activeEventIndex].image}
+                  alt={EVENTS[activeEventIndex].titleEn}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="bg-brand-orange text-white text-[11px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                    {EVENTS[activeEventIndex].titleEn}
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold font-serif text-white mt-1">
+                    {EVENTS[activeEventIndex].titleBn}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-start">
+                <span className="text-amber-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  Event Hall & Catering Support
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-white mb-4">
+                  {language === "bn"
+                    ? EVENTS[activeEventIndex].titleBn
+                    : EVENTS[activeEventIndex].titleEn}
+                </h3>
+                <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed mb-6">
+                  {language === "bn"
+                    ? EVENTS[activeEventIndex].descriptionBn
+                    : EVENTS[activeEventIndex].descriptionEn}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full mb-8">
+                  {EVENTS[activeEventIndex].features.map((feat, fIdx) => (
+                    <div
+                      key={fIdx}
+                      className="flex items-center gap-2.5 bg-white/10 px-3.5 py-2.5 rounded-xl border border-white/10"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-amber-300 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium text-white">{feat}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormData((prev) => ({
+                        ...prev,
+                        occasion: EVENTS[activeEventIndex].titleBn,
+                      }));
+                      setBookingModalOpen(true);
+                    }}
+                    className="cursor-pointer min-h-[48px] w-full sm:w-auto bg-brand-red hover:bg-brand-red-hover text-white px-7 py-3.5 rounded-full font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
+                  >
+                    <Calendar className="w-4 h-4" />
+                    <span>ইভেন্ট স্পেস বুক করুন</span>
+                  </button>
+
+                  <a
+                    href="tel:01760780000"
+                    className="cursor-pointer min-h-[48px] w-full sm:w-auto text-emerald-200 hover:text-white border border-white/20 hover:border-white px-5 py-3 rounded-full text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                  >
+                    <Phone className="w-4 h-4 text-amber-300" />
+                    <span>হেল্পলাইন: 01760780000</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. LOCATION & CONTACT (UI/UX Pro Max: Crisp cards, verified contrast) */}
+      <section id="location" className="py-16 sm:py-24 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand-red mb-2">
+              <MapPin className="w-3.5 h-3.5" />
+              {language === "bn" ? "ঠিকানা ও যোগাযোগের বিবরণ" : "Location & Contact"}
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-brand-green-deep mb-3">
+              {language === "bn" ? "সহজেই খুঁজে নিন কুটুমবাড়ি" : "Visit KutumBari in Bhandaria"}
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600">
+              {language === "bn"
+                ? "ভাণ্ডারিয়ার প্রাণকেন্দ্রে রিজার্ভ পুকুর পাড় মেইন রোডের ২য় তলায় আমাদের অবস্থান।"
+                : "Centrally located on Main Road (2nd Floor), overlooking Reserve Pukur Par, Bhandaria."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left Contact Cards */}
+            <div className="lg:col-span-5 flex flex-col space-y-4">
+              <div className="bg-brand-cream/80 p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle flex items-start gap-4">
+                <div className="min-h-[44px] min-w-[44px] w-12 h-12 rounded-2xl bg-brand-red text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal mb-1">
+                    রেস্টুরেন্ট লোকেশন (Address)
+                  </h3>
+                  <p className="text-sm font-semibold text-brand-green-deep">
+                    মেইন রোড (২য় তলা), রিজার্ভ পুকুর পাড়, ভাণ্ডারিয়া
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Main Road (2nd Floor), Reserve Pukur Par, Bhandaria
+                  </p>
+                  <span className="inline-block mt-2 text-[11px] font-bold text-brand-orange bg-orange-50 px-2 py-0.5 rounded">
+                    📍 ল্যান্ডমার্ক: রিজার্ভ পুকুর পাড়
+                  </span>
+                </div>
+              </div>
+
+              <div className="bg-brand-cream/80 p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle flex items-start gap-4">
+                <div className="min-h-[44px] min-w-[44px] w-12 h-12 rounded-2xl bg-brand-green text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <div className="w-full">
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal mb-1">
+                    সরাসরি কল করুন (Phone Numbers)
+                  </h3>
+                  <p className="text-xs text-gray-500 mb-3">যেকোনো প্রশ্ন বা টেবিল বুকিংয়ের জন্য:</p>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <a
+                      href="tel:01351327933"
+                      className="cursor-pointer min-h-[44px] bg-white border border-brand-green/30 text-brand-green-deep hover:bg-brand-green hover:text-white px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-brand-red" />
+                      <span>01351327933</span>
+                    </a>
+                    <a
+                      href="tel:01760780000"
+                      className="cursor-pointer min-h-[44px] bg-white border border-brand-green/30 text-brand-green-deep hover:bg-brand-green hover:text-white px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-brand-orange" />
+                      <span>01760780000</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-brand-cream/80 p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle flex items-start gap-4">
+                <div className="min-h-[44px] min-w-[44px] w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal mb-1">
+                    সার্ভিস সময় (Service Hours)
+                  </h3>
+                  <div className="space-y-1.5 text-xs sm:text-sm text-brand-charcoal font-medium">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-brand-green">লাঞ্চ (Lunch):</span>
+                      <span>দুপুর ১২:০০ PM – বিকাল ০৪:০০ PM</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-brand-red">ডিনার (Dinner):</span>
+                      <span>সন্ধ্যা ০৬:৩০ PM – রাত ১১:০০ PM</span>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-gray-500 mt-2">
+                    সপ্তাহের ৭ দিনই আপনার সেবায় খোলা
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Map Visual Card */}
+            <div className="lg:col-span-7 bg-brand-green-surface rounded-3xl p-6 sm:p-8 border border-brand-green/20 shadow-card flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center gap-1.5 bg-brand-green/10 text-brand-green text-xs font-bold px-3 py-1 rounded-full">
+                    <MapPin className="w-3.5 h-3.5" /> ভাণ্ডারিয়া রিজার্ভ পুকুর পাড়
+                  </span>
+                  <span className="text-xs font-semibold text-gray-500">২য় তলা (2nd Floor)</span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-bold font-serif text-brand-green-deep mb-2">
+                  ভাণ্ডারিয়া মেইন রোড থেকে কীভাবে আসবেন?
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">
+                  ভাণ্ডারিয়া বাজারের প্রধান সড়ক ধরে রিজার্ভ পুকুর পাড় সংলগ্ন ভবনে আসুন। সিঁড়ি দিয়ে ২য় তলায় উঠলেই পেয়ে যাবেন কুটুমবাড়ি রেস্টুরেন্টের মনোমুগ্ধকর পরিবেশ।
+                </p>
+
+                <div className="relative h-60 sm:h-72 w-full rounded-2xl overflow-hidden border border-brand-green/20 bg-emerald-950 p-6 flex flex-col items-center justify-center text-center shadow-inner group">
+                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="relative w-16 h-16 rounded-full bg-brand-red text-white flex items-center justify-center shadow-glow">
+                      <span className="absolute w-full h-full rounded-full bg-brand-red/40 animate-ping"></span>
+                      <MapPin className="w-8 h-8 fill-white relative z-10" />
+                    </div>
+                    <div className="mt-3 bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg border border-gray-200">
+                      <p className="font-bold text-sm text-brand-green-deep">
+                        কুটুমবাড়ি রেস্টুরেন্ট
+                      </p>
+                      <p className="text-[11px] text-gray-600">
+                        রিজারার্ভ পুকুর পাড় (২য় তলা), ভাণ্ডারিয়া
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="relative z-10 text-emerald-200 text-xs mt-4 max-w-sm">
+                    পুকুর পাড়ের প্রাকৃতিক নির্মল বাতাস আর খোলামেলা মনোরম দৃশ্য
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
+                <a
+                  href="https://maps.google.com/?q=Bhandaria+Pirojpur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-pointer min-h-[44px] w-full sm:w-auto bg-brand-green hover:bg-brand-green-deep text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-green"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>গুগল ম্যাপে দেখুন (Open Maps)</span>
+                </a>
+
+                <a
+                  href="https://wa.me/8801351327933?text=Hello%20KutumBari%20Restaurant,%20I%20want%20to%20know%20more%20details"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-pointer min-h-[44px] w-full sm:w-auto bg-[#25D366] hover:bg-[#1EBE5D] text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#25D366]"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>হোয়াটসঅ্যাপ মেসেজ</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. FOOTER */}
+      <footer className="bg-brand-green-dark text-white pt-16 pb-28 md:pb-12 border-t border-brand-green/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div className="flex flex-col items-start">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white p-0.5 shadow-md ring-2 ring-brand-red">
+                  <Image
+                    src="/logo.jpg"
+                    alt="KutumBari Restaurant Logo"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-lg text-white">
+                    কুটুমবাড়ি <span className="text-brand-red">রেস্টুরেন্ট</span>
+                  </h3>
+                  <p className="text-[10px] text-amber-300 font-medium uppercase tracking-wider">
+                    Good Food Together
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed mb-4">
+                “স্বাদের সাথে ভালোবাসার এক আপন ঠিকানা” — ভাণ্ডারিয়ার সেরা বাংলা, চাইনিজ ও ফাস্ট-ফুড ডাইনিং।
+              </p>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-semibold">
+                <span>সব উৎসবের ঠিকানা কুটুমবাড়ি</span>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-serif font-bold text-base text-white mb-4 border-b border-white/10 pb-2">
+                কুইক লিঙ্কস (Quick Links)
+              </h4>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-emerald-100/80">
+                <li>
+                  <a href="#home" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                    <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> হোম (Home)
+                  </a>
+                </li>
+                <li>
+                  <a href="#menu" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                    <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> খাবারের মেনু (Menu)
+                  </a>
+                </li>
+                <li>
+                  <a href="#events" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                    <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> উৎসবের আয়োজন (Events)
+                  </a>
+                </li>
+                <li>
+                  <a href="#about" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                    <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> আমাদের গল্প (Our Story)
+                  </a>
+                </li>
+                <li>
+                  <a href="#location" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                    <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> ঠিকানা ও ম্যাপ (Location)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-serif font-bold text-base text-white mb-4 border-b border-white/10 pb-2">
+                পরিষেবা ও সময়সূচি
+              </h4>
+              <div className="space-y-3 text-xs sm:text-sm text-emerald-100/80">
+                <div>
+                  <span className="font-bold text-amber-300 block">লাঞ্চ সার্ভিস:</span>
+                  <span>১২:০০ PM - ০৪:০০ PM</span>
+                </div>
+                <div>
+                  <span className="font-bold text-amber-300 block">ডিনার সার্ভিস:</span>
+                  <span>০৬:৩০ PM - ১১:০০ PM</span>
+                </div>
+                <div className="pt-2 border-t border-white/10">
+                  <span className="font-bold text-white block mb-1">কুইজিন ক্যাটাগরি:</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="bg-white/10 px-2 py-0.5 rounded text-[11px]">বাংলা</span>
+                    <span className="bg-white/10 px-2 py-0.5 rounded text-[11px]">চাইনিজ</span>
+                    <span className="bg-white/10 px-2 py-0.5 rounded text-[11px]">ফাস্ট-ফুড</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-serif font-bold text-base text-white mb-4 border-b border-white/10 pb-2">
+                যোগাযোগের তথ্য
+              </h4>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-emerald-100/80">
+                <li className="flex items-start gap-2">
+                  <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
+                  <span>মেইন রোড (২য় তলা), রিজার্ভ পুকুর পাড়, ভাণ্ডারিয়া</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-brand-orange flex-shrink-0" />
+                  <a href="tel:01351327933" className="cursor-pointer hover:text-white font-bold min-h-[36px] flex items-center">
+                    01351327933
+                  </a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-brand-orange flex-shrink-0" />
+                  <a href="tel:01760780000" className="cursor-pointer hover:text-white font-bold min-h-[36px] flex items-center">
+                    01760780000
+                  </a>
+                </li>
+              </ul>
+
+              <div className="mt-5 pt-3 border-t border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setBookingModalOpen(true)}
+                  className="cursor-pointer min-h-[44px] w-full bg-brand-red hover:bg-brand-red-hover text-white py-2.5 px-4 rounded-xl font-bold text-xs shadow-md transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>অনলাইন টেবিল বুকিং</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-200/60 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} KutumBari Restaurant. সর্বস্বত্ব সংরক্ষিত।</p>
+            <p className="flex items-center gap-1 justify-center">
+              Made with <Heart className="w-3.5 h-3.5 text-brand-red fill-brand-red" /> for Bhandaria
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* 10. STICKY MOBILE ACTION BAR */}
+      <div className="block md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 shadow-[0_-4px_25px_rgba(0,0,0,0.12)] pb-safe">
+        <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
+          <a
+            href="tel:01351327933"
+            className="cursor-pointer min-h-[48px] bg-brand-green-surface border-2 border-brand-green/30 text-brand-green-deep hover:bg-brand-green hover:text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all duration-200 active:scale-95 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green"
+          >
+            <Phone className="w-4 h-4 text-brand-green" />
+            <span>কল করুন (Call)</span>
+          </a>
+
+          <button
+            type="button"
+            onClick={() => setBookingModalOpen(true)}
+            className="cursor-pointer min-h-[48px] bg-brand-red hover:bg-brand-red-hover text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all duration-200 active:scale-95 shadow-md shadow-brand-red/30 focus:outline-none focus:ring-2 focus:ring-brand-red"
+          >
+            <Calendar className="w-4 h-4" />
+            <span>টেবিল বুকিং</span>
+          </button>
+        </div>
+      </div>
+
+      {/* 11. TABLE RESERVATION MODAL (UI/UX Pro Max: Explicit labels, accessible IDs, clear focus) */}
+      {bookingModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+          <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden max-h-[92vh] flex flex-col">
+            <div className="bg-brand-green-deep text-white p-5 sm:p-6 flex items-center justify-between">
+              <div>
+                <span className="text-xs uppercase tracking-wider font-bold text-amber-300">
+                  KutumBari Reservation
+                </span>
+                <h3 className="font-serif font-bold text-xl sm:text-2xl mt-0.5">
+                  টেবিল বুকিং ফরম (Book a Table)
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setBookingModalOpen(false)}
+                className="cursor-pointer min-h-[44px] min-w-[44px] w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                aria-label="Close reservation modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-5 sm:p-6 overflow-y-auto">
+              {bookingSuccess ? (
+                <div className="py-10 text-center flex flex-col items-center">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+                    <CheckCircle2 className="w-10 h-10" />
+                  </div>
+                  <h4 className="font-serif font-bold text-2xl text-brand-green-deep mb-2">
+                    বুকিং সফলভাবে সম্পন্ন হয়েছে!
+                  </h4>
+                  <p className="text-sm text-gray-600 max-w-sm mb-4">
+                    ধন্যবাদ, {formData.name}। আমাদের প্রতিনিধি শীঘ্রই আপনার সাথে যোগাযোগ করবেন।
+                  </p>
+                  <p className="text-xs text-brand-orange font-semibold">
+                    জরুরি প্রয়োজনে কল করুন: 01351327933
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleBookingSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="customer-name" className="block text-xs font-bold text-brand-charcoal mb-1">
+                      আপনার নাম (Your Name) *
+                    </label>
+                    <input
+                      id="customer-name"
+                      type="text"
+                      name="name"
+                      required
+                      placeholder="যেমন: মোঃ রফিকুল ইসলাম"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="customer-phone" className="block text-xs font-bold text-brand-charcoal mb-1">
+                      মোবাইল নম্বর (Phone Number) *
+                    </label>
+                    <input
+                      id="customer-phone"
+                      type="tel"
+                      name="phone"
+                      required
+                      placeholder="01XXXXXXXXX"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="guest-count" className="block text-xs font-bold text-brand-charcoal mb-1">
+                        অতিথি সংখ্যা (Guests)
+                      </label>
+                      <select
+                        id="guest-count"
+                        name="guests"
+                        value={formData.guests}
+                        onChange={handleInputChange}
+                        className="cursor-pointer min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm bg-white"
+                      >
+                        <option value="1">১ জন (1 Person)</option>
+                        <option value="2">২ জন (2 Persons)</option>
+                        <option value="4">৪ জন (4 Persons)</option>
+                        <option value="6">৬ জন (6 Persons)</option>
+                        <option value="10+">১০+ জন (Family / Party)</option>
+                        <option value="25+">২৫+ জন (Event / Seminar)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label htmlFor="time-slot" className="block text-xs font-bold text-brand-charcoal mb-1">
+                        সময়সূচি (Time Slot)
+                      </label>
+                      <select
+                        id="time-slot"
+                        name="timeSlot"
+                        value={formData.timeSlot}
+                        onChange={handleInputChange}
+                        className="cursor-pointer min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm bg-white"
+                      >
+                        <option value="Lunch (১২:০০ PM - ৪:০০ PM)">
+                          লাঞ্চ (Lunch: ১২:০০ - ৪:০০)
+                        </option>
+                        <option value="Dinner (৬:৩০ PM - ১১:০০ PM)">
+                          ডিনার (Dinner: ৬:৩০ - ১১:০০)
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="occasion-type" className="block text-xs font-bold text-brand-charcoal mb-1">
+                      অনুষ্ঠানের ধরণ (Occasion)
+                    </label>
+                    <select
+                      id="occasion-type"
+                      name="occasion"
+                      value={formData.occasion}
+                      onChange={handleInputChange}
+                      className="cursor-pointer min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm bg-white"
+                    >
+                      <option value="Dine-in / সাধারণ ভোজন">সাধারণ ভোজন (Casual Dine-in)</option>
+                      <option value="জন্মদিনের আয়োজন">জন্মদিনের আয়োজন (Birthday Party)</option>
+                      <option value="বিবাহ বার্ষিকী">বিবাহ বার্ষিকী (Wedding Anniversary)</option>
+                      <option value="মিটিং ও সেমিনার">মিটিং ও সেমিনার (Meeting / Seminar)</option>
+                      <option value="ঘরোয়া অনুষ্ঠান">ঘরোয়া অনুষ্ঠান (Family Get-together)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="special-notes" className="block text-xs font-bold text-brand-charcoal mb-1">
+                      বিশেষ কোনো চাওয়া বা পছন্দ (Special Requests)
+                    </label>
+                    <textarea
+                      id="special-notes"
+                      name="notes"
+                      rows={2}
+                      placeholder="নির্দিষ্ট আসন, কেক ডেকোরেশন বা পছন্দের খাবার..."
+                      value={formData.notes}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-red text-sm"
+                    />
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      className="cursor-pointer min-h-[48px] w-full bg-brand-red hover:bg-brand-red-hover text-white py-3.5 px-6 rounded-xl font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
+                    >
+                      <CheckCircle2 className="w-5 h-5" />
+                      <span>বুকিং নিশ্চিত করুন (Confirm Booking)</span>
+                    </button>
+                    <p className="text-[11px] text-gray-500 text-center mt-2">
+                      বুকিং কনফার্মেশনের জন্য কোনো অগ্রিম ফি লাগবে না।
+                    </p>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
