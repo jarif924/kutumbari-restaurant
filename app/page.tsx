@@ -25,7 +25,25 @@ import {
   Globe,
   Share2,
   Award,
+  Search,
+  ZoomIn,
+  ZoomOut,
+  ChevronLeft,
+  BookOpen,
+  Maximize2,
+  Eye,
+  Grid,
+  FileText,
+  Layers,
+  RotateCcw,
 } from "lucide-react";
+import {
+  ALL_MENU_PAGES,
+  MENU_CATEGORIES,
+  MenuPage,
+  MenuCategoryFilter,
+} from "../data/menuPages";
+
 
 // Types
 type CuisineCategory = "all" | "bangla" | "chinese" | "fastfood";
@@ -243,6 +261,13 @@ export default function KutumBariLandingPage() {
   const [activeEventIndex, setActiveEventIndex] = useState(0);
   const [language, setLanguage] = useState<"bn" | "en">("bn");
 
+  // Menu Book State
+  const [activeMenuTab, setActiveMenuTab] = useState<"pages" | "dishes">("pages");
+  const [activePageCategory, setActivePageCategory] = useState<MenuCategoryFilter>("all");
+  const [menuSearchQuery, setMenuSearchQuery] = useState("");
+  const [selectedMenuPage, setSelectedMenuPage] = useState<MenuPage | null>(null);
+  const [zoomLevel, setZoomLevel] = useState<number>(1);
+
   // Booking Form State
   const [formData, setFormData] = useState({
     name: "",
@@ -265,7 +290,7 @@ export default function KutumBariLandingPage() {
 
   // Lock body scroll when mobile menu or modal is open
   useEffect(() => {
-    if (mobileMenuOpen || bookingModalOpen) {
+    if (mobileMenuOpen || bookingModalOpen || selectedMenuPage) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -273,7 +298,68 @@ export default function KutumBariLandingPage() {
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [mobileMenuOpen, bookingModalOpen]);
+  }, [mobileMenuOpen, bookingModalOpen, selectedMenuPage]);
+
+  // Modal navigation helpers
+  const handleOpenPageModal = (page: MenuPage) => {
+    setSelectedMenuPage(page);
+    setZoomLevel(1);
+  };
+
+  const handleClosePageModal = () => {
+    setSelectedMenuPage(null);
+    setZoomLevel(1);
+  };
+
+  const handlePrevPage = () => {
+    if (!selectedMenuPage) return;
+    const currentIndex = ALL_MENU_PAGES.findIndex((p) => p.id === selectedMenuPage.id);
+    const prevIndex = (currentIndex - 1 + ALL_MENU_PAGES.length) % ALL_MENU_PAGES.length;
+    setSelectedMenuPage(ALL_MENU_PAGES[prevIndex]);
+    setZoomLevel(1);
+  };
+
+  const handleNextPage = () => {
+    if (!selectedMenuPage) return;
+    const currentIndex = ALL_MENU_PAGES.findIndex((p) => p.id === selectedMenuPage.id);
+    const nextIndex = (currentIndex + 1) % ALL_MENU_PAGES.length;
+    setSelectedMenuPage(ALL_MENU_PAGES[nextIndex]);
+    setZoomLevel(1);
+  };
+
+  const handleZoomToggle = () => {
+    setZoomLevel((prev) => (prev === 1 ? 1.5 : prev === 1.5 ? 2 : 1));
+  };
+
+  // Keyboard navigation for menu modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedMenuPage) return;
+      if (e.key === "Escape") handleClosePageModal();
+      if (e.key === "ArrowLeft") handlePrevPage();
+      if (e.key === "ArrowRight") handleNextPage();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedMenuPage]);
+
+  // Filter Menu Pages
+  const filteredMenuPages = ALL_MENU_PAGES.filter((page) => {
+    const matchesCategory =
+      activePageCategory === "all" || page.category === activePageCategory;
+    const query = menuSearchQuery.trim().toLowerCase();
+    if (!query) return matchesCategory;
+
+    const matchesSearch =
+      page.titleBn.toLowerCase().includes(query) ||
+      page.titleEn.toLowerCase().includes(query) ||
+      page.descriptionBn.toLowerCase().includes(query) ||
+      page.descriptionEn.toLowerCase().includes(query) ||
+      page.highlightItems.some((item) => item.toLowerCase().includes(query)) ||
+      page.searchKeywords.some((kw) => kw.toLowerCase().includes(query));
+
+    return matchesCategory && matchesSearch;
+  });
 
   // Handle Form Change
   const handleInputChange = (
@@ -845,155 +931,397 @@ export default function KutumBariLandingPage() {
         </div>
       </section>
 
-      {/* 6. MENU SECTION (UI/UX Pro Max: Crisp categories, subtle shadows, clear price tags) */}
-      <section id="menu" className="py-16 sm:py-24 bg-white relative">
+      {/* 6. MENU SECTION (UI/UX Pro Max: Full 19-Page Authentic Menu Book + Signature Dishes) */}
+      <section id="menu" className="py-16 sm:py-24 bg-brand-cream/40 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand-red mb-2">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand-red mb-2 bg-red-50 border border-brand-red/20 px-3.5 py-1.5 rounded-full">
               <Utensils className="w-3.5 h-3.5" />
-              {language === "bn" ? "খাবারের তালিকা ও মূল্য" : "Menu & Pricing"}
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-brand-green-deep mb-3">
-              {language === "bn" ? "আমাদের সুস্বাদু মেনু" : "Signature Culinary Selection"}
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600">
               {language === "bn"
-                ? "বাংলা, চাইনিজ এবং ফাস্ট-ফুডের অপূর্ব সমাহার — পরিবারের সবার পছন্দের স্বাদ।"
-                : "A delightful fusion of traditional Bengali delicacies, Chinese wok creations & fast-food cravings."}
+                ? "অফিশিয়াল মেনু কার্ড ও পূর্ণাঙ্গ তালিকা"
+                : "Official Restaurant Menu & Pricing"}
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-brand-green-deep mb-3 leading-tight">
+              {language === "bn"
+                ? "কুটুমবাড়ির সম্পূর্ণ মেনু বুক"
+                : "Explore Our Full 19-Page Menu"}
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+              {language === "bn"
+                ? "বাংলা, চাইনিজ, ফাস্ট-ফুড, বিরিয়ানি ও রিফ্রেশিং বেভারেজের ১৯ পৃষ্ঠার সম্পূর্ণ মেনু। প্রতিটি পৃষ্ঠায় ট্যাপ করে বড় করে দেখুন এবং মূল্যসহ বিস্তারিত যাচাই করুন।"
+                : "Browse our authentic 19-page restaurant menu book covering authentic Bengali feasts, Chinese wok, crispy fast-food, royal biryani, and beverages. Tap any page to view full size."}
             </p>
           </div>
 
-          {/* Circular Category Thumbnails Row */}
-          <div className="flex items-center justify-center gap-4 sm:gap-8 mb-10 overflow-x-auto py-2 no-scrollbar max-w-full">
-            {[
-              {
-                id: "all" as CuisineCategory,
-                labelBn: "সব খাবার",
-                labelEn: "All Items",
-                image: "/images/hero-dish.jpg",
-              },
-              {
-                id: "bangla" as CuisineCategory,
-                labelBn: "বাংলা (Bangla)",
-                labelEn: "Bangla Delights",
-                image: "/images/bangla-cat.jpg",
-              },
-              {
-                id: "chinese" as CuisineCategory,
-                labelBn: "চাইনিজ (Chinese)",
-                labelEn: "Chinese Wok",
-                image: "/images/chinese-cat.jpg",
-              },
-              {
-                id: "fastfood" as CuisineCategory,
-                labelBn: "ফাস্ট-ফুড (Fast-Food)",
-                labelEn: "Fast-Food",
-                image: "/images/fastfood-cat.jpg",
-              },
-            ].map((cat) => {
-              const isActive = activeCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setActiveCategory(cat.id)}
-                  className="cursor-pointer flex flex-col items-center group focus:outline-none focus:ring-2 focus:ring-brand-red rounded-2xl flex-shrink-0 min-h-[44px] min-w-[44px] p-1 transition-all"
-                >
-                  <div
-                    className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 transition-all duration-300 ${
-                      isActive
-                        ? "ring-4 ring-brand-red scale-105 shadow-md"
-                        : "ring-2 ring-gray-200 group-hover:ring-brand-orange/60"
-                    }`}
-                  >
-                    <div className="relative w-full h-full rounded-full overflow-hidden">
-                      <Image
-                        src={cat.image}
-                        alt={cat.labelEn}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  </div>
-                  <span
-                    className={`mt-2 text-xs sm:text-sm font-bold tracking-tight transition-colors ${
-                      isActive ? "text-brand-red" : "text-brand-charcoal group-hover:text-brand-orange"
-                    }`}
-                  >
-                    {language === "bn" ? cat.labelBn : cat.labelEn}
-                  </span>
-                </button>
-              );
-            })}
+          {/* View Mode Switcher */}
+          <div className="flex items-center justify-center mb-8">
+            <div className="inline-flex p-1 rounded-2xl bg-white border border-gray-200/80 shadow-sm max-w-md w-full">
+              <button
+                type="button"
+                onClick={() => setActiveMenuTab("pages")}
+                className={`cursor-pointer flex-1 min-h-[46px] py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-red ${
+                  activeMenuTab === "pages"
+                    ? "bg-brand-green-deep text-white shadow-md"
+                    : "text-gray-600 hover:text-brand-charcoal hover:bg-gray-50"
+                }`}
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>{language === "bn" ? "অফিশিয়াল মেনু (১৯ পৃষ্ঠা)" : "Full Menu (19 Pages)"}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveMenuTab("dishes")}
+                className={`cursor-pointer flex-1 min-h-[46px] py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-red ${
+                  activeMenuTab === "dishes"
+                    ? "bg-brand-red text-white shadow-md"
+                    : "text-gray-600 hover:text-brand-charcoal hover:bg-gray-50"
+                }`}
+              >
+                <Utensils className="w-4 h-4" />
+                <span>{language === "bn" ? "জনপ্রিয় ডিশ তালিকা" : "Popular Highlights"}</span>
+              </button>
+            </div>
           </div>
 
-          {/* Menu Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {filteredMenuItems.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-subtle hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-gray-100">
-                  <Image
-                    src={item.image}
-                    alt={item.titleEn}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+          {/* TAB 1: 19-PAGE AUTHENTIC MENU BOOK */}
+          {activeMenuTab === "pages" && (
+            <div className="space-y-8 animate-fadeIn">
+              {/* Search Bar & Stats */}
+              <div className="max-w-xl mx-auto">
+                <div className="relative">
+                  <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={menuSearchQuery}
+                    onChange={(e) => setMenuSearchQuery(e.target.value)}
+                    placeholder={
+                      language === "bn"
+                        ? "খাবার বা মেনু খুঁজুন (যেমন: কালা ভুনা, Biryani, Pizza, Wonton, Coffee, মোমো)..."
+                        : "Search dishes (e.g. Kala Bhuna, Biryani, Pizza, Wonton, Coffee, Momo)..."
+                    }
+                    className="w-full pl-12 pr-10 py-3.5 bg-white rounded-2xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-brand-green text-sm text-brand-charcoal transition-all placeholder:text-gray-400 min-h-[48px]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
-
-                  <span className="absolute top-3 left-3 bg-white/95 text-brand-green-deep text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm capitalize backdrop-blur-sm">
-                    {item.category === "bangla"
-                      ? "বাংলা"
-                      : item.category === "chinese"
-                      ? "চাইনিজ"
-                      : "ফাস্ট-ফুড"}
-                  </span>
-
-                  {item.isChefSpecial && (
-                    <span className="absolute top-3 right-3 bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-white" /> স্পেশাল
-                    </span>
-                  )}
-
-                  <div className="absolute bottom-3 right-3 bg-brand-red text-white font-extrabold text-sm sm:text-base px-3 py-1 rounded-xl shadow-md">
-                    {item.price}
-                  </div>
-                </div>
-
-                <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between">
-                  <div>
-                    <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal group-hover:text-brand-green-deep transition-colors line-clamp-1">
-                      {language === "bn" ? item.titleBn : item.titleEn}
-                    </h3>
-                    <p className="text-xs text-brand-orange font-semibold mb-2 line-clamp-1">
-                      {item.titleEn}
-                    </p>
-                    <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-4">
-                      {language === "bn" ? item.descriptionBn : item.descriptionEn}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
-                    <span className="text-[11px] text-gray-400 font-medium">
-                      তাৎক্ষণিক প্রস্তুত
-                    </span>
+                  {menuSearchQuery && (
                     <button
                       type="button"
-                      onClick={() => handleOrderDish(item.titleBn)}
-                      className="cursor-pointer min-h-[44px] text-xs font-bold text-brand-red hover:text-brand-red-hover flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red"
+                      onClick={() => setMenuSearchQuery("")}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 min-h-[36px] min-w-[36px] flex items-center justify-center text-gray-400 hover:text-brand-charcoal rounded-full"
+                      aria-label="Clear search"
                     >
-                      <span>অর্ডার/বুকিং</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <X className="w-4 h-4" />
                     </button>
-                  </div>
+                  )}
+                </div>
+                <div className="flex items-center justify-between text-xs text-gray-500 mt-2 px-1">
+                  <span>
+                    {language === "bn"
+                      ? `${filteredMenuPages.length} টি মেনু পেজ প্রদর্শিত`
+                      : `Showing ${filteredMenuPages.length} menu pages`}
+                  </span>
+                  <span className="text-brand-red font-medium">
+                    {language === "bn" ? "ট্যাপ করে ফুল-স্ক্রিন দেখুন" : "Tap page to view full size"}
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Menu Notice Banner */}
+              {/* Category Filter Pills */}
+              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-2 no-scrollbar max-w-full justify-start md:justify-center">
+                {MENU_CATEGORIES.map((cat) => {
+                  const isActive = activePageCategory === cat.id;
+                  return (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => {
+                        setActivePageCategory(cat.id);
+                        setMenuSearchQuery("");
+                      }}
+                      className={`cursor-pointer min-h-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex-shrink-0 transition-all duration-200 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green ${
+                        isActive
+                          ? "bg-brand-green-deep text-white shadow-md scale-105"
+                          : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                      }`}
+                    >
+                      <span>{language === "bn" ? cat.labelBn : cat.labelEn}</span>
+                      <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                          isActive
+                            ? "bg-white/20 text-white"
+                            : "bg-gray-100 text-gray-500"
+                        }`}
+                      >
+                        {cat.count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Menu Pages Grid */}
+              {filteredMenuPages.length === 0 ? (
+                <div className="bg-white rounded-3xl p-10 text-center max-w-md mx-auto border border-gray-100 shadow-sm">
+                  <Utensils className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                  <h4 className="font-serif font-bold text-lg text-brand-charcoal mb-1">
+                    {language === "bn" ? "কোনো মেনু পেজ পাওয়া যায়নি" : "No matching menu pages"}
+                  </h4>
+                  <p className="text-xs text-gray-500 mb-4">
+                    {language === "bn"
+                      ? "অনুগ্রহ করে অন্য শব্দ দিয়ে অনুসন্ধান করুন বা সব মেনু সিলেক্ট করুন।"
+                      : "Try a different search keyword or switch category."}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMenuSearchQuery("");
+                      setActivePageCategory("all");
+                    }}
+                    className="cursor-pointer min-h-[44px] bg-brand-green-deep text-white px-5 py-2 rounded-xl text-xs font-bold"
+                  >
+                    সব মেনু দেখুন
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {filteredMenuPages.map((page) => (
+                    <div
+                      key={page.id}
+                      className="bg-white rounded-3xl overflow-hidden border border-gray-200/80 shadow-subtle hover:shadow-card hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                    >
+                      {/* Top Header of Card */}
+                      <div className="p-3.5 border-b border-gray-100 flex items-center justify-between bg-gradient-to-r from-gray-50 to-white">
+                        <div className="flex items-center gap-2">
+                          <span className="bg-brand-green-deep text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-xs">
+                            {language === "bn" ? `পৃষ্ঠা ${page.pageNum}` : `Page ${page.pageNum}`}
+                          </span>
+                          <span className="text-[11px] font-bold text-brand-green-deep line-clamp-1">
+                            {language === "bn" ? page.categoryLabelBn : page.categoryLabelEn}
+                          </span>
+                        </div>
+                        <span className="text-[10px] bg-red-50 text-brand-red font-bold px-2 py-0.5 rounded-full border border-brand-red/15">
+                          {language === "bn" ? page.badgeBn : page.badgeEn}
+                        </span>
+                      </div>
+
+                      {/* Menu Page Image Thumbnail */}
+                      <div
+                        onClick={() => handleOpenPageModal(page)}
+                        className="relative aspect-[1132/1600] w-full overflow-hidden bg-gray-100 cursor-pointer group/img"
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") handleOpenPageModal(page);
+                        }}
+                        aria-label={`Open menu page ${page.pageNum} full screen`}
+                      >
+                        <Image
+                          src={page.imageThumb}
+                          alt={`${page.titleBn} - KutumBari Restaurant Menu Page ${page.pageNum}`}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+                          <span className="min-h-[44px] px-4 py-2 rounded-full bg-brand-red text-white text-xs font-bold shadow-lg flex items-center gap-1.5 active:scale-95 transition-transform">
+                            <Maximize2 className="w-4 h-4" />
+                            {language === "bn" ? "বড় করে দেখুন (Zoom)" : "View Full Size"}
+                          </span>
+                        </div>
+                        {/* Mobile Tap Hint badge */}
+                        <div className="sm:hidden absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] font-semibold px-2 py-1 rounded-lg flex items-center gap-1">
+                          <Eye className="w-3 h-3 text-amber-300" />
+                          <span>ট্যাপ করুন</span>
+                        </div>
+                      </div>
+
+                      {/* Card Content & Details */}
+                      <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                          <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal group-hover:text-brand-green-deep transition-colors leading-tight mb-1">
+                            {language === "bn" ? page.titleBn : page.titleEn}
+                          </h3>
+                          <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-3">
+                            {language === "bn" ? page.descriptionBn : page.descriptionEn}
+                          </p>
+
+                          {/* Quick Dish Tags */}
+                          <div className="flex flex-wrap gap-1.5 mb-4">
+                            {page.highlightItems.slice(0, 3).map((dish, dIdx) => (
+                              <span
+                                key={dIdx}
+                                className="text-[11px] bg-brand-green-surface text-brand-green-deep px-2 py-0.5 rounded-md font-medium border border-brand-green/10"
+                              >
+                                {dish}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Card Action Buttons (Min 44x44 touch targets) */}
+                        <div className="pt-3 border-t border-gray-100 grid grid-cols-2 gap-2">
+                          <button
+                            type="button"
+                            onClick={() => handleOpenPageModal(page)}
+                            className="cursor-pointer min-h-[44px] text-xs font-bold text-brand-green-deep bg-brand-green-surface hover:bg-brand-green hover:text-white rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-green"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>{language === "bn" ? "বড় করুন" : "Expand"}</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => handleOrderDish(page.titleBn)}
+                            className="cursor-pointer min-h-[44px] text-xs font-bold text-white bg-brand-red hover:bg-brand-red-hover rounded-xl shadow-xs transition-all duration-200 flex items-center justify-center gap-1 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-red"
+                          >
+                            <span>{language === "bn" ? "অর্ডার/বুক" : "Order/Book"}</span>
+                            <ChevronRight className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 2: POPULAR SIGNATURE DISHES */}
+          {activeMenuTab === "dishes" && (
+            <div className="animate-fadeIn space-y-8">
+              {/* Circular Category Selector */}
+              <div className="flex items-center justify-center gap-4 sm:gap-8 mb-6 overflow-x-auto py-2 no-scrollbar max-w-full">
+                {[
+                  {
+                    id: "all" as CuisineCategory,
+                    labelBn: "সব খাবার",
+                    labelEn: "All Items",
+                    image: "/images/hero-dish.jpg",
+                  },
+                  {
+                    id: "bangla" as CuisineCategory,
+                    labelBn: "বাংলা (Bangla)",
+                    labelEn: "Bangla Delights",
+                    image: "/images/bangla-cat.jpg",
+                  },
+                  {
+                    id: "chinese" as CuisineCategory,
+                    labelBn: "চাইনিজ (Chinese)",
+                    labelEn: "Chinese Wok",
+                    image: "/images/chinese-cat.jpg",
+                  },
+                  {
+                    id: "fastfood" as CuisineCategory,
+                    labelBn: "ফাস্ট-ফুড (Fast-Food)",
+                    labelEn: "Fast-Food",
+                    image: "/images/fastfood-cat.jpg",
+                  },
+                ].map((cat) => {
+                  const isActive = activeCategory === cat.id;
+                  return (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => setActiveCategory(cat.id)}
+                      className="cursor-pointer flex flex-col items-center group focus:outline-none focus:ring-2 focus:ring-brand-red rounded-2xl flex-shrink-0 min-h-[44px] min-w-[44px] p-1 transition-all"
+                    >
+                      <div
+                        className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 transition-all duration-300 ${
+                          isActive
+                            ? "ring-4 ring-brand-red scale-105 shadow-md"
+                            : "ring-2 ring-gray-200 group-hover:ring-brand-orange/60"
+                        }`}
+                      >
+                        <div className="relative w-full h-full rounded-full overflow-hidden">
+                          <Image
+                            src={cat.image}
+                            alt={cat.labelEn}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                      </div>
+                      <span
+                        className={`mt-2 text-xs sm:text-sm font-bold tracking-tight transition-colors ${
+                          isActive ? "text-brand-red" : "text-brand-charcoal group-hover:text-brand-orange"
+                        }`}
+                      >
+                        {language === "bn" ? cat.labelBn : cat.labelEn}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Dish Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+                {filteredMenuItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-subtle hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+                  >
+                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-gray-100">
+                      <Image
+                        src={item.image}
+                        alt={item.titleEn}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+
+                      <span className="absolute top-3 left-3 bg-white/95 text-brand-green-deep text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm capitalize backdrop-blur-sm">
+                        {item.category === "bangla"
+                          ? "বাংলা"
+                          : item.category === "chinese"
+                          ? "চাইনিজ"
+                          : "ফাস্ট-ফুড"}
+                      </span>
+
+                      {item.isChefSpecial && (
+                        <span className="absolute top-3 right-3 bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+                          <Star className="w-3 h-3 fill-white" /> স্পেশাল
+                        </span>
+                      )}
+
+                      <div className="absolute bottom-3 right-3 bg-brand-red text-white font-extrabold text-sm sm:text-base px-3 py-1 rounded-xl shadow-md">
+                        {item.price}
+                      </div>
+                    </div>
+
+                    <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between">
+                      <div>
+                        <h3 className="font-serif font-bold text-base sm:text-lg text-brand-charcoal group-hover:text-brand-green-deep transition-colors line-clamp-1">
+                          {language === "bn" ? item.titleBn : item.titleEn}
+                        </h3>
+                        <p className="text-xs text-brand-orange font-semibold mb-2 line-clamp-1">
+                          {item.titleEn}
+                        </p>
+                        <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-4">
+                          {language === "bn" ? item.descriptionBn : item.descriptionEn}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
+                        <span className="text-[11px] text-gray-400 font-medium">
+                          তাৎক্ষণিক প্রস্তুত
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleOrderDish(item.titleBn)}
+                          className="cursor-pointer min-h-[44px] text-xs font-bold text-brand-red hover:text-brand-red-hover flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red"
+                        >
+                          <span>অর্ডার/বুকিং</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Grand Opening Promo Banner */}
           <div className="mt-12 p-4 sm:p-6 rounded-2xl bg-brand-green-surface border border-brand-green/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-brand-green/20 text-brand-green flex items-center justify-center flex-shrink-0">
@@ -1330,27 +1658,27 @@ export default function KutumBariLandingPage() {
               </h4>
               <ul className="space-y-2.5 text-xs sm:text-sm text-emerald-100/80">
                 <li>
-                  <a href="#home" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                  <a href="#home" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[44px]">
                     <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> হোম (Home)
                   </a>
                 </li>
                 <li>
-                  <a href="#menu" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                  <a href="#menu" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[44px]">
                     <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> খাবারের মেনু (Menu)
                   </a>
                 </li>
                 <li>
-                  <a href="#events" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                  <a href="#events" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[44px]">
                     <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> উৎসবের আয়োজন (Events)
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                  <a href="#about" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[44px]">
                     <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> আমাদের গল্প (Our Story)
                   </a>
                 </li>
                 <li>
-                  <a href="#location" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[36px]">
+                  <a href="#location" className="cursor-pointer hover:text-amber-300 transition-colors flex items-center gap-1.5 min-h-[44px]">
                     <ChevronRight className="w-3.5 h-3.5 text-brand-red" /> ঠিকানা ও ম্যাপ (Location)
                   </a>
                 </li>
@@ -1392,13 +1720,13 @@ export default function KutumBariLandingPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-brand-orange flex-shrink-0" />
-                  <a href="tel:01351327933" className="cursor-pointer hover:text-white font-bold min-h-[36px] flex items-center">
+                  <a href="tel:01351327933" className="cursor-pointer hover:text-white font-bold min-h-[44px] flex items-center">
                     01351327933
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-brand-orange flex-shrink-0" />
-                  <a href="tel:01760780000" className="cursor-pointer hover:text-white font-bold min-h-[36px] flex items-center">
+                  <a href="tel:01760780000" className="cursor-pointer hover:text-white font-bold min-h-[44px] flex items-center">
                     01760780000
                   </a>
                 </li>
@@ -1611,6 +1939,184 @@ export default function KutumBariLandingPage() {
                   </div>
                 </form>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 12. FULLSCREEN MOBILE-OPTIMIZED MENU VIEWER MODAL */}
+      {selectedMenuPage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between animate-fadeIn"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Menu page ${selectedMenuPage.pageNum}`}
+        >
+          {/* Lightbox Top Control Bar */}
+          <div className="p-3 sm:p-4 bg-black/60 border-b border-white/10 flex items-center justify-between z-10">
+            <div className="flex items-center gap-3">
+              <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full shadow-xs">
+                {language === "bn"
+                  ? `পৃষ্ঠা ${selectedMenuPage.pageNum} / ১৯`
+                  : `Page ${selectedMenuPage.pageNum} of 19`}
+              </span>
+              <div className="hidden sm:block">
+                <h4 className="text-white text-sm font-bold font-serif line-clamp-1">
+                  {language === "bn" ? selectedMenuPage.titleBn : selectedMenuPage.titleEn}
+                </h4>
+                <p className="text-[11px] text-emerald-200/70">
+                  {selectedMenuPage.categoryLabelBn}
+                </p>
+              </div>
+            </div>
+
+            {/* Zoom Controls & Close Button */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handleZoomToggle}
+                className="cursor-pointer min-h-[44px] px-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-1.5 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                title="Toggle Zoom"
+                aria-label="Toggle Zoom"
+              >
+                {zoomLevel === 1 ? (
+                  <>
+                    <ZoomIn className="w-4 h-4" />
+                    <span>১.৫x জুম</span>
+                  </>
+                ) : zoomLevel === 1.5 ? (
+                  <>
+                    <ZoomIn className="w-4 h-4" />
+                    <span>২x জুম</span>
+                  </>
+                ) : (
+                  <>
+                    <RotateCcw className="w-4 h-4" />
+                    <span>রিসেট</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleClosePageModal}
+                className="cursor-pointer min-h-[44px] min-w-[44px] w-11 h-11 rounded-full bg-white/10 hover:bg-brand-red text-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red"
+                aria-label="Close menu viewer"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+
+          {/* Lightbox Center Image Viewport */}
+          <div className="relative flex-1 overflow-auto flex items-center justify-center p-2 sm:p-4 touch-pan-x touch-pan-y">
+            {/* Desktop Left / Right Navigation Arrows */}
+            <button
+              type="button"
+              onClick={handlePrevPage}
+              className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 min-h-[48px] min-w-[48px] w-12 h-12 rounded-full bg-black/60 hover:bg-brand-red text-white items-center justify-center backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-white"
+              aria-label="Previous menu page"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleNextPage}
+              className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 min-h-[48px] min-w-[48px] w-12 h-12 rounded-full bg-black/60 hover:bg-brand-red text-white items-center justify-center backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-white"
+              aria-label="Next menu page"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Menu Image Container */}
+            <div
+              className="relative max-h-full transition-transform duration-200 flex items-center justify-center"
+              style={{
+                transform: `scale(${zoomLevel})`,
+                transformOrigin: "center center",
+              }}
+            >
+              <div className="relative max-h-[72vh] sm:max-h-[78vh] aspect-[1132/1600] w-auto h-[72vh] sm:h-[78vh] rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+                <Image
+                  src={selectedMenuPage.imageWebp}
+                  alt={`KutumBari Restaurant Menu Page ${selectedMenuPage.pageNum} - ${selectedMenuPage.titleBn}`}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 85vw"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Lightbox Bottom Actions Bar */}
+          <div className="p-3 sm:p-4 bg-black/80 border-t border-white/10 z-10 pb-safe">
+            <div className="max-w-xl mx-auto flex flex-col gap-2.5">
+              {/* Prev / Next & Order Actions */}
+              <div className="grid grid-cols-4 gap-2">
+                <button
+                  type="button"
+                  onClick={handlePrevPage}
+                  className="cursor-pointer min-h-[46px] rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center justify-center gap-1 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span className="hidden sm:inline">পূর্ববর্তী</span>
+                </button>
+
+                <a
+                  href="tel:01351327933"
+                  className="cursor-pointer min-h-[46px] col-span-1 rounded-xl bg-brand-green hover:bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span className="truncate">কল করুন</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleOrderDish(selectedMenuPage.titleBn);
+                    handleClosePageModal();
+                  }}
+                  className="cursor-pointer min-h-[46px] col-span-1 rounded-xl bg-brand-red hover:bg-brand-red-hover text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-brand-red"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>টেবিল বুকিং</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleNextPage}
+                  className="cursor-pointer min-h-[46px] rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center justify-center gap-1 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <span className="hidden sm:inline">পরবর্তী</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Mini Thumbnail Carousel */}
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+                {ALL_MENU_PAGES.map((pg) => {
+                  const isCurrent = pg.id === selectedMenuPage.id;
+                  return (
+                    <button
+                      key={pg.id}
+                      type="button"
+                      onClick={() => {
+                        setSelectedMenuPage(pg);
+                        setZoomLevel(1);
+                      }}
+                      className={`cursor-pointer flex-shrink-0 min-h-[38px] px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${
+                        isCurrent
+                          ? "bg-brand-red text-white shadow-md ring-2 ring-white scale-105"
+                          : "bg-white/10 text-white/70 hover:bg-white/20"
+                      }`}
+                    >
+                      {pg.pageNum}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
