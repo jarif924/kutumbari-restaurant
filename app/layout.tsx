@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://kutumbari-restaurant.vercel.app"),
   title: "KutumBari Restaurant | কুটুমবাড়ি রেস্টুরেন্ট - স্বাদের সাথে ভালোবাসার এক আপন ঠিকানা",
   description:
     "KutumBari Restaurant in Bhandaria (Main Road, 2nd Floor, Reserve Pukur Par). Premium dining for Bangla, Chinese & Fast-Food. Grand Opening 15% Discount. Dine-in, family gatherings, birthday & wedding events.",
